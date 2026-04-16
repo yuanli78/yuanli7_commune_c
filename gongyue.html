@@ -53,6 +53,7 @@
         h2:first-of-type {
             margin-top: 0;
         }
+        /* 关键修复：改用 flex 布局，序号与文字永远分开 */
         .gongyue-list {
             background: #faf6f0;
             padding: 1.5rem 2rem;
@@ -64,18 +65,18 @@
             counter-reset: gongyue-counter;
         }
         .gongyue-list li {
-            counter-increment: gongyue-counter;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
             margin-bottom: 1.2rem;
-            padding-left: 2.8rem;
-            position: relative;
-            line-height: 1.5;
+            counter-increment: gongyue-counter;
         }
         .gongyue-list li::before {
             content: "第" counter(gongyue-counter, cjk-ideographic) "公约";
-            position: absolute;
-            left: 0;
             font-weight: bold;
             color: #b91c1c;
+            white-space: nowrap;  /* 序号不换行 */
+            flex-shrink: 0;
         }
         .future-note {
             background: #fff3e0;
@@ -111,11 +112,14 @@
         a:hover {
             text-decoration: underline;
         }
+        /* 手机优化 */
         @media (max-width: 600px) {
             .header h1 { font-size: 1.6rem; }
             .content { padding: 1.5rem; }
-            .gongyue-list { padding: 1rem 1rem 1rem 1.5rem; }
-            .gongyue-list li { padding-left: 2.2rem; }
+            .gongyue-list { padding: 1.2rem 1rem; }
+            .gongyue-list li {
+                gap: 0.5rem;
+            }
         }
     </style>
 </head>
