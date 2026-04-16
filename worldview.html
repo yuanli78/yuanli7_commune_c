@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>世界观设定 · 源力公社</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif;
+            background: #fef9f0;
+            color: #2c2c2c;
+            line-height: 1.6;
+            padding: 2rem 1rem;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            overflow: hidden;
+            border: 1px solid #ffe0b5;
+        }
+        .header {
+            background: #b91c1c;
+            color: white;
+            padding: 2rem 2rem 1.5rem;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 2.2rem;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        .content {
+            padding: 2rem;
+        }
+        h2 {
+            color: #b91c1c;
+            margin: 1.8rem 0 1rem;
+            border-bottom: 2px solid #ffe0b5;
+            padding-bottom: 0.3rem;
+        }
+        h2:first-of-type {
+            margin-top: 0;
+        }
+        /* 树状目录样式 */
+        .world-tree {
+            background: #faf6f0;
+            padding: 1.5rem 2rem;
+            border-radius: 16px;
+            margin: 1.5rem 0;
+            font-family: 'SF Mono', 'Consolas', monospace;
+            line-height: 1.8;
+        }
+        .tree-root {
+            list-style: none;
+            padding-left: 0;
+        }
+        .tree-root ul {
+            list-style: none;
+            padding-left: 1.8rem;
+            border-left: 1px dashed #d4b89c;
+            margin-left: 0.5rem;
+        }
+        .tree-root li {
+            position: relative;
+            padding-left: 0.5rem;
+            margin: 0.3rem 0;
+        }
+        .tree-root li::before {
+            content: "├── ";
+            color: #a51a1a;
+            font-weight: normal;
+        }
+        .tree-root li:last-child::before {
+            content: "└── ";
+        }
+        /* 特殊处理根级第一项，不用竖线连接符 */
+        .tree-root > li:first-child::before {
+            content: "";
+        }
+        .tree-root > li:first-child {
+            padding-left: 0;
+        }
+        /* 文件夹样式（粗体、红色） */
+        .dir-name {
+            font-weight: 700;
+            color: #b91c1c;
+        }
+        /* 文件样式（正常） */
+        .file-name {
+            color: #2c2c2c;
+        }
+        .note-box {
+            background: #fff3e0;
+            border-left: 5px solid #b91c1c;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0 1rem;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 1.5rem;
+            color: #b91c1c;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        .footer {
+            background: #f0ece4;
+            text-align: center;
+            padding: 1.5rem;
+            font-size: 0.85rem;
+            color: #5e5e5e;
+            border-top: 1px solid #ffe0b5;
+        }
+        a {
+            color: #b91c1c;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 600px) {
+            .header h1 { font-size: 1.6rem; }
+            .content { padding: 1.5rem; }
+            .world-tree { padding: 1rem 1rem 1rem 1.5rem; }
+            .tree-root ul { padding-left: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>🌌 源力世界观 · 设定目录</h1>
+        <p>集体创作 · 持续扩展中</p>
+    </div>
+    <div class="content">
+        <div class="note-box">
+            📁 本目录展示世界观框架。点击具体条目将跳转至详细设定页（建设中）。
+        </div>
+
+        <h2>📂 世界观树状结构</h2>
+        <div class="world-tree">
+            <ul class="tree-root">
+                <!-- 四大星域 -->
+                <li>
+                    <span class="dir-name">四大星域/</span>
+                    <ul>
+                        <li><span class="file-name">南区_南神</span></li>
+                        <li><span class="file-name">北区_北混</span></li>
+                        <li><span class="file-name">西区_西帝</span></li>
+                        <li><span class="file-name">东区_死亡地</span></li>
+                    </ul>
+                </li>
+                <!-- 神权方 -->
+                <li>
+                    <span class="dir-name">神权方/</span>
+                    <ul>
+                        <li>
+                            <span class="dir-name">伊甸天国/</span>
+                            <ul>
+                                <li><span class="file-name">创世神</span></li>
+                                <li><span class="file-name">神赐源力</span></li>
+                                <li><span class="file-name">天使</span></li>
+                                <li><span class="file-name">命运大赛</span></li>
+                                <li><span class="file-name">系统</span></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span class="dir-name">冬之神官团/</span>
+                            <ul>
+                                <li><span class="file-name">冬微</span></li>
+                                <li><span class="file-name">冬税制度</span></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span class="dir-name">情脉协调圣所/</span>
+                            <ul>
+                                <li>
+                                    <span class="dir-name">莱斯德家族/</span>
+                                    <ul>
+                                        <li><span class="file-name">莱斯德</span></li>
+                                        <li><span class="file-name">莱吉尔</span></li>
+                                        <li><span class="file-name">莱天真</span></li>
+                                    </ul>
+                                </li>
+                                <li><span class="file-name">傀儡术</span></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span class="dir-name">圣恙诊断所/</span>
+                            <ul>
+                                <li><span class="file-name">春微</span></li>
+                                <li><span class="file-name">基因编辑</span></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span class="dir-name">纲常名教纠察司/</span>
+                            <ul>
+                                <li><span class="file-name">夏丘</span></li>
+                                <li><span class="file-name">夏微</span></li>
+                                <li><span class="file-name">封建伦理</span></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span class="dir-name">教会/</span>
+                            <ul>
+                                <li>
+                                    <span class="dir-name">修女会/</span>
+                                    <ul>
+                                        <li><span class="file-name">秋微</span></li>
+                                        <li><span class="file-name">其他修女</span></li>
+                                    </ul>
+                                </li>
+                                <li><span class="file-name">教会新闻部</span></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <!-- 混沌方 -->
+                <li>
+                    <span class="dir-name">混沌方/</span>
+                    <ul>
+                        <li><span class="file-name">混沌生命</span></li>
+                        <li><span class="file-name">混沌卵</span></li>
+                        <li>
+                            <span class="dir-name">人物/</span>
+                            <ul>
+                                <li><span class="file-name">舟亢</span></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <!-- 公社方 -->
+                <li>
+                    <span class="dir-name">公社方/</span>
+                    <ul>
+                        <li><span class="file-name">整体结构</span></li>
+                        <li>
+                            <span class="dir-name">M粒子派/</span>
+                            <ul>
+                                <li><span class="file-name">官僚化倾向</span></li>
+                                <li><span class="file-name">二十级工资制</span></li>
+                                <li><span class="file-name">军衔制度</span></li>
+                                <li><span class="file-name">U盘社</span></li>
+                                <li><span class="file-name">扑克牌社</span></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span class="dir-name">W粒子派/</span>
+                            <ul>
+                                <li>
+                                    <span class="dir-name">数据线社/</span>
+                                    <ul>
+                                        <li><span class="file-name">驱动器类型</span></li>
+                                        <li><span class="file-name">技能种类</span></li>
+                                        <li>
+                                            <span class="dir-name">下属分社/</span>
+                                            <ul>
+                                                <li>
+                                                    <span class="dir-name">第七分社/</span>
+                                                    <ul>
+                                                        <li><span class="file-name">基本信息</span></li>
+                                                        <li><span class="file-name">重要人物</span></li>
+                                                        <li><span class="file-name">重要事件</span></li>
+                                                        <li><span class="file-name">发展历史</span></li>
+                                                        <li><span class="file-name">特色制度</span></li>
+                                                        <li><span class="file-name">核心技术</span></li>
+                                                        <li><span class="file-name">俘虏管理</span></li>
+                                                        <li><span class="file-name">地道基地</span></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li><span class="file-name">其他分社</span></li>
+                                    </ul>
+                                </li>
+                                <li><span class="file-name">其他W粒子派组织</span></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span class="dir-name">重要概念/</span>
+                            <ul>
+                                <li><span class="file-name">异化</span></li>
+                                <li><span class="file-name">劳动价值论</span></li>
+                                <li><span class="file-name">命运观</span></li>
+                                <li><span class="file-name">人类分类</span></li>
+                                <li><span class="file-name">家庭批判</span></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <!-- 附录 -->
+                <li>
+                    <span class="dir-name">附录/</span>
+                    <ul>
+                        <li><span class="file-name">角色关系图</span></li>
+                        <li><span class="file-name">时间线</span></li>
+                        <li><span class="file-name">术语表</span></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <p style="margin-top: 1rem; text-align: right; font-style: italic;">—— 持续更新中，欢迎参与设定讨论</p>
+
+        <p><a href="index.html" class="back-link">← 返回公社首页</a></p>
+    </div>
+    <div class="footer">
+        源力公社 · 集体版权 · 世界观设定由全体社员共同创作
+    </div>
+</div>
+</body>
+</html>
