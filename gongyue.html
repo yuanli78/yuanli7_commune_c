@@ -53,30 +53,28 @@
         h2:first-of-type {
             margin-top: 0;
         }
-        /* 关键修复：改用 flex 布局，序号与文字永远分开 */
         .gongyue-list {
             background: #faf6f0;
             padding: 1.5rem 2rem;
             border-radius: 16px;
             margin: 1.5rem 0 2rem 0;
         }
-        .gongyue-list ol {
-            list-style: none;
-            counter-reset: gongyue-counter;
-        }
-        .gongyue-list li {
+        /* 每个公约条目使用 flex，左右两列 */
+        .gongyue-item {
             display: flex;
             align-items: flex-start;
-            gap: 0.75rem;
+            gap: 1rem;
             margin-bottom: 1.2rem;
-            counter-increment: gongyue-counter;
         }
-        .gongyue-list li::before {
-            content: "第" counter(gongyue-counter, cjk-ideographic) "公约";
+        .gongyue-number {
             font-weight: bold;
             color: #b91c1c;
-            white-space: nowrap;  /* 序号不换行 */
-            flex-shrink: 0;
+            white-space: nowrap;
+            min-width: 5.5em; /* 确保“第五公约”四个字宽度足够 */
+        }
+        .gongyue-text {
+            flex: 1;
+            color: #2c2c2c;
         }
         .future-note {
             background: #fff3e0;
@@ -112,14 +110,12 @@
         a:hover {
             text-decoration: underline;
         }
-        /* 手机优化 */
         @media (max-width: 600px) {
             .header h1 { font-size: 1.6rem; }
             .content { padding: 1.5rem; }
             .gongyue-list { padding: 1.2rem 1rem; }
-            .gongyue-list li {
-                gap: 0.5rem;
-            }
+            .gongyue-item { gap: 0.5rem; }
+            .gongyue-number { min-width: 4.5em; }
         }
     </style>
 </head>
@@ -132,13 +128,27 @@
     <div class="content">
         <h2>现行公约（草案）</h2>
         <div class="gongyue-list">
-            <ol>
-                <li>作品为宣传共产主义制作，创作者首先是共产主义者。</li>
-                <li>创作者个人收入不超过一线工人平均工资，多余部分归公社公共账户。</li>
-                <li>作品版权归公社委员会集体所有，任何个人或资本未经授权不得使用。</li>
-                <li>公社财务由选举产生的委员会管理，定期公示收支。</li>
-                <li>委员会成员由作者、读者、共产主义者共同选举产生，任期一年，可连选连任。</li>
-            </ol>
+            <!-- 使用显式结构，彻底避免伪元素定位问题 -->
+            <div class="gongyue-item">
+                <div class="gongyue-number">第一公约</div>
+                <div class="gongyue-text">作品为宣传共产主义制作，创作者首先是共产主义者。</div>
+            </div>
+            <div class="gongyue-item">
+                <div class="gongyue-number">第二公约</div>
+                <div class="gongyue-text">创作者个人收入不超过一线工人平均工资，多余部分归公社公共账户。</div>
+            </div>
+            <div class="gongyue-item">
+                <div class="gongyue-number">第三公约</div>
+                <div class="gongyue-text">作品版权归公社委员会集体所有，任何个人或资本未经授权不得使用。</div>
+            </div>
+            <div class="gongyue-item">
+                <div class="gongyue-number">第四公约</div>
+                <div class="gongyue-text">公社财务由选举产生的委员会管理，定期公示收支。</div>
+            </div>
+            <div class="gongyue-item">
+                <div class="gongyue-number">第五公约</div>
+                <div class="gongyue-text">委员会成员由作者、读者、共产主义者共同选举产生，任期一年，可连选连任。</div>
+            </div>
         </div>
 
         <h2>📌 公约说明</h2>
