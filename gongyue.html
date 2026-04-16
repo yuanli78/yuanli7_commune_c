@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>公社公约 · 源力公社</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif;
+            background: #fef9f0;
+            color: #2c2c2c;
+            line-height: 1.6;
+            padding: 2rem 1rem;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            overflow: hidden;
+            border: 1px solid #ffe0b5;
+        }
+        .header {
+            background: #b91c1c;
+            color: white;
+            padding: 2rem 2rem 1.5rem;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 2.2rem;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        .content {
+            padding: 2rem;
+        }
+        h2 {
+            color: #b91c1c;
+            margin: 1.5rem 0 1rem;
+            border-bottom: 2px solid #ffe0b5;
+            padding-bottom: 0.3rem;
+        }
+        .gongyue-list {
+            background: #faf6f0;
+            padding: 1.5rem 2rem;
+            border-radius: 16px;
+            margin: 1.5rem 0;
+        }
+        .gongyue-list ol {
+            list-style: none;
+            counter-reset: gongyue-counter;
+        }
+        .gongyue-list li {
+            counter-increment: gongyue-counter;
+            margin-bottom: 1.2rem;
+            padding-left: 2.5rem;
+            position: relative;
+        }
+        .gongyue-list li::before {
+            content: "第" counter(gongyue-counter, cjk-ideographic) "公约";
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            color: #b91c1c;
+        }
+        .future-note {
+            background: #fff3e0;
+            border-left: 5px solid #b91c1c;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0 1rem;
+            font-style: italic;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 1.5rem;
+            color: #b91c1c;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        .footer {
+            background: #f0ece4;
+            text-align: center;
+            padding: 1.5rem;
+            font-size: 0.85rem;
+            color: #5e5e5e;
+            border-top: 1px solid #ffe0b5;
+        }
+        a {
+            color: #b91c1c;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 600px) {
+            .header h1 { font-size: 1.6rem; }
+            .content { padding: 1.5rem; }
+            .gongyue-list { padding: 1rem 1.2rem; }
+            .gongyue-list li { padding-left: 2rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>📜 公社公约</h1>
+        <p>源力公社 · 新公社派集体创作的根本章程</p>
+    </div>
+    <div class="content">
+        <h2>现行公约（草案）</h2>
+        <div class="gongyue-list">
+            <ol>
+                <li>作品为宣传共产主义制作，创作者首先是共产主义者。</li>
+                <li>创作者个人收入不超过一线工人平均工资，多余部分归公社公共账户。</li>
+                <li>作品版权归公社委员会集体所有，任何个人或资本未经授权不得使用。</li>
+                <li>公社财务由选举产生的委员会管理，定期公示收支。</li>
+                <li>委员会成员由作者、读者、共产主义者共同选举产生，任期一年，可连选连任。</li>
+            </ol>
+        </div>
+
+        <h2>📌 公约说明</h2>
+        <p>以上五条为源力公社现行公约草案，自公社成立之日起试行。全体成员须自觉遵守，委员会负责解释与修订。</p>
+
+        <div class="future-note">
+            ⏳ 后续公约条款（如版权细则、委员会选举流程、财务管理规范等）将在此页面陆续添加。
+        </div>
+
+        <p><a href="index.html" class="back-link">← 返回公社首页</a></p>
+    </div>
+    <div class="footer">
+        源力公社委员会 制定 · 本公约采用集体版权 · 禁止个人篡改或商用
+    </div>
+</div>
+</body>
+</html>
