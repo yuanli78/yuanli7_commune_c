@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第七分社 · 源力公社</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif;
+            background: #fef9f0;
+            color: #2c2c2c;
+            line-height: 1.7;
+            padding: 2rem 1rem;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            overflow: hidden;
+            border: 1px solid #ffe0b5;
+        }
+        .header {
+            background: #b91c1c;
+            color: white;
+            padding: 2rem 2rem 1.5rem;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 2rem;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+        .header p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        .content {
+            padding: 2rem;
+        }
+        h2 {
+            color: #b91c1c;
+            margin: 1.8rem 0 1rem;
+            border-bottom: 2px solid #ffe0b5;
+            padding-bottom: 0.3rem;
+        }
+        h2:first-of-type {
+            margin-top: 0;
+        }
+        h3 {
+            color: #a51a1a;
+            margin: 1.2rem 0 0.8rem;
+        }
+        .section-card {
+            background: #faf6f0;
+            padding: 1.5rem 2rem;
+            border-radius: 16px;
+            margin: 1.5rem 0;
+        }
+        .member-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        .member-item {
+            background: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            border: 1px solid #ffe0b5;
+            text-align: center;
+        }
+        .tree-list {
+            list-style: none;
+            padding-left: 0;
+            font-family: 'SF Mono', 'Consolas', monospace;
+        }
+        .tree-list ul {
+            list-style: none;
+            padding-left: 2rem;
+            border-left: 1px dashed #d4b89c;
+            margin-left: 0.5rem;
+        }
+        .tree-list li {
+            position: relative;
+            padding-left: 0.5rem;
+            margin: 0.3rem 0;
+        }
+        .tree-list li::before {
+            content: "├── ";
+            color: #a51a1a;
+        }
+        .tree-list li:last-child::before {
+            content: "└── ";
+        }
+        .note-box {
+            background: #fff3e0;
+            border-left: 5px solid #b91c1c;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            color: #b91c1c;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        .footer {
+            background: #f0ece4;
+            text-align: center;
+            padding: 1.5rem;
+            font-size: 0.85rem;
+            color: #5e5e5e;
+            border-top: 1px solid #ffe0b5;
+        }
+        a {
+            color: #b91c1c;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 600px) {
+            .header h1 { font-size: 1.5rem; }
+            .content { padding: 1.5rem; }
+            .section-card { padding: 1.2rem 1rem; }
+            .member-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>🏭 第七分社</h1>
+        <p>数据线社下属 · 设定档案</p>
+    </div>
+    <div class="content">
+        <div class="note-box">
+            📌 本页面为第七分社的详细设定，内容源自世界观树。具体细节待补充。
+        </div>
+
+        <h2>📋 基本信息</h2>
+        <div class="section-card">
+            <p><strong>所属组织：</strong>数据线社（W粒子派 · 彻底革命派）</p>
+            <p><strong>成立时间：</strong>（待补充）</p>
+            <p><strong>基地位置：</strong>（待补充）</p>
+            <p><strong>规模：</strong>（待补充）</p>
+        </div>
+
+        <h2>👥 重要人物</h2>
+        <div class="section-card">
+            <p>以下为第七分社主要成员（共21人）：</p>
+            <div class="member-grid">
+                <div class="member-item">优幻</div>
+                <div class="member-item">希晞</div>
+                <div class="member-item">叶石</div>
+                <div class="member-item">布尔克</div>
+                <div class="member-item">冰糖</div>
+                <div class="member-item">爱德胜</div>
+                <div class="member-item">山楂糖</div>
+                <div class="member-item">乐热</div>
+                <div class="member-item">乐冷</div>
+                <div class="member-item">佑国</div>
+                <div class="member-item">佐糖</div>
+                <div class="member-item">杰林</div>
+                <div class="member-item">贺阳</div>
+                <div class="member-item">刘菲洛</div>
+                <div class="member-item">土龙一</div>
+                <div class="member-item">水参三</div>
+                <div class="member-item">方北</div>
+                <div class="member-item">朱叶</div>
+                <div class="member-item">真德尔</div>
+                <div class="member-item">林德</div>
+                <div class="member-item">菲尔</div>
+            </div>
+            <p style="margin-top: 1rem;">（人物背景、能力待补充）</p>
+        </div>
+
+        <h2>📅 重要事件</h2>
+        <div class="section-card">
+            <p>（待补充）</p>
+        </div>
+
+        <h2>📜 发展历史</h2>
+        <div class="section-card">
+            <p>（待补充）</p>
+        </div>
+
+        <h2>🏛️ 特色制度</h2>
+        <div class="section-card">
+            <p>（待补充）</p>
+        </div>
+
+        <h2>🔬 核心技术</h2>
+        <div class="section-card">
+            <p>（待补充）</p>
+        </div>
+
+        <h2>⛓️ 俘虏管理</h2>
+        <div class="section-card">
+            <p>（待补充）</p>
+        </div>
+
+        <h2>🕳️ 地道基地</h2>
+        <div class="section-card">
+            <p>（待补充）</p>
+        </div>
+
+        <p><a href="data-line-she.html" class="back-link">← 返回数据线社</a> · <a href="worldview.html">返回世界观目录</a> · <a href="index.html">返回首页</a></p>
+    </div>
+    <div class="footer">
+        源力公社 · 集体版权 · 设定持续更新中
+    </div>
+</div>
+</body>
+</html>
