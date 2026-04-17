@@ -18,7 +18,7 @@
             padding: 2rem 1rem;
         }
         .container {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
             background: white;
             border-radius: 24px;
@@ -53,14 +53,14 @@
         h2:first-of-type {
             margin-top: 0;
         }
-        /* 树状目录样式 */
         .world-tree {
             background: #faf6f0;
             padding: 1.5rem 2rem;
             border-radius: 16px;
             margin: 1.5rem 0;
             font-family: 'SF Mono', 'Consolas', monospace;
-            line-height: 1.8;
+            line-height: 1.9;
+            font-size: 0.95rem;
         }
         .tree-root {
             list-style: none;
@@ -68,14 +68,14 @@
         }
         .tree-root ul {
             list-style: none;
-            padding-left: 1.8rem;
+            padding-left: 2rem;
             border-left: 1px dashed #d4b89c;
             margin-left: 0.5rem;
         }
         .tree-root li {
             position: relative;
             padding-left: 0.5rem;
-            margin: 0.3rem 0;
+            margin: 0.2rem 0;
         }
         .tree-root li::before {
             content: "├── ";
@@ -85,19 +85,16 @@
         .tree-root li:last-child::before {
             content: "└── ";
         }
-        /* 特殊处理根级第一项，不用竖线连接符 */
         .tree-root > li:first-child::before {
             content: "";
         }
         .tree-root > li:first-child {
             padding-left: 0;
         }
-        /* 文件夹样式（粗体、红色） */
         .dir-name {
             font-weight: 700;
             color: #b91c1c;
         }
-        /* 文件样式（正常） */
         .file-name {
             color: #2c2c2c;
         }
@@ -136,7 +133,7 @@
         @media (max-width: 600px) {
             .header h1 { font-size: 1.6rem; }
             .content { padding: 1.5rem; }
-            .world-tree { padding: 1rem 1rem 1rem 1.5rem; }
+            .world-tree { padding: 1rem 1rem 1rem 1.5rem; font-size: 0.85rem; }
             .tree-root ul { padding-left: 1.2rem; }
         }
     </style>
@@ -165,167 +162,164 @@
                         <li><span class="file-name">东区_死亡地</span></li>
                     </ul>
                 </li>
-                <!-- 神权方 -->
+                <!-- 神权方（新版势力列表） -->
                 <li>
                     <span class="dir-name">神权方/</span>
                     <ul>
-                        <li>
-                            <span class="dir-name">伊甸天国/</span>
-                            <ul>
-                                <li><span class="file-name">创世神</span></li>
-                                <li><span class="file-name">神赐源力</span></li>
-                                <li><span class="file-name">天使</span></li>
-                                <li><span class="file-name">命运大赛</span></li>
-                                <li><span class="file-name">系统</span></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <span class="dir-name">冬之神官团/</span>
-                            <ul>
-                                <li><span class="file-name">冬微</span></li>
-                                <li><span class="file-name">冬税制度</span></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <span class="dir-name">情脉协调圣所/</span>
-                            <ul>
-                                <li>
-                                    <span class="dir-name">莱斯德家族/</span>
-                                    <ul>
-                                        <li><span class="file-name">莱斯德</span></li>
-                                        <li><span class="file-name">莱吉尔</span></li>
-                                        <li><span class="file-name">莱天真</span></li>
-                                    </ul>
-                                </li>
-                                <li><span class="file-name">傀儡术</span></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <span class="dir-name">圣恙诊断所/</span>
-                            <ul>
-                                <li><span class="file-name">春微</span></li>
-                                <li><span class="file-name">基因编辑</span></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <span class="dir-name">纲常名教纠察司/</span>
-                            <ul>
-                                <li><span class="file-name">夏丘</span></li>
-                                <li><span class="file-name">夏微</span></li>
-                                <li><span class="file-name">封建伦理</span></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <span class="dir-name">教会/</span>
-                            <ul>
-                                <li>
-                                    <span class="dir-name">修女会/</span>
-                                    <ul>
-                                        <li><span class="file-name">秋微</span></li>
-                                        <li><span class="file-name">其他修女</span></li>
-                                    </ul>
-                                </li>
-                                <li><span class="file-name">教会新闻部</span></li>
-                            </ul>
-                        </li>
+                        <li><span class="file-name">骑士团</span></li>
+                        <li><span class="file-name">教会</span></li>
+                        <li><span class="file-name">修女会</span></li>
+                        <li><span class="file-name">海强盗团</span></li>
+                        <li><span class="file-name">学院</span></li>
+                        <li><span class="file-name">天使团</span></li>
+                        <li><span class="file-name">恶魔团</span></li>
+                        <li><span class="file-name">神官团</span></li>
+                        <li><span class="file-name">牧师团</span></li>
+                        <li><span class="file-name">审判庭</span></li>
+                        <li><span class="file-name">神禁军</span></li>
+                        <li><span class="file-name">皈依营</span></li>
+                        <li><span class="file-name">神阀团</span></li>
+                        <li><span class="file-name">法里斯团</span></li>
+                        <li><span class="file-name">刹帝苦行团</span></li>
+                        <li><span class="file-name">侠客团</span></li>
+                        <li><span class="file-name">捕快团</span></li>
+                        <li><span class="file-name">游牧旗</span></li>
+                        <li><span class="file-name">武士团</span></li>
+                        <li><span class="file-name">忍者团</span></li>
+                        <li><span class="file-name">刺客团</span></li>
+                        <li><span class="file-name">圣仔团</span></li>
+                        <li><span class="file-name">封建王朝</span></li>
+                        <li><span class="file-name">资产共和国</span></li>
+                        <li><span class="file-name">血族王朝</span></li>
+                        <li><span class="file-name">野兽人王国</span></li>
+                        <li><span class="file-name">附庸公国</span></li>
+                        <li><span class="file-name">神造巨兽</span></li>
+                        <li><span class="file-name">天仙军</span></li>
+                        <li><span class="file-name">天国</span></li>
+                        <li><span class="file-name">神造病毒</span></li>
                     </ul>
                 </li>
-                <!-- 混沌方 -->
+                <!-- 混沌方（新版） -->
                 <li>
                     <span class="dir-name">混沌方/</span>
                     <ul>
-                        <li><span class="file-name">混沌生命</span></li>
-                        <li><span class="file-name">混沌卵</span></li>
-                        <li>
-                            <span class="dir-name">人物/</span>
-                            <ul>
-                                <li><span class="file-name">舟亢</span></li>
-                            </ul>
-                        </li>
+                        <li><span class="file-name">混沌魔王</span></li>
+                        <li><span class="file-name">混沌军团</span></li>
+                        <li><span class="file-name">混沌神国</span></li>
                     </ul>
                 </li>
                 <!-- 公社方 -->
                 <li>
                     <span class="dir-name">公社方/</span>
                     <ul>
-                        <li><span class="file-name">整体结构</span></li>
                         <li>
-                            <span class="dir-name">M粒子派/</span>
+                            <span class="dir-name">先锋军国派/</span>
                             <ul>
-                                <li><span class="file-name">官僚化倾向</span></li>
-                                <li><span class="file-name">二十级工资制</span></li>
-                                <li><span class="file-name">军衔制度</span></li>
-                                <li><span class="file-name">U盘社</span></li>
                                 <li><span class="file-name">扑克牌社</span></li>
+                                <li><span class="file-name">塔罗牌社</span></li>
+                                <li><span class="file-name">麻将社</span></li>
+                                <li><span class="file-name">中国象棋社</span></li>
+                                <li><span class="file-name">国际象棋社</span></li>
+                                <li><span class="file-name">围棋社</span></li>
+                                <li><span class="file-name">涡轮社</span></li>
+                                <li><span class="file-name">轮胎社</span></li>
+                                <li><span class="file-name">U盘社</span></li>
+                                <li><span class="file-name">硬币社</span></li>
+                                <li><span class="file-name">纸币社</span></li>
+                                <li><span class="file-name">徽章社</span></li>
+                                <li><span class="file-name">勋章社</span></li>
+                                <li><span class="file-name">开关社</span></li>
+                                <li><span class="file-name">戒指社</span></li>
+                                <li><span class="file-name">手环社</span></li>
+                                <li><span class="file-name">项链社</span></li>
+                                <li><span class="file-name">门锁社</span></li>
+                                <li><span class="file-name">卡带社</span></li>
+                                <li><span class="file-name">扭蛋社</span></li>
+                                <li><span class="file-name">密钥社</span></li>
+                                <li><span class="file-name">瓶子社</span></li>
+                                <li><span class="file-name">印章社</span></li>
+                                <li><span class="file-name">表盘社</span></li>
+                                <li><span class="file-name">书社</span></li>
+                                <li><span class="file-name">磁铁代扣社</span></li>
+                                <li><span class="file-name">圆球仪社</span></li>
+                                <li><span class="file-name">沙漏社</span></li>
+                                <li><span class="file-name">手机社</span></li>
+                                <li><span class="file-name">魔方社</span></li>
+                                <li><span class="file-name">水晶社</span></li>
+                                <li><span class="file-name">玉石社</span></li>
+                                <li><span class="file-name">胶囊社</span></li>
+                                <li><span class="file-name">芯片社</span></li>
+                                <li><span class="file-name">笔社</span></li>
+                                <li><span class="file-name">调色盘社</span></li>
+                                <li><span class="file-name">耳机社</span></li>
+                                <li><span class="file-name">话筒社</span></li>
+                                <li><span class="file-name">铃铛社</span></li>
+                                <li><span class="file-name">眼镜社</span></li>
+                                <li><span class="file-name">唱片社</span></li>
+                                <li><span class="file-name">光盘社</span></li>
+                                <li><span class="file-name">琥珀社</span></li>
+                                <li><span class="file-name">化石社</span></li>
+                                <li><span class="file-name">贝壳社</span></li>
+                                <li><span class="file-name">珍珠社</span></li>
+                                <li><span class="file-name">珊瑚社</span></li>
+                                <li><span class="file-name">羽毛社</span></li>
+                                <li><span class="file-name">植物社</span></li>
+                                <li><span class="file-name">钥匙社</span></li>
+                                <li><span class="file-name">积木社</span></li>
+                                <li><span class="file-name">拼图社</span></li>
+                                <li><span class="file-name">录像带社</span></li>
+                                <li><span class="file-name">齿轮社</span></li>
+                                <li><span class="file-name">投影仪社</span></li>
+                                <li><span class="file-name">试管社</span></li>
+                                <li><span class="file-name">骰子社</span></li>
+                                <li><span class="file-name">符箓社</span></li>
+                                <li><span class="file-name">转盘社</span></li>
+                                <li><span class="file-name">镜子社</span></li>
+                                <li><span class="file-name">梦境转表社</span></li>
+                                <li><span class="file-name">天平社</span></li>
+                                <li><span class="file-name">手铐社</span></li>
+                                <li><span class="file-name">邮票社</span></li>
+                                <li><span class="file-name">折纸社</span></li>
+                                <li><span class="file-name">盒子社</span></li>
+                                <li><span class="file-name">电池社</span></li>
+                                <li><span class="file-name">插头社</span></li>
+                                <li><span class="file-name">手电筒社</span></li>
+                                <li><span class="file-name">旗帜社</span></li>
+                                <li><span class="file-name">乐器社</span></li>
+                                <li><span class="file-name">魔法棒社</span></li>
+                                <li><span class="file-name">卷轴社</span></li>
+                                <li><span class="file-name">筷子碗社</span></li>
+                                <li><span class="file-name">餐刀叉盘社</span></li>
+                                <li><span class="file-name">蒸笼社</span></li>
+                                <li><span class="file-name">铲子社</span></li>
+                                <li><span class="file-name">农具社</span></li>
+                                <li><span class="file-name">针线社</span></li>
+                                <li><span class="file-name">悠悠球社</span></li>
+                                <li><span class="file-name">陀螺社</span></li>
+                                <li><span class="file-name">竹蜻蜓社</span></li>
+                                <li><span class="file-name">口袋社</span></li>
+                                <li><span class="file-name">握力器社</span></li>
                             </ul>
                         </li>
                         <li>
-                            <span class="dir-name">W粒子派/</span>
+                            <span class="dir-name">彻底革命派/</span>
                             <ul>
-                                <li>
-                                    <span class="dir-name">数据线社/</span>
-                                    <ul>
-                                        <li><span class="file-name">驱动器类型</span></li>
-                                        <li><span class="file-name">技能种类</span></li>
-                                        <li>
-                                            <span class="dir-name">下属分社/</span>
-                                            <ul>
-                                                <li>
-                                                    <span class="dir-name">第七分社/</span>
-                                                    <ul>
-                                                       <li><span class="file-name">基本信息</span></li>
-                                                       <li>
-                                                       <span class="dir-name">重要人物/</span>
-                                                       <ul>
-                                                           <li><span class="file-name">优幻</span></li>
-                                                           <li><span class="file-name">希晞</span></li>
-                                                           <li><span class="file-name">叶石</span></li>
-                                                           <li><span class="file-name">布尔克</span></li>
-                                                           <li><span class="file-name">冰糖</span></li>
-                                                           <li><span class="file-name">爱德胜</span></li>
-                                                           <li><span class="file-name">山楂糖</span></li>
-                                                           <li><span class="file-name">乐热</span></li>
-                                                           <li><span class="file-name">乐冷</span></li>
-                                                           <li><span class="file-name">佑国</span></li>
-                                                           <li><span class="file-name">佐糖</span></li>
-                                                           <li><span class="file-name">杰林</span></li>
-                                                           <li><span class="file-name">贺阳</span></li>
-                                                           <li><span class="file-name">刘菲洛</span></li>
-                                                           <li><span class="file-name">土龙一</span></li>
-                                                           <li><span class="file-name">水参三</span></li>
-                                                           <li><span class="file-name">方北</span></li>
-                                                           <li><span class="file-name">朱叶</span></li>
-                                                           <li><span class="file-name">真德尔</span></li>
-                                                           <li><span class="file-name">林德</span></li>
-                                                           <li><span class="file-name">菲尔</span></li>
-                                                      </ul>
-                                                 </li>
-                                                 <li><span class="file-name">重要事件</span></li>
-                                                 <li><span class="file-name">发展历史</span></li>
-                                                 <li><span class="file-name">特色制度</span></li>
-                                                 <li><span class="file-name">核心技术</span></li>
-                                                 <li><span class="file-name">俘虏管理</span></li>
-                                                 <li><span class="file-name">地道基地</span></li>
-                                             </ul> 
-                                         </li>
-                                            </ul>
-                                        </li>
-                                        <li><span class="file-name">其他分社</span></li>
-                                    </ul>
-                                </li>
-                                <li><span class="file-name">其他W粒子派组织</span></li>
+                                <li><span class="file-name"><a href="shujuxian.html">数据线社</a></span></li>
                             </ul>
                         </li>
-                        <li>
-                            <span class="dir-name">重要概念/</span>
-                            <ul>
-                                <li><span class="file-name">异化</span></li>
-                                <li><span class="file-name">劳动价值论</span></li>
-                                <li><span class="file-name">命运观</span></li>
-                                <li><span class="file-name">人类分类</span></li>
-                                <li><span class="file-name">家庭批判</span></li>
-                            </ul>
-                        </li>
+                    </ul>
+                </li>
+                <!-- 重要概念（与公社方同级别） -->
+                <li>
+                    <span class="dir-name">重要概念/</span>
+                    <ul>
+                        <li><span class="file-name">异化</span></li>
+                        <li><span class="file-name">劳动价值论</span></li>
+                        <li><span class="file-name">命运观</span></li>
+                        <li><span class="file-name">人类分类</span></li>
+                        <li><span class="file-name">家庭批判</span></li>
+                        <li><span class="file-name">社会关系线</span></li>
+                        <li><span class="file-name">W粒子与M粒子</span></li>
                     </ul>
                 </li>
                 <!-- 附录 -->
