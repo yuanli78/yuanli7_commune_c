@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>公社公约 · 源力公社</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif;
+            background: #fef9f0;
+            color: #2c2c2c;
+            line-height: 1.6;
+            padding: 2rem 1rem;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            overflow: hidden;
+            border: 1px solid #ffe0b5;
+        }
+        .header {
+            background: #b91c1c;
+            color: white;
+            padding: 2rem 2rem 1.5rem;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 2.2rem;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        .version-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 0.2rem 1rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+        .content {
+            padding: 2rem;
+        }
+        h2 {
+            color: #b91c1c;
+            margin: 2rem 0 1rem;
+            border-bottom: 2px solid #ffe0b5;
+            padding-bottom: 0.3rem;
+        }
+        h2:first-of-type {
+            margin-top: 0;
+        }
+        h3 {
+            color: #a51a1a;
+            margin: 1.5rem 0 0.8rem;
+            font-size: 1.3rem;
+        }
+        h4 {
+            color: #2c2c2c;
+            margin: 1.2rem 0 0.5rem;
+            font-weight: 600;
+        }
+        /* 公约条目 */
+        .section-card {
+            background: #faf6f0;
+            padding: 1.5rem 2rem;
+            border-radius: 16px;
+            margin-bottom: 2rem;
+        }
+        .article-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .article-num {
+            font-weight: bold;
+            color: #b91c1c;
+            white-space: nowrap;
+            min-width: 5em;
+        }
+        .article-content {
+            flex: 1;
+        }
+        .sub-list {
+            margin-left: 1.5rem;
+            list-style-type: disc;
+            margin-top: 0.3rem;
+            margin-bottom: 0.5rem;
+        }
+        .sub-list li {
+            margin-bottom: 0.3rem;
+        }
+        .zero-convention {
+            background: #fff3e0;
+            border-left: 5px solid #b91c1c;
+            padding: 1.5rem 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+        .history-links {
+            background: #e8e0d8;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            margin: 2rem 0 1rem;
+            text-align: center;
+        }
+        .history-links a {
+            margin: 0 1rem;
+            font-weight: 500;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+            color: #b91c1c;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        .footer {
+            background: #f0ece4;
+            text-align: center;
+            padding: 1.5rem;
+            font-size: 0.85rem;
+            color: #5e5e5e;
+            border-top: 1px solid #ffe0b5;
+        }
+        a {
+            color: #b91c1c;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        hr {
+            margin: 2rem 0;
+            border: 0;
+            border-top: 1px solid #ffe0b5;
+        }
+        @media (max-width: 600px) {
+            .header h1 { font-size: 1.6rem; }
+            .content { padding: 1.5rem; }
+            .section-card { padding: 1.2rem 1rem; }
+            .article-item { gap: 0.5rem; flex-wrap: wrap; }
+            .article-num { min-width: 4.5em; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>📜 公社公约</h1>
+        <p>源力公社 · 新公社派集体创作的根本章程</p>
+        <div class="version-badge">第三版 · 2026年4月16日修订</div>
+    </div>
+    <div class="content">
+        <!-- 零号公约（特殊样式） -->
+        <div class="zero-convention">
+            <h2 style="margin-top: 0; border-bottom: none; color: #b91c1c;">零号公约（统一世界观）</h2>
+            <ul class="sub-list" style="margin-bottom: 0;">
+                <li>统一世界观是指在相同世界观下进行创作，作者们不必再为了构建新的世界观而不断进行重复的劳动，而是在相同世界观下互相协作。</li>
+                <li>所有在公社平台发布的作品必须属于“源力公社”统一世界观，共享同一套核心设定（历史、地理、角色、技术体系、政治制度等）。</li>
+                <li>任何脱离统一世界观的个人世界观作品，请移步其他平台发布；公社平台仅接受集体创作框架下的内容。</li>
+            </ul>
+        </div>
+
+        <!-- 一、基础公约（五大原则） -->
+        <h3>一、基础公约（五大原则）</h3>
+        <div class="section-card">
+            <div class="article-item">
+                <div class="article-num">第一公约</div>
+                <div class="article-content"><strong>（创作立场）</strong> 本平台所有作品以宣传共产主义为根本目的。创作者首先必须是共产主义者，其次才是作者。</div>
+            </div>
+            <div class="article-item">
+                <div class="article-num">第二公约</div>
+                <div class="article-content"><strong>（收入上限）</strong> 所有创作者（包括荣誉社长、委员会成员）的个人月收入不得超过当地一线工人月平均工资。超额部分自动转入公社公共账户，用于宣传共产主义、扶持困难社员、维护平台运营。</div>
+            </div>
+            <div class="article-item">
+                <div class="article-num">第三公约</div>
+                <div class="article-content"><strong>（版权归属）</strong> 本平台所有作品（包括但不限于小说、绘画、动画、游戏、音乐、视频）的版权归公社委员会集体所有，不归任何个人。集体版权受法律保护，未经委员会书面授权，任何个人或资本不得商业使用。</div>
+            </div>
+            <div class="article-item">
+                <div class="article-num">第四公约</div>
+                <div class="article-content"><strong>（财务透明）</strong> 公共账户由全体社员选举产生的财务小组管理，每季度公开账目（收入、支出、结余）。任何社员有权查阅原始凭证。</div>
+            </div>
+            <div class="article-item">
+                <div class="article-num">第五公约</div>
+                <div class="article-content"><strong>（民主决策）</strong> 委员会是平台的最高权力机构，由作者代表、读者代表、共产主义理论代表共同选举产生。重大事项（修改公约、收编谈判、大额支出等）须经全体社员大会投票，一人一票。</div>
+            </div>
+        </div>
+
+        <!-- 二、组织制度 -->
+        <h3>二、组织制度</h3>
+        <div class="section-card">
+            <div class="article-item">
+                <div class="article-num">第六条</div>
+                <div class="article-content"><strong>（委员会构成）</strong>
+                    <ul class="sub-list">
+                        <li>作者代表（占40%）：由不同媒介（小说、绘画、动画等）的创作者分阶层选举产生。</li>
+                        <li>读者代表（占40%）：由各读者群体按阅读时长、互动质量等指标选举产生。</li>
+                        <li>理论代表（占20%）：由通过共产主义理论考核的社员选举产生，负责确保决策不偏离马克思主义与巴黎公社原则。</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="article-item">
+                <div class="article-num">第七条</div>
+                <div class="article-content"><strong>（分阶层选举）</strong>
+                    <ul class="sub-list">
+                        <li>作者按综合评分分为头部（1%）、中部（20%）、底层（79%）。每个阶层按人数比例分配代表席位，各阶层内部一人一票。</li>
+                        <li>读者代表类似划分（按活跃度、贡献度）。</li>
+                        <li>严禁跨阶层投票或刷票，选举过程公开可验证。</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="article-item">
+                <div class="article-num">第八条</div>
+                <div class="article-content"><strong>（任期与轮换）</strong>
+                    <ul class="sub-list">
+                        <li>委员会主席任期2年，可连任一次。</li>
+                        <li>荣誉社长（创始人）为终身虚职，无行政权，但保留提案权和紧急状态下召集大会的权力。</li>
+                        <li>所有委员（包括主席）任职期间必须遵守收入上限，否则自动罢免。</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="article-item">
+                <div class="article-num">第九条</div>
+                <div class="article-content"><strong>（退出机制）</strong>
+                    <ul class="sub-list">
+                        <li>任何社员退出委员会，其持有的全部股权（若有）自动无偿转让给委员会指定人选，且不得要求补偿。</li>
+                        <li>退出者已发布的作品仍归公社集体所有，不得要求删除或撤下署名。</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 三、收入分配 -->
+        <h3>三、收入分配</h3>
+        <div class="section-card">
+            <div class="article-item">
+                <div class="article-num">第十条</div>
+                <div class="article-content"><strong>（创作者报酬）</strong>
+                    <ul class="sub-list">
+                        <li>每位创作者的基本报酬按其劳动时长、作品质量、读者评分综合计算，但月总额不超过当地一线工人工资。</li>
+                        <li>超出部分全额转入公共账户。</li>
+                        <li>公共账户的资金用于：平台运维、法律援助、困难社员救助、共产主义宣传、收购冷门IP等。</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="article-item">
+                <div class="article-num">第十一条</div>
+                <div class="article-content"><strong>（打赏与付费）</strong>
+                    <ul class="sub-list">
+                        <li>读者打赏、付费课程、周边销售等收入的70%进入公共账户，30%作为创作者劳动报酬（但仍受上限约束）。</li>
+                        <li>严禁任何形式的“花钱买流量”“付费推广”“竞价排名”。</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="article-item">
+                <div class="article-num">第十二条</div>
+                <div class="article-content"><strong>（公共账户监督）</strong>
+                    <ul class="sub-list">
+                        <li>公共账户由3-5名经全体大会选举的财务委员共同管理，任何支出需至少2人签字。</li>
+                        <li>每年聘请第三方审计（可由左翼会计师义务承担），报告向全体社员公开。</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 四、反收编机制 -->
+        <h3>四、反收编机制（针对政府或资本的收编企图）</h3>
+        <div class="section-card">
+            <div class="article-item">
+                <div class="article-num">第十三条</div>
+                <div class="article-content"><strong>（收编表决门槛）</strong>
+                    <ul class="sub-list">
+                        <li>任何外部机构（包括政府）要求收编、接管、合并公社平台，必须召开全体社员大会。</li>
+                        <li>须获得90%以上的赞成票方可通过。若有10%或以上的社员反对，收编自动作废。</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="article-item">
+                <div class="article-num">第十四条</div>
+                <div class="article-content"><strong>（公开辩论）</strong>
+                    <ul class="sub-list">
+                        <li>收编提议必须经过至少一次公开辩论，由收编方代表与公社代表在全体社员面前答辩。</li>
+                        <li>辩论过程须全程录像并存档，供全体社员参考投票。</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="article-item">
+                <div class="article-num">第十五条</div>
+                <div class="article-content"><strong>（不可妥协条款）</strong>
+                    <ul class="sub-list">
+                        <li>以下条款在任何情况下不得修改或废除：
+                            <ul>
+                                <li>第二公约（收入上限）</li>
+                                <li>第三公约（版权归集体）</li>
+                                <li>第五公约（一人一票）</li>
+                                <li>第十三条（10%否决权）</li>
+                            </ul>
+                        </li>
+                        <li>任何试图修改上述条款的行为，视为自动解散公社，平台资产捐赠给左翼公益组织。</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 五、补充条款 -->
+        <h3>五、补充条款</h3>
+        <div class="section-card">
+            <div class="article-item">
+                <div class="article-num">第十六条</div>
+                <div class="article-content"><strong>（对资本的态度）</strong> 公社平台不排斥与左翼合作社、非营利组织合作，但严禁接受任何形式的资本投资（包括风险投资、股权融资）。不上市，不分红，不发行代币。</div>
+            </div>
+            <div class="article-item">
+                <div class="article-num">第十七条</div>
+                <div class="article-content"><strong>（同人与正史）</strong> 任何人在遵守世界观统一和集体版权的前提下，均可创作同人作品。优秀同人作品可由委员会审定为“正史”，原作者保留署名权，版权自动归公社集体。</div>
+            </div>
+            <div class="article-item">
+                <div class="article-num">第十八条</div>
+                <div class="article-content"><strong>（个人作品与收购IP的改编嫁接）</strong>
+                    <ul class="sub-list">
+                        <li>对于在本平台发布的个人创作作品（包括但不限于小说、漫画、设定集等），或由公社委员会收购的IP（无论冷门热门），若其内容与现有统一世界观不完全契合，但本身具有优秀品质，公社委员会有权对其进行必要的改编、重述或嫁接，使其融入“源力公社”统一世界观。</li>
+                        <li>改编工作应尊重原作品的核心精神，并在可能的情况下与原作者（或原版权方）协商。改编后的作品版权归公社集体所有，原署名权予以保留。</li>
+                        <li>此条款旨在最大化利用所有有价值的创作资源，丰富统一世界观的维度，同时避免因世界观冲突而废弃优秀内容。</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="article-item">
+                <div class="article-num">第十九条</div>
+                <div class="article-content"><strong>（公约修订）</strong> 本公约的修订须经委员会三分之二以上委员提议，全体社员大会四分之三以上赞成，且不得违反第十五条不可妥协条款。</div>
+            </div>
+        </div>
+
+        <!-- 附则 -->
+        <h3>附则</h3>
+        <div class="section-card">
+            <p>本公约自公社委员会第一次选举产生之日起生效。生效前，由创始人（荣誉社长）暂代管理，但所有重大决策须在社群公开讨论并记录在案。</p>
+        </div>
+
+        <!-- 历史版本链接 -->
+        <div class="history-links">
+             📚 历史版本：
+             <a href="gongyue-v1.html">第一版（2026.3.30）</a> ·
+             <a href="gongyue-v2.html">第二版（2026.4.1-15）</a> ·
+             <a href="gongyue-v3.html">第三版（2026.4.16）</a>（当前查看）
+         </div>
+        <p><a href="index.html" class="back-link">← 返回公社首页</a></p>
+    </div>
+    <div class="footer">
+        源力公社委员会 制定 · 本公约采用集体版权 · 禁止个人篡改或商用
+    </div>
+</div>
+</body>
+</html>
