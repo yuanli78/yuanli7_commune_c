@@ -13,7 +13,8 @@
       background: #fef9f0;
       font-family: 'Noto Serif SC', 'KaiTi', serif;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
+      align-items: center;
     }
     .board-wrapper {
       background: #faf6f0;
@@ -81,6 +82,36 @@
       border-bottom: 2px solid #ffe0b5;
       padding-bottom: 8px;
     }
+    .footer-copyright {
+      max-width: 1000px;
+      margin: 20px auto 0;
+      text-align: center;
+    }
+    .copyright-inner {
+      background: #f0ece4;
+      padding: 1.2rem 2rem;
+      border-radius: 40px;
+      display: inline-block;
+      color: #5e5e5e;
+      font-size: 0.85rem;
+      border: 1px solid #ffe0b5;
+    }
+    .nav-links {
+      margin-top: 24px;
+      text-align: center;
+    }
+    .nav-links a {
+      color: #b91c1c;
+      text-decoration: none;
+      font-weight: 500;
+      margin: 0 12px;
+    }
+    .nav-links a:hover {
+      text-decoration: underline;
+    }
+    .nav-links span {
+      color: #d4b89c;
+    }
   </style>
 </head>
 <body>
@@ -97,6 +128,23 @@
     ※ 棋子为中文简称 · 红黑严格镜像对称 · 动态棋子(伏兵/木马等)未显示
   </div>
 </div>
+
+<!-- 版权信息 -->
+<div class="footer-copyright">
+  <div class="copyright-inner">
+    源力公社 · 集体版权 · 设定持续更新中
+  </div>
+</div>
+
+<!-- 导航链接 -->
+<div class="nav-links">
+  <a href="chuhan-chess-she.html">← 返回楚汉象棋社</a>
+  <span>·</span>
+  <a href="worldview.html">返回世界观目录</a>
+  <span>·</span>
+  <a href="index.html">返回首页</a>
+</div>
+
 <script>
   (function() {
     "use strict";
@@ -104,49 +152,33 @@
     const canvas = document.getElementById('chessCanvas');
     const ctx = canvas.getContext('2d');
 
-    // 棋盘尺寸定义 (行: -3 到 14, 共18行; 列: -20 到 22, 共43列)
     const ROW_MIN = -3;
     const ROW_MAX = 14;
     const COL_MIN = -20;
     const COL_MAX = 22;
-    const ROWS = ROW_MAX - ROW_MIN + 1;      // 18
-    const COLS = COL_MAX - COL_MIN + 1;      // 43
+    const ROWS = ROW_MAX - ROW_MIN + 1;
+    const COLS = COL_MAX - COL_MIN + 1;
 
-    // 单元格大小 (像素)
     const CELL_W = 40;
     const CELL_H = 40;
-    
-    // 设置画布实际尺寸 (留出边距用于行列标签)
     const LABEL_SIZE = 28;
     canvas.width = COLS * CELL_W + LABEL_SIZE * 2;
     canvas.height = ROWS * CELL_H + LABEL_SIZE * 2;
 
-    // 颜色定义 —— 调整为源力公社风格
-    const RED = '#b91c1c';           // 首页主题红
-    const BLACK = '#3a2a1a';         // 深褐色代替纯黑
-    const BOARD_LINE = '#a5835a';    // 柔和棕色线条
-    const BG_COLOR = '#fff9ef';      // 画布背景
-    const LABEL_COLOR = '#5e5e5e';   // 标签颜色
-    const RIVER_COLOR = '#b91c1c';   // 楚河汉界文字颜色
+    const RED = '#b91c1c';
+    const BLACK = '#3a2a1a';
+    const BOARD_LINE = '#a5835a';
+    const BG_COLOR = '#fff9ef';
+    const LABEL_COLOR = '#5e5e5e';
+    const RIVER_COLOR = '#b91c1c';
 
-    // 行列索引转换
-    function rowIdx(logicRow) {
-      return logicRow - ROW_MIN;
-    }
-    function colIdx(logicCol) {
-      return logicCol - COL_MIN;
-    }
-    function logicRow(idx) {
-      return idx + ROW_MIN;
-    }
-    function logicCol(idx) {
-      return idx + COL_MIN;
-    }
+    function rowIdx(logicRow) { return logicRow - ROW_MIN; }
+    function colIdx(logicCol) { return logicCol - COL_MIN; }
+    function logicRow(idx) { return idx + ROW_MIN; }
+    function logicCol(idx) { return idx + COL_MIN; }
 
-    // ---------- 初始化空棋盘 ----------
     const board = Array(ROWS).fill().map(() => Array(COLS).fill(null));
 
-    // 辅助函数：放置棋子 (逻辑坐标)
     function setPiece(row, col, name, color) {
       const r = rowIdx(row);
       const c = colIdx(col);
@@ -155,7 +187,7 @@
       }
     }
 
-    // ========== 黑方 (上方) 布局 ==========
+    // ========== 黑方布局 ==========
     setPiece(-3, 0, '步', BLACK);
     setPiece(-3, 4, '步', BLACK);
     setPiece(-2, 4, '虎', BLACK);
@@ -265,7 +297,7 @@
     setPiece(5, 8, '丁', BLACK);
     setPiece(5, 9, '兵', BLACK);
 
-    // ========== 红方 (下方) 镜像布局 ==========
+    // 收集黑方棋子用于镜像
     const blackPieces = [];
     for (let r = 0; r < ROWS; r++) {
       for (let c = 0; c < COLS; c++) {
@@ -296,7 +328,6 @@
     });
 
     setPiece(6, 1, '交', BLACK);
-    // 涉在行8.5，绘制时处理
     setPiece(-10, -16, '官', BLACK);
     setPiece(-10, 24, '官', BLACK);
     setPiece(24, -16, '官', RED);
@@ -312,16 +343,13 @@
     setPiece(20, 1, '妃', RED);
     setPiece(19, -3, '将', RED);
 
-    // ---------- 绘制棋盘 ----------
     function drawBoard() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      
       ctx.fillStyle = BG_COLOR;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       ctx.lineWidth = 1.8;
       ctx.strokeStyle = BOARD_LINE;
-      
       for (let c = 0; c <= COLS; c++) {
         const x = LABEL_SIZE + c * CELL_W;
         ctx.beginPath();
@@ -368,7 +396,6 @@
         ctx.stroke();
       });
 
-      // 巨将区域
       const jujuY1 = LABEL_SIZE + 5.5 * CELL_H;
       const jujuY2 = LABEL_SIZE + 6.5 * CELL_H;
       const leftX1 = LABEL_SIZE + colIdx(-2) * CELL_W;
@@ -386,18 +413,15 @@
       ctx.fillText('巨将', leftX1 + CELL_W*0.8, jujuY1 + CELL_H*1.2);
       ctx.fillText('巨将', rightX1 + CELL_W*0.8, jujuY1 + CELL_H*1.2);
 
-      // 棋子
       board.forEach((row, rIdx) => {
         row.forEach((piece, cIdx) => {
           if (!piece) return;
           const x = LABEL_SIZE + cIdx * CELL_W + CELL_W/2;
           const y = LABEL_SIZE + rIdx * CELL_H + CELL_H/2;
           const radius = CELL_W * 0.38;
-          
           ctx.shadowColor = '#2a1e0f';
           ctx.shadowBlur = 6;
           ctx.shadowOffsetY = 2;
-          
           ctx.beginPath();
           ctx.arc(x, y, radius, 0, 2*Math.PI);
           ctx.fillStyle = piece.color === RED ? RED : BLACK;
@@ -406,7 +430,6 @@
           ctx.lineWidth = 2.2;
           ctx.strokeStyle = '#ffe0b5';
           ctx.stroke();
-          
           ctx.font = `bold ${radius*0.85}px 'KaiTi', 'Noto Serif SC'`;
           ctx.fillStyle = '#fef9f0';
           ctx.textAlign = 'center';
@@ -415,7 +438,6 @@
         });
       });
 
-      // 日月卫和交涉/涉
       const riverTopY = LABEL_SIZE + 5.5 * CELL_H - CELL_H/2;
       const riverBottomY = LABEL_SIZE + 8.5 * CELL_H - CELL_H/2;
       ctx.font = `bold ${CELL_W*0.45}px 'KaiTi'`;
@@ -428,13 +450,11 @@
       ctx.fillText('卫', LABEL_SIZE + colIdx(5)*CELL_W+CELL_W/2, riverBottomY);
       ctx.fillText('日', LABEL_SIZE + colIdx(7)*CELL_W+CELL_W/2, riverBottomY);
       
-      // 交涉/涉
       ctx.fillStyle = BLACK;
       ctx.fillText('交', LABEL_SIZE + colIdx(1)*CELL_W+CELL_W/2, riverTopY);
       ctx.fillStyle = RED;
       ctx.fillText('涉', LABEL_SIZE + colIdx(1)*CELL_W+CELL_W/2, riverBottomY);
 
-      // 行列标签
       ctx.font = `bold ${LABEL_SIZE*0.5}px 'Segoe UI', 'KaiTi'`;
       ctx.fillStyle = LABEL_COLOR;
       ctx.textAlign = 'center';
@@ -450,22 +470,7 @@
     }
 
     drawBoard();
-  <body>
-    <div class="board-wrapper">
-        <h2>...</h2>
-        <canvas>...</canvas>
-        <div class="legend">...</div>
-        <div class="note">...</div>
-    </div>
-    
-    <!-- 版权信息 -->
-    <div style="...">源力公社 · 集体版权 · 设定持续更新中</div>
-    
-    <!-- 导航链接 -->
-    <div style="...">
-        <a href="chuhan-chess-she.html">← 返回楚汉象棋社</a> · 
-        <a href="worldview.html">返回世界观目录</a> · 
-        <a href="index.html">返回首页</a>
-    </div>
-</body>>
+  })();
+</script>
+</body>
 </html>
