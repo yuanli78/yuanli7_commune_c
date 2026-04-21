@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>源力象棋 · 全面版 · 最终棋盘布局</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 20px;
+      background: #fef9f0;
+      font-family: 'Noto Serif SC', 'KaiTi', serif;
+      display: flex;
+      justify-content: center;
+    }
+    .board-wrapper {
+      background: #faf6f0;
+      padding: 24px 16px 16px 24px;
+      border-radius: 32px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      overflow: auto;
+      max-width: 100%;
+      border: 1px solid #ffe0b5;
+    }
+    canvas {
+      display: block;
+      background: #fff9ef;
+      border-radius: 16px;
+      box-shadow: inset 0 0 0 2px #d4b89c, 0 6px 12px rgba(0,0,0,0.05);
+      cursor: default;
+      width: 100%;
+      height: auto;
+    }
+    .legend {
+      margin-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px 32px;
+      justify-content: center;
+      color: #2c2c2c;
+      font-weight: bold;
+      background: #fff3e0;
+      padding: 12px 24px;
+      border-radius: 40px;
+      border: 1px solid #ffe0b5;
+    }
+    .legend span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .red-dot {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      background: #b91c1c;
+      border-radius: 50%;
+      border: 2px solid #ffe0b5;
+    }
+    .black-dot {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      background: #3a2a1a;
+      border-radius: 50%;
+      border: 2px solid #ffe0b5;
+    }
+    .note {
+      text-align: center;
+      margin-top: 12px;
+      color: #5e5e5e;
+      font-size: 0.9rem;
+    }
+    h2 {
+      text-align: center;
+      margin: 8px 0 16px 0;
+      color: #b91c1c;
+      text-shadow: none;
+      border-bottom: 2px solid #ffe0b5;
+      padding-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+<div class="board-wrapper">
+  <h2>⚔️ 源力象棋 · 全面版 · 最终布局 ⚔️</h2>
+  <canvas id="chessCanvas" width="1720" height="720"></canvas>
+  <div class="legend">
+    <span><span class="red-dot"></span> 红方</span>
+    <span><span class="black-dot"></span> 黑方</span>
+    <span>📐 总行18 (-3~14) · 总列43 (-20~22) · 对称轴 行5.5 / 列1</span>
+    <span>🗺️ 含: 三十六计·聊斋·影子·虎穴·缴获·天兵·翔·悬·红线·等</span>
+  </div>
+  <div class="note">
+    ※ 棋子为中文简称 · 红黑严格镜像对称 · 动态棋子(伏兵/木马等)未显示
+  </div>
+</div>
+<script>
+  (function() {
+    "use strict";
+
+    const canvas = document.getElementById('chessCanvas');
+    const ctx = canvas.getContext('2d');
+
+    // 棋盘尺寸定义 (行: -3 到 14, 共18行; 列: -20 到 22, 共43列)
+    const ROW_MIN = -3;
+    const ROW_MAX = 14;
+    const COL_MIN = -20;
+    const COL_MAX = 22;
+    const ROWS = ROW_MAX - ROW_MIN + 1;      // 18
+    const COLS = COL_MAX - COL_MIN + 1;      // 43
+
+    // 单元格大小 (像素)
+    const CELL_W = 40;
+    const CELL_H = 40;
+    
+    // 设置画布实际尺寸 (留出边距用于行列标签)
+    const LABEL_SIZE = 28;
+    canvas.width = COLS * CELL_W + LABEL_SIZE * 2;
+    canvas.height = ROWS * CELL_H + LABEL_SIZE * 2;
+
+    // 颜色定义 —— 调整为源力公社风格
+    const RED = '#b91c1c';           // 首页主题红
+    const BLACK = '#3a2a1a';         // 深褐色代替纯黑
+    const BOARD_LINE = '#a5835a';    // 柔和棕色线条
+    const BG_COLOR = '#fff9ef';      // 画布背景
+    const LABEL_COLOR = '#5e5e5e';   // 标签颜色
+    const RIVER_COLOR = '#b91c1c';   // 楚河汉界文字颜色
+
+    // 行列索引转换
+    function rowIdx(logicRow) {
+      return logicRow - ROW_MIN;
+    }
+    function colIdx(logicCol) {
+      return logicCol - COL_MIN;
+    }
+    function logicRow(idx) {
+      return idx + ROW_MIN;
+    }
+    function logicCol(idx) {
+      return idx + COL_MIN;
+    }
+
+    // ---------- 初始化空棋盘 ----------
+    const board = Array(ROWS).fill().map(() => Array(COLS).fill(null));
+
+    // 辅助函数：放置棋子 (逻辑坐标)
+    function setPiece(row, col, name, color) {
+      const r = rowIdx(row);
+      const c = colIdx(col);
+      if (r >= 0 && r < ROWS && c >= 0 && c < COLS) {
+        board[r][c] = { name, color };
+      }
+    }
+
+    // ========== 黑方 (上方) 布局 ==========
+    setPiece(-3, 0, '步', BLACK);
+    setPiece(-3, 4, '步', BLACK);
+    setPiece(-2, 4, '虎', BLACK);
+    setPiece(-1, -2, '影车', BLACK);
+    setPiece(-1, 0, '影马', BLACK);
+    setPiece(-1, 2, '影相', BLACK);
+    setPiece(-1, 4, '影士', BLACK);
+    setPiece(-1, 6, '影将', BLACK);
+    setPiece(-1, 8, '影兵', BLACK);
+    setPiece(0, -20, '天', BLACK);
+    setPiece(0, -19, '异炮', BLACK);
+    setPiece(0, -18, '异马', BLACK);
+    setPiece(0, -17, '异车', BLACK);
+    setPiece(0, -16, '悬', BLACK);
+    setPiece(0, 18, '悬', BLACK);
+    setPiece(0, -14, '翔', BLACK);
+    setPiece(0, 16, '翔', BLACK);
+    setPiece(0, -13, '石', BLACK);
+    setPiece(0, -12, '骥', BLACK);
+    setPiece(0, -11, '城', BLACK);
+    setPiece(0, -10, '轰', BLACK);
+    setPiece(0, -9, '战车', BLACK);
+    setPiece(0, -8, '战马', BLACK);
+    setPiece(0, -7, '骑', BLACK);
+    setPiece(0, -6, '炮', BLACK);
+    setPiece(0, -5, '驼', BLACK);
+    setPiece(0, -4, '车', BLACK);
+    setPiece(0, -3, '骡', BLACK);
+    setPiece(0, -2, '马', BLACK);
+    setPiece(0, -1, '象', BLACK);
+    setPiece(0, 0, '士', BLACK);
+    setPiece(0, 1, '骑', BLACK);
+    setPiece(0, 2, '天将', BLACK);
+    setPiece(0, 3, '天将', BLACK);
+    setPiece(0, 4, '士', BLACK);
+    setPiece(0, 5, '天将', BLACK);
+    setPiece(0, 6, '天将', BLACK);
+    setPiece(0, 7, '骑', BLACK);
+    setPiece(0, 8, '象', BLACK);
+    setPiece(0, 9, '马', BLACK);
+    setPiece(0, 10, '车', BLACK);
+    setPiece(0, 11, '炮', BLACK);
+    setPiece(0, 12, '骑', BLACK);
+    setPiece(0, 13, '飞马', BLACK);
+    setPiece(0, 14, '飞象', BLACK);
+    setPiece(0, 15, '轰', BLACK);
+    setPiece(0, 16, '城', BLACK);
+    setPiece(0, 17, '骥', BLACK);
+    setPiece(0, 18, '石', BLACK);
+    setPiece(0, 19, '翔', BLACK);
+    setPiece(0, 20, '悬', BLACK);
+    setPiece(0, 21, '异车', BLACK);
+    setPiece(0, 22, '异马', BLACK);
+    setPiece(0, 22, '异炮', BLACK);
+
+    setPiece(1, -11, '骥', BLACK);
+    setPiece(1, -9, '战炮', BLACK);
+    setPiece(1, -8, '战士', BLACK);
+    setPiece(1, -7, '士', BLACK);
+    setPiece(1, -6, '国', BLACK);
+    setPiece(1, -2, '地', BLACK);
+    setPiece(1, 2, '诏', BLACK);
+    setPiece(1, 3, '御', BLACK);
+    setPiece(1, 7, '地', BLACK);
+    setPiece(1, 8, '国', BLACK);
+    setPiece(1, 9, '士', BLACK);
+    setPiece(1, 10, '飞士', BLACK);
+    setPiece(1, 11, '飞炮', BLACK);
+    setPiece(1, 13, '骥', BLACK);
+
+    setPiece(2, -9, '战象', BLACK);
+    setPiece(2, -8, '战马', BLACK);
+    setPiece(2, -5, '抛', BLACK);
+    setPiece(2, -3, '炮', BLACK);
+    setPiece(2, 2, '蝉', BLACK);
+    setPiece(2, 6, '炮', BLACK);
+    setPiece(2, 7, '抛', BLACK);
+    setPiece(2, 12, '飞马', BLACK);
+    setPiece(2, 13, '飞象', BLACK);
+
+    setPiece(3, -2, '斥', BLACK);
+    setPiece(3, 1, '斥', BLACK);
+    setPiece(3, 6, '斥', BLACK);
+    setPiece(3, 9, '斥', BLACK);
+
+    setPiece(4, -6, '象', BLACK);
+    setPiece(4, -5, '士', BLACK);
+    setPiece(4, -2, '重', BLACK);
+    setPiece(4, 0, '重', BLACK);
+    setPiece(4, 2, '步', BLACK);
+    setPiece(4, 3, '重', BLACK);
+    setPiece(4, 5, '重', BLACK);
+    setPiece(4, 7, '重', BLACK);
+    setPiece(4, 12, '士', BLACK);
+    setPiece(4, 13, '象', BLACK);
+
+    setPiece(5, -3, '兵', BLACK);
+    setPiece(5, -1, '兵', BLACK);
+    setPiece(5, 0, '丁', BLACK);
+    setPiece(5, 1, '兵', BLACK);
+    setPiece(5, 2, '雷', BLACK);
+    setPiece(5, 3, '兵', BLACK);
+    setPiece(5, 4, '丁', BLACK);
+    setPiece(5, 5, '兵', BLACK);
+    setPiece(5, 6, '雷', BLACK);
+    setPiece(5, 7, '兵', BLACK);
+    setPiece(5, 8, '丁', BLACK);
+    setPiece(5, 9, '兵', BLACK);
+
+    // ========== 红方 (下方) 镜像布局 ==========
+    const blackPieces = [];
+    for (let r = 0; r < ROWS; r++) {
+      for (let c = 0; c < COLS; c++) {
+        const piece = board[r][c];
+        if (piece && piece.color === BLACK) {
+          blackPieces.push({
+            row: logicRow(r),
+            col: logicCol(c),
+            name: piece.name,
+          });
+        }
+      }
+    }
+
+    for (let r = rowIdx(6); r < ROWS; r++) {
+      for (let c = 0; c < COLS; c++) {
+        board[r][c] = null;
+      }
+    }
+
+    blackPieces.forEach(p => {
+      const redRow = 11 - p.row;
+      const redCol = 2 - p.col;
+      let redName = p.name;
+      if (redRow >= ROW_MIN && redRow <= ROW_MAX && redCol >= COL_MIN && redCol <= COL_MAX) {
+        setPiece(redRow, redCol, redName, RED);
+      }
+    });
+
+    setPiece(6, 1, '交', BLACK);
+    // 涉在行8.5，绘制时处理
+    setPiece(-10, -16, '官', BLACK);
+    setPiece(-10, 24, '官', BLACK);
+    setPiece(24, -16, '官', RED);
+    setPiece(24, 24, '官', RED);
+    setPiece(-10, -20, '追', BLACK);
+    setPiece(-10, -19, '截', BLACK);
+    setPiece(24, 21, '截', RED);
+    setPiece(24, 22, '追', RED);
+    setPiece(-7, 4, '妃', BLACK);
+    setPiece(-7, 7, '妃', BLACK);
+    setPiece(-6, 5, '帅', BLACK);
+    setPiece(20, -2, '妃', RED);
+    setPiece(20, 1, '妃', RED);
+    setPiece(19, -3, '将', RED);
+
+    // ---------- 绘制棋盘 ----------
+    function drawBoard() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      ctx.fillStyle = BG_COLOR;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.lineWidth = 1.8;
+      ctx.strokeStyle = BOARD_LINE;
+      
+      for (let c = 0; c <= COLS; c++) {
+        const x = LABEL_SIZE + c * CELL_W;
+        ctx.beginPath();
+        ctx.moveTo(x, LABEL_SIZE);
+        ctx.lineTo(x, canvas.height - LABEL_SIZE);
+        ctx.stroke();
+      }
+      for (let r = 0; r <= ROWS; r++) {
+        const y = LABEL_SIZE + r * CELL_H;
+        ctx.beginPath();
+        ctx.moveTo(LABEL_SIZE, y);
+        ctx.lineTo(canvas.width - LABEL_SIZE, y);
+        ctx.stroke();
+      }
+
+      const riverY = LABEL_SIZE + 5.5 * CELL_H;
+      ctx.font = `bold ${CELL_H*0.6}px 'KaiTi', 'Noto Serif SC'`;
+      ctx.fillStyle = RIVER_COLOR;
+      ctx.globalAlpha = 0.5;
+      ctx.fillText('楚 河', canvas.width*0.3, riverY - 6);
+      ctx.fillText('汉 界', canvas.width*0.55, riverY + 20);
+      ctx.globalAlpha = 1.0;
+
+      const palaces = [
+        { rows: [0,1,2], cols: [2,7] },
+        { rows: [9,10,11], cols: [2,7] }
+      ];
+      ctx.lineWidth = 2.2;
+      ctx.strokeStyle = BOARD_LINE;
+      palaces.forEach(p => {
+        const r1 = p.rows[0], r2 = p.rows[2];
+        const c1 = p.cols[0], c2 = p.cols[1];
+        const x1 = LABEL_SIZE + colIdx(c1) * CELL_W + CELL_W/2;
+        const y1 = LABEL_SIZE + rowIdx(r1) * CELL_H + CELL_H/2;
+        const x2 = LABEL_SIZE + colIdx(c2) * CELL_W + CELL_W/2;
+        const y2 = LABEL_SIZE + rowIdx(r2) * CELL_H + CELL_H/2;
+        ctx.beginPath();
+        ctx.moveTo(x1, y1);
+        ctx.lineTo(x2, y2);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(LABEL_SIZE + colIdx(c2) * CELL_W + CELL_W/2, y1);
+        ctx.lineTo(LABEL_SIZE + colIdx(c1) * CELL_W + CELL_W/2, y2);
+        ctx.stroke();
+      });
+
+      // 巨将区域
+      const jujuY1 = LABEL_SIZE + 5.5 * CELL_H;
+      const jujuY2 = LABEL_SIZE + 6.5 * CELL_H;
+      const leftX1 = LABEL_SIZE + colIdx(-2) * CELL_W;
+      const leftX2 = LABEL_SIZE + colIdx(2) * CELL_W;
+      ctx.fillStyle = '#3a2a1a';
+      ctx.globalAlpha = 0.5;
+      ctx.fillRect(leftX1, jujuY1, leftX2 - leftX1, jujuY2 - jujuY1);
+      const rightX1 = LABEL_SIZE + colIdx(7) * CELL_W;
+      const rightX2 = LABEL_SIZE + colIdx(11) * CELL_W;
+      ctx.fillStyle = '#b91c1c';
+      ctx.fillRect(rightX1, jujuY1, rightX2 - rightX1, jujuY2 - jujuY1);
+      ctx.globalAlpha = 1.0;
+      ctx.fillStyle = '#f0e1c7';
+      ctx.font = `bold ${CELL_W*0.35}px 'KaiTi'`;
+      ctx.fillText('巨将', leftX1 + CELL_W*0.8, jujuY1 + CELL_H*1.2);
+      ctx.fillText('巨将', rightX1 + CELL_W*0.8, jujuY1 + CELL_H*1.2);
+
+      // 棋子
+      board.forEach((row, rIdx) => {
+        row.forEach((piece, cIdx) => {
+          if (!piece) return;
+          const x = LABEL_SIZE + cIdx * CELL_W + CELL_W/2;
+          const y = LABEL_SIZE + rIdx * CELL_H + CELL_H/2;
+          const radius = CELL_W * 0.38;
+          
+          ctx.shadowColor = '#2a1e0f';
+          ctx.shadowBlur = 6;
+          ctx.shadowOffsetY = 2;
+          
+          ctx.beginPath();
+          ctx.arc(x, y, radius, 0, 2*Math.PI);
+          ctx.fillStyle = piece.color === RED ? RED : BLACK;
+          ctx.fill();
+          ctx.shadowBlur = 0;
+          ctx.lineWidth = 2.2;
+          ctx.strokeStyle = '#ffe0b5';
+          ctx.stroke();
+          
+          ctx.font = `bold ${radius*0.85}px 'KaiTi', 'Noto Serif SC'`;
+          ctx.fillStyle = '#fef9f0';
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillText(piece.name, x, y-1);
+        });
+      });
+
+      // 日月卫和交涉/涉
+      const riverTopY = LABEL_SIZE + 5.5 * CELL_H - CELL_H/2;
+      const riverBottomY = LABEL_SIZE + 8.5 * CELL_H - CELL_H/2;
+      ctx.font = `bold ${CELL_W*0.45}px 'KaiTi'`;
+      ctx.fillStyle = BLACK;
+      ctx.fillText('日', LABEL_SIZE + colIdx(4)*CELL_W+CELL_W/2, riverTopY);
+      ctx.fillText('卫', LABEL_SIZE + colIdx(5)*CELL_W+CELL_W/2, riverTopY);
+      ctx.fillText('月', LABEL_SIZE + colIdx(7)*CELL_W+CELL_W/2, riverTopY);
+      ctx.fillStyle = RED;
+      ctx.fillText('月', LABEL_SIZE + colIdx(4)*CELL_W+CELL_W/2, riverBottomY);
+      ctx.fillText('卫', LABEL_SIZE + colIdx(5)*CELL_W+CELL_W/2, riverBottomY);
+      ctx.fillText('日', LABEL_SIZE + colIdx(7)*CELL_W+CELL_W/2, riverBottomY);
+      
+      // 交涉/涉
+      ctx.fillStyle = BLACK;
+      ctx.fillText('交', LABEL_SIZE + colIdx(1)*CELL_W+CELL_W/2, riverTopY);
+      ctx.fillStyle = RED;
+      ctx.fillText('涉', LABEL_SIZE + colIdx(1)*CELL_W+CELL_W/2, riverBottomY);
+
+      // 行列标签
+      ctx.font = `bold ${LABEL_SIZE*0.5}px 'Segoe UI', 'KaiTi'`;
+      ctx.fillStyle = LABEL_COLOR;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      for (let r = 0; r < ROWS; r++) {
+        const logicR = logicRow(r);
+        ctx.fillText(logicR, LABEL_SIZE/2, LABEL_SIZE + r*CELL_H + CELL_H/2);
+      }
+      for (let c = 0; c < COLS; c++) {
+        const logicC = logicCol(c);
+        ctx.fillText(logicC, LABEL_SIZE + c*CELL_W + CELL_W/2, canvas.height - LABEL_SIZE/2);
+      }
+    }
+
+    drawBoard();
+  })();
+</script>
+</body>
+</html>
