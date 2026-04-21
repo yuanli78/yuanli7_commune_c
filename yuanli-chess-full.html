@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>源力象棋 · 全面版 · 最终棋盘布局（完整补全）</title>
+  <title>源力象棋 · 全面版 · 最终棋盘布局（完整修正）</title>
   <style>
     * {
       box-sizing: border-box;
@@ -116,8 +116,8 @@
 </head>
 <body>
 <div class="board-wrapper">
-  <h2>⚔️ 源力象棋 · 全面版 · 最终布局（完整补全） ⚔️</h2>
-  <canvas id="chessCanvas" width="1720" height="1400"></canvas>
+  <h2>⚔️ 源力象棋 · 全面版 · 最终布局（完整修正） ⚔️</h2>
+  <canvas id="chessCanvas" width="1800" height="1480"></canvas>
   <div class="legend">
     <span><span class="red-dot"></span> 红方</span>
     <span><span class="black-dot"></span> 黑方</span>
@@ -150,7 +150,7 @@
     const canvas = document.getElementById('chessCanvas');
     const ctx = canvas.getContext('2d');
 
-    // 扩展为完整的35行：-10 到 24
+    // 完整范围：行-10 到 24 (35行)，列-20 到 22 (43列)
     const ROW_MIN = -10;
     const ROW_MAX = 24;
     const COL_MIN = -20;
@@ -158,9 +158,9 @@
     const ROWS = ROW_MAX - ROW_MIN + 1;  // 35
     const COLS = COL_MAX - COL_MIN + 1;  // 43
 
-    const CELL_W = 40;
-    const CELL_H = 40;
-    const LABEL_SIZE = 28;
+    const CELL_W = 42;
+    const CELL_H = 42;
+    const LABEL_SIZE = 30;
     canvas.width = COLS * CELL_W + LABEL_SIZE * 2;
     canvas.height = ROWS * CELL_H + LABEL_SIZE * 2;
 
@@ -169,7 +169,7 @@
     const BOARD_LINE = '#a5835a';
     const BG_COLOR = '#fff9ef';
     const LABEL_COLOR = '#5e5e5e';
-    const RIVER_COLOR = '#b91c1c';
+    const RIVER_COLOR = '#1e5f7a'; // 蓝色河界
 
     function rowIdx(logicRow) { return logicRow - ROW_MIN; }
     function colIdx(logicCol) { return logicCol - COL_MIN; }
@@ -301,32 +301,31 @@
       }
     }
 
-    // 镜像生成红方 (红行 = 11 - 黑行，但我们的对称轴现在是行7？不，镜像公式仍为 红行 = 7 - 黑行？不对，最终对称轴应为河界中心，即行5.5。之前公式红行=11-黑行适用于旧18行版。对于新35行版，对称轴位于行7（河界在行6~7之间？实际上行5.5）。简单正确的做法：红行 = 14 - 黑行（因为黑方最上行-10对应红方最下行24，-10+24=14）。）
-    // 列镜像公式：红列 = 2 - 黑列
-    const redRowBase = 14; // -10 → 24,  24 → -10
+    // 镜像公式：红行 = 14 - 黑行，红列 = 2 - 黑列
     blackPieces.forEach(p => {
-      const redRow = redRowBase - p.row;
+      const redRow = 14 - p.row;
       const redCol = 2 - p.col;
       if (redRow >= ROW_MIN && redRow <= ROW_MAX && redCol >= COL_MIN && redCol <= COL_MAX) {
-        // 红方名称一般不变，仅少数需调整（如丁/勇在红方习惯叫勇，但保留原名亦可）
         let redName = p.name;
         if (redName === '丁') redName = '勇';
-        if (redName === '帅') redName = '将'; // 黑帅红将
+        if (redName === '帅') redName = '将';
         setPiece(redRow, redCol, redName, RED);
       }
     });
 
-    // 补充红方特有后宫将 (位置已在镜像中包含，但将帅可能未覆盖)
-    setPiece(19, -3, '将', RED); // 手动补一下
+    // 补充红方后宫将 (确保存在)
+    setPiece(19, -3, '将', RED);
     
-    // 河界特殊标记：交/涉、日月卫 (不通过镜像，因为它们在河界半行)
+    // 河界特殊棋子 (半行位置，手动添加到board但绘制时单独处理，此处先加入数据以便统一绘制)
+    // 我们用特殊的行号7.5表示河界上沿棋子，但board只支持整行。我们将在绘制函数中直接绘制。
     
-    // 绘制棋盘
+    // 绘制函数
     function drawBoard() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.fillStyle = BG_COLOR;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
+      // 绘制网格线
       ctx.lineWidth = 1.8;
       ctx.strokeStyle = BOARD_LINE;
       for (let c = 0; c <= COLS; c++) {
@@ -344,21 +343,32 @@
         ctx.stroke();
       }
 
-      // 楚河汉界 (行6与行7之间)
-      const riverY = LABEL_SIZE + 6.5 * CELL_H;
-      ctx.font = `bold ${CELL_H*0.6}px 'KaiTi', 'Noto Serif SC'`;
+      // 蓝色楚河汉界 (行6与行7之间)
+      const riverTopY = LABEL_SIZE + rowIdx(6) * CELL_H;
+      const riverBottomY = LABEL_SIZE + rowIdx(7) * CELL_H;
       ctx.fillStyle = RIVER_COLOR;
-      ctx.globalAlpha = 0.5;
-      ctx.fillText('楚 河', canvas.width*0.3, riverY - 6);
-      ctx.fillText('汉 界', canvas.width*0.55, riverY + 20);
+      ctx.globalAlpha = 0.2;
+      ctx.fillRect(LABEL_SIZE, riverTopY, canvas.width - 2*LABEL_SIZE, riverBottomY - riverTopY);
+      ctx.globalAlpha = 1.0;
+      ctx.font = `bold ${CELL_H*0.7}px 'KaiTi', 'Noto Serif SC'`;
+      ctx.fillStyle = '#ffffff';
+      ctx.shadowColor = '#1a3a4a';
+      ctx.shadowBlur = 8;
+      ctx.fillText('楚 河', canvas.width*0.3, riverTopY + CELL_H*0.7);
+      ctx.fillText('汉 界', canvas.width*0.55, riverTopY + CELL_H*0.7);
+      ctx.shadowBlur = 0;
+      ctx.fillStyle = RIVER_COLOR;
+      ctx.globalAlpha = 0.6;
+      ctx.fillText('楚 河', canvas.width*0.3, riverTopY + CELL_H*0.7);
+      ctx.fillText('汉 界', canvas.width*0.55, riverTopY + CELL_H*0.7);
       ctx.globalAlpha = 1.0;
 
-      // 九宫斜线 (黑行0~2列2~7, 红行12~14列2~7)
+      // 绘制九宫斜线 (黑行0~2列2~7, 红行12~14列2~7)
       const palaces = [
         { rows: [0,1,2], cols: [2,7] },
         { rows: [12,13,14], cols: [2,7] }
       ];
-      ctx.lineWidth = 2.2;
+      ctx.lineWidth = 2.5;
       ctx.strokeStyle = BOARD_LINE;
       palaces.forEach(p => {
         const r1 = p.rows[0], r2 = p.rows[2];
@@ -377,66 +387,63 @@
         ctx.stroke();
       });
 
-      // 巨将 (黑行6~7列-2~1, 红行6~7列7~10)
-      const jujuY1 = LABEL_SIZE + rowIdx(6) * CELL_H;
-      const jujuY2 = LABEL_SIZE + rowIdx(8) * CELL_H;
-      const leftX1 = LABEL_SIZE + colIdx(-2) * CELL_W;
-      const leftX2 = LABEL_SIZE + colIdx(2) * CELL_W;
-      ctx.fillStyle = BLACK;
-      ctx.globalAlpha = 0.5;
-      ctx.fillRect(leftX1, jujuY1, leftX2 - leftX1, jujuY2 - jujuY1);
-      const rightX1 = LABEL_SIZE + colIdx(7) * CELL_W;
-      const rightX2 = LABEL_SIZE + colIdx(11) * CELL_W;
-      ctx.fillStyle = RED;
-      ctx.fillRect(rightX1, jujuY1, rightX2 - rightX1, jujuY2 - jujuY1);
-      ctx.globalAlpha = 1.0;
-      ctx.fillStyle = '#f0e1c7';
-      ctx.font = `bold ${CELL_W*0.35}px 'KaiTi'`;
-      ctx.fillText('巨将', leftX1 + CELL_W*0.8, jujuY1 + CELL_H*1.2);
-      ctx.fillText('巨将', rightX1 + CELL_W*0.8, jujuY1 + CELL_H*1.2);
+      // 通用棋子绘制函数
+      function drawPiece(x, y, name, color) {
+        const radius = CELL_W * 0.38;
+        ctx.shadowColor = '#2a1e0f';
+        ctx.shadowBlur = 6;
+        ctx.shadowOffsetY = 2;
+        ctx.beginPath();
+        ctx.arc(x, y, radius, 0, 2*Math.PI);
+        ctx.fillStyle = color;
+        ctx.fill();
+        ctx.shadowBlur = 0;
+        ctx.lineWidth = 2.2;
+        ctx.strokeStyle = '#ffe0b5';
+        ctx.stroke();
+        ctx.font = `bold ${radius*0.85}px 'KaiTi', 'Noto Serif SC'`;
+        ctx.fillStyle = '#fef9f0';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(name, x, y-1);
+      }
 
-      // 绘制棋子
+      // 绘制所有整行棋子
       board.forEach((row, rIdx) => {
         row.forEach((piece, cIdx) => {
           if (!piece) return;
           const x = LABEL_SIZE + cIdx * CELL_W + CELL_W/2;
           const y = LABEL_SIZE + rIdx * CELL_H + CELL_H/2;
-          const radius = CELL_W * 0.38;
-          ctx.shadowColor = '#2a1e0f';
-          ctx.shadowBlur = 6;
-          ctx.shadowOffsetY = 2;
-          ctx.beginPath();
-          ctx.arc(x, y, radius, 0, 2*Math.PI);
-          ctx.fillStyle = piece.color === RED ? RED : BLACK;
-          ctx.fill();
-          ctx.shadowBlur = 0;
-          ctx.lineWidth = 2.2;
-          ctx.strokeStyle = '#ffe0b5';
-          ctx.stroke();
-          ctx.font = `bold ${radius*0.85}px 'KaiTi', 'Noto Serif SC'`;
-          ctx.fillStyle = '#fef9f0';
-          ctx.textAlign = 'center';
-          ctx.textBaseline = 'middle';
-          ctx.fillText(piece.name, x, y-1);
+          drawPiece(x, y, piece.name, piece.color === RED ? RED : BLACK);
         });
       });
 
-      // 日月卫、交涉 (半行绘制)
-      const riverTopY = LABEL_SIZE + rowIdx(6) * CELL_H - CELL_H/2;
-      const riverBottomY = LABEL_SIZE + rowIdx(8) * CELL_H - CELL_H/2;
-      ctx.font = `bold ${CELL_W*0.45}px 'KaiTi'`;
-      ctx.fillStyle = BLACK;
-      ctx.fillText('日', LABEL_SIZE + colIdx(4)*CELL_W+CELL_W/2, riverTopY);
-      ctx.fillText('卫', LABEL_SIZE + colIdx(5)*CELL_W+CELL_W/2, riverTopY);
-      ctx.fillText('月', LABEL_SIZE + colIdx(7)*CELL_W+CELL_W/2, riverTopY);
-      ctx.fillStyle = RED;
-      ctx.fillText('月', LABEL_SIZE + colIdx(4)*CELL_W+CELL_W/2, riverBottomY);
-      ctx.fillText('卫', LABEL_SIZE + colIdx(5)*CELL_W+CELL_W/2, riverBottomY);
-      ctx.fillText('日', LABEL_SIZE + colIdx(7)*CELL_W+CELL_W/2, riverBottomY);
-      ctx.fillStyle = BLACK;
-      ctx.fillText('交', LABEL_SIZE + colIdx(1)*CELL_W+CELL_W/2, riverTopY);
-      ctx.fillStyle = RED;
-      ctx.fillText('涉', LABEL_SIZE + colIdx(1)*CELL_W+CELL_W/2, riverBottomY);
+      // 绘制巨将 (作为特殊大棋子，占2x2格，但为了美观仍用圆形表示)
+      const jujuPos = [
+        { color: BLACK, leftCol: -2, rightCol: 1, topRow: 6, bottomRow: 7 }, // 黑巨将
+        { color: RED, leftCol: 7, rightCol: 10, topRow: 6, bottomRow: 7 }    // 红巨将
+      ];
+      jujuPos.forEach(j => {
+        const x = LABEL_SIZE + (colIdx(j.leftCol) + colIdx(j.rightCol)) / 2 * CELL_W + CELL_W/2;
+        const y = LABEL_SIZE + (rowIdx(j.topRow) + rowIdx(j.bottomRow)) / 2 * CELL_H + CELL_H/2;
+        drawPiece(x, y, '巨将', j.color);
+      });
+
+      // 绘制日月卫、交涉 (半行位置，棋子样式)
+      const riverMidY = LABEL_SIZE + rowIdx(6) * CELL_H + CELL_H/2; // 河界上沿棋子中心 (黑方)
+      const riverMidY2 = LABEL_SIZE + rowIdx(7) * CELL_H + CELL_H/2; // 河界下沿棋子中心 (红方)
+      
+      // 黑方日月卫交
+      drawPiece(LABEL_SIZE + colIdx(4)*CELL_W+CELL_W/2, riverMidY, '日', BLACK);
+      drawPiece(LABEL_SIZE + colIdx(5)*CELL_W+CELL_W/2, riverMidY, '卫', BLACK);
+      drawPiece(LABEL_SIZE + colIdx(7)*CELL_W+CELL_W/2, riverMidY, '月', BLACK);
+      drawPiece(LABEL_SIZE + colIdx(1)*CELL_W+CELL_W/2, riverMidY, '交', BLACK);
+      
+      // 红方日月卫涉
+      drawPiece(LABEL_SIZE + colIdx(4)*CELL_W+CELL_W/2, riverMidY2, '月', RED);
+      drawPiece(LABEL_SIZE + colIdx(5)*CELL_W+CELL_W/2, riverMidY2, '卫', RED);
+      drawPiece(LABEL_SIZE + colIdx(7)*CELL_W+CELL_W/2, riverMidY2, '日', RED);
+      drawPiece(LABEL_SIZE + colIdx(1)*CELL_W+CELL_W/2, riverMidY2, '涉', RED);
 
       // 行列标签
       ctx.font = `bold ${LABEL_SIZE*0.5}px 'Segoe UI', 'KaiTi'`;
