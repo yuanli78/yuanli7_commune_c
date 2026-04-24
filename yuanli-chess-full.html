@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>源力象棋 · 全面版 · 最终静态布局（悬停坐标）</title>
+  <title>源力象棋 · 全面版 · 最终静态布局（独立红方·移除镜像）</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -101,7 +101,7 @@
 </head>
 <body>
 <div class="board-wrapper" id="boardWrapper">
-  <h2>⚔️ 源力象棋 · 全面版 · 最终静态布局（悬停坐标） ⚔️</h2>
+  <h2>⚔️ 源力象棋 · 全面版 · 最终静态布局（独立红方·移除镜像） ⚔️</h2>
   <canvas id="chessCanvas" width="5200" height="3800"></canvas>
   <div class="tooltip" id="tooltip">
     <span class="coord" id="tooltipCoord"></span><br>
@@ -110,11 +110,11 @@
   <div class="legend">
     <span><span class="red-dot"></span> 红方</span>
     <span><span class="black-dot"></span> 黑方</span>
-    <span>📐 行-18~32 · 列-36~38 · 间距70px · 完美中心对称</span>
-    <span>🖱️ 悬停显示坐标 · 可左右滑动</span>
+    <span>📐 行-18~32 · 列-36~38 · 间距70px · 独立布局</span>
+    <span>🖱️ 悬停坐标 · 已移除多余额外棋子</span>
   </div>
   <div class="note">
-    ※ 棋子简称 · 红黑严格镜像 · 炮位叠舞 · 异棋红线 · 鼠标悬停查看行列号
+    ※ 棋子简称 · 黑红各自手工放置 · 炮位叠舞 · 异棋红线 · 后宫底色完整覆盖
   </div>
 </div>
 
@@ -135,7 +135,6 @@
     const tooltip = document.getElementById('tooltip');
     const tooltipCoord = document.getElementById('tooltipCoord');
     const tooltipPiece = document.getElementById('tooltipPiece');
-    const boardWrapper = document.getElementById('boardWrapper');
 
     const ROW_MIN = -18, ROW_MAX = 32;
     const COL_MIN = -36, COL_MAX = 38;
@@ -175,11 +174,13 @@
     function setPiece(row, col, name, color, isSpecial = false) {
       if (row < ROW_MIN || row > ROW_MAX || col < COL_MIN || col > COL_MAX) return;
       const r = row - ROW_MIN, c = col - COL_MIN;
+      // 不覆盖已有棋子（避免重复）
+      if (board[r][c]) return;
       board[r][c] = {name, color, isSpecial};
     }
 
-    // ========== 黑方（原始半区 + 竖轴对称补全） ==========
-    
+    // ========== 黑方棋子精确放置（仅原始设计，无镜像补全） ==========
+    // 三十六计（左侧6列）
     const thirtySixLeft = {
       '-15': ['美','反','借','调','牵','混'],
       '-14': ['声','无','欲','擒','瞒','暗'],
@@ -192,150 +193,153 @@
       const startCol = -30;
       cols.forEach((name, i) => setPiece(parseInt(row), startCol + i, name, BLACK));
     });
-    Object.entries(thirtySixLeft).forEach(([row, cols]) => {
-      cols.forEach((name, i) => {
-        const leftCol = -30 + i;
-        const symCol = 2 - leftCol;
-        setPiece(parseInt(row), symCol, name, BLACK);
-      });
-    });
-
+    // 聊斋（左侧4列）
     const liaoZhaiLeft = { '-5':'狐', '-4':'鬼', '-3':'蛇', '-2':'画', '-1':'促' };
     Object.entries(liaoZhaiLeft).forEach(([row, name]) => {
       for (let c = -10; c <= -7; c++) setPiece(parseInt(row), c, name, BLACK);
     });
-    Object.entries(liaoZhaiLeft).forEach(([row, name]) => {
-      for (let c = -10; c <= -7; c++) {
-        const sym = 2 - c;
-        setPiece(parseInt(row), sym, name, BLACK);
-      }
-    });
-
-    setPiece(-9, -16, '官', BLACK); setPiece(-9, 2-(-16), '官', BLACK);
-    setPiece(-9, 24, '官', BLACK); setPiece(-9, 2-24, '官', BLACK);
-    setPiece(-9, -20, '追', BLACK); setPiece(-9, 2-(-20), '追', BLACK);
-    setPiece(-9, -19, '截', BLACK); setPiece(-9, 2-(-19), '截', BLACK);
-
-    const hougong = [[-6,4],[-6,7],[-5,5],[-3,3],[-3,4],[-3,7],[-3,8],[-2,5]];
-    hougong.forEach(([r,c]) => {
-      setPiece(r, c, (c===5?'帅':'妃'), BLACK);
-      setPiece(r, 2-c, (c===5?'帅':'妃'), BLACK);
-    });
-
+    // 外角官棋/追截
+    setPiece(-9, -16, '官', BLACK); setPiece(-9, 24, '官', BLACK);
+    setPiece(-9, -20, '追', BLACK); setPiece(-9, -19, '截', BLACK);
+    // 后宫（八妃+帅）
+    const hougongBlack = [[-6,4],[-6,7],[-5,5],[-3,3],[-3,4],[-3,7],[-3,8],[-2,5]];
+    hougongBlack.forEach(([r,c]) => setPiece(r, c, (c===5?'帅':'妃'), BLACK));
+    // 虎穴
     setPiece(-1, 2, '穴', BLACK); setPiece(-1, 4, '虎', BLACK); setPiece(-1, 6, '穴', BLACK);
-    setPiece(-1, 0, '穴', BLACK); setPiece(-1, -2, '虎', BLACK); setPiece(-1, -4, '穴', BLACK);
-
-    const jiaohuo = [-4,-3,-2,-1,0,1,2,3,4,5,6];
-    jiaohuo.forEach(c => {
+    // 缴获线
+    [-4,-3,-2,-1,0,1,2,3,4,5,6].forEach(c => {
       const name = (c===0||c===4) ? '步' : '缴';
       setPiece(-2, c, name, BLACK);
-      const sym = 2-c;
-      if (sym !== c) setPiece(-2, sym, name, BLACK);
     });
-
-    const shadowMap = [-2,0,2,4,6,8];
-    const shadowNames = ['影车','影马','影相','影士','影将','影兵'];
-    shadowMap.forEach((c,i) => {
-      setPiece(0, c, shadowNames[i], BLACK);
-      const sym = 2-c;
-      if (sym !== c) setPiece(0, sym, shadowNames[i], BLACK);
+    // 影子行
+    [-2,0,2,4,6,8].forEach((c,i) => {
+      const names = ['影车','影马','影相','影士','影将','影兵'];
+      setPiece(0, c, names[i], BLACK);
     });
-
-    const bottom = [
+    // 底线
+    const bottomBlack = [
       [-20,'天'],[-19,'异炮'],[-18,'异马'],[-17,'异车'],[-16,'悬'],[-14,'翔'],[-13,'石'],[-12,'骥'],
       [-11,'城'],[-10,'轰'],[-9,'战车'],[-8,'战马'],[-7,'骑'],[-6,'炮'],[-5,'驼'],[-4,'车'],[-3,'骡'],
       [-2,'马'],[-1,'象'],[0,'士'],[1,'天将'],[2,'天将'],[3,'天将'],[4,'士'],[5,'天将'],[6,'天将'],
       [7,'驼'],[8,'炮'],[9,'骑'],[10,'战马'],[11,'战车'],[12,'轰'],[13,'城'],[14,'骥'],[15,'石'],
       [16,'翔'],[18,'悬'],[19,'异车'],[20,'异马'],[21,'异炮'],[22,'天']
     ];
-    bottom.forEach(([col, name]) => {
+    bottomBlack.forEach(([col, name]) => {
       setPiece(1, col, name, BLACK, name==='炮');
       if (name.includes('异')) redLineCells.add(`1,${col}`);
-      const sym = 2 - col;
-      if (sym !== col && sym >= COL_MIN && sym <= COL_MAX) {
-        setPiece(1, sym, name, BLACK, name==='炮');
-        if (name.includes('异')) redLineCells.add(`1,${sym}`);
-      }
     });
-
-    const row2 = [[-11,'骥'],[-9,'战炮'],[-8,'战士'],[-7,'士'],[-6,'国'],[-2,'地'],[2,'诏'],[3,'御'],
-                 [13,'骥'],[11,'飞炮'],[10,'飞士'],[9,'士'],[8,'国'],[7,'地']];
-    row2.forEach(([c,n])=>{ setPiece(2,c,n,BLACK); const s=2-c; if(s!==c) setPiece(2,s,n,BLACK); });
-
-    const row3 = [[-9,'战象'],[-8,'战马'],[-5,'抛'],[-3,'炮'],[2,'蝉'],[13,'飞象'],[12,'飞马'],[7,'抛'],[6,'炮']];
-    row3.forEach(([c,n])=>{ setPiece(3,c,n,BLACK); const s=2-c; if(s!==c) setPiece(3,s,n,BLACK); });
-
-    [ -2,1,6,9 ].forEach(c => { setPiece(4,c,'斥',BLACK); const s=2-c; if(s!==c) setPiece(4,s,'斥',BLACK); });
-
-    const row5 = [[-6,'象'],[-5,'士'],[12,'士'],[13,'象'],[-2,'重'],[0,'重'],[2,'步'],[3,'重'],[5,'重'],[7,'重'],
-                 [8,'象'],[7,'士'],[-10,'士'],[-11,'象'],[4,'重'],[2,'重'],[0,'步'],[-1,'重'],[-3,'重'],[-5,'重']];
-    row5.forEach(([c,n])=>{ setPiece(5,c,n,BLACK); const s=2-c; if(s!==c) setPiece(5,s,n,BLACK); });
-    const pawns = [-3,-1,0,1,2,3,4,5,6,7,8,9];
-    pawns.forEach(c => {
+    // 行2
+    [[-11,'骥'],[-9,'战炮'],[-8,'战士'],[-7,'士'],[-6,'国'],[-2,'地'],[2,'诏'],[3,'御'],[13,'骥'],[11,'飞炮'],[10,'飞士'],[9,'士'],[8,'国'],[7,'地']]
+      .forEach(([c,n]) => setPiece(2,c,n,BLACK));
+    // 行3
+    [[-9,'战象'],[-8,'战马'],[-5,'抛'],[-3,'炮'],[2,'蝉'],[13,'飞象'],[12,'飞马'],[7,'抛'],[6,'炮']]
+      .forEach(([c,n]) => setPiece(3,c,n,BLACK));
+    // 行4
+    [-2,1,6,9].forEach(c => setPiece(4,c,'斥',BLACK));
+    // 行5
+    [[-6,'象'],[-5,'士'],[12,'士'],[13,'象'],[-2,'重'],[0,'重'],[2,'步'],[3,'重'],[5,'重'],[7,'重'],
+     [8,'象'],[7,'士'],[-10,'士'],[-11,'象'],[4,'重'],[2,'重'],[0,'步'],[-1,'重'],[-3,'重'],[-5,'重']]
+      .forEach(([c,n]) => setPiece(5,c,n,BLACK));
+    // 兵线
+    [-3,-1,0,1,2,3,4,5,6,7,8,9].forEach(c => {
       let name;
       if (c===0||c===4||c===8) name='丁';
       else if (c===2||c===6) name='雷';
       else name='兵';
       setPiece(5, c, name, BLACK);
-      const sym = 2-c;
-      if (sym!==c) {
-        if (sym===0||sym===4||sym===8) name='丁';
-        else if (sym===2||sym===6) name='雷';
-        else name='兵';
-        setPiece(5, sym, name, BLACK);
-      }
     });
 
-    // ========== 红方：镜像生成 ==========
-    const blackPieces = [];
-    for (let r=0; r<ROWS; r++) for (let c=0; c<COLS; c++) {
-      const p = board[r][c];
-      if (p && p.color === BLACK) blackPieces.push({
-        row: r + ROW_MIN, col: c + COL_MIN, name: p.name, isSpecial: p.isSpecial
-      });
-    }
-    blackPieces.forEach(p => {
-      const redRow = 15 - p.row;
-      const redCol = 2 - p.col;
-      if (redRow >= ROW_MIN && redRow <= ROW_MAX && redCol >= COL_MIN && redCol <= COL_MAX) {
-        let redName = p.name;
-        if (redName === '丁') redName = '勇';
-        if (redName === '帅') redName = '将';
-        setPiece(redRow, redCol, redName, RED, p.isSpecial);
-        if (redName.includes('异')) redLineCells.add(`${redRow},${redCol}`);
-      }
+    // ========== 红方棋子精确放置（独立设计，对应黑方但不镜像） ==========
+    // 三十六计（红方右侧，行30~25，列22~32）
+    const thirtySixRed = {
+      30: ['美','反','借','调','牵','混'],
+      29: ['声','无','欲','擒','瞒','暗'],
+      28: ['笑','假','隔','趁','连','走'],
+      27: ['虢','釜','柱','壳','远','主'],
+      26: ['围','人','以','李','打','砖'],
+      25: ['关','指','上','树','空','苦']
+    };
+    Object.entries(thirtySixRed).forEach(([row, cols]) => {
+      const startCol = 22;
+      cols.forEach((name, i) => setPiece(parseInt(row), startCol + i, name, RED));
+    });
+    // 聊斋（红方右侧，行20~16，列9~12）
+    const liaoZhaiRed = {20:'狐',19:'鬼',18:'蛇',17:'画',16:'促'};
+    Object.entries(liaoZhaiRed).forEach(([row, name]) => {
+      for (let c=9; c<=12; c++) setPiece(parseInt(row), c, name, RED);
+    });
+    // 外角官棋/追截
+    setPiece(24, 18, '官', RED); setPiece(24, -22, '官', RED);
+    setPiece(24, 22, '追', RED); setPiece(24, 21, '截', RED);
+    // 红方后宫（八妃+将）
+    const hougongRed = [[21,-2],[21,-5],[20,-3],[18,-1],[18,-2],[18,-5],[18,-6],[17,-3]];
+    hougongRed.forEach(([r,c]) => setPiece(r, c, (c===-3?'将':'妃'), RED));
+    // 虎穴
+    setPiece(16, 0, '穴', RED); setPiece(16, -2, '虎', RED); setPiece(16, -4, '穴', RED);
+    // 缴获线
+    [-4,-3,-2,-1,0,1,2,3,4,5,6].forEach(c => {
+      const name = (c===0||c===4||c===-2) ? '步' : '缴';
+      setPiece(17, c, name, RED);
+    });
+    // 影子行
+    [4,2,0,-2,-4,-6].forEach((c,i) => {
+      const names = ['影车','影马','影相','影士','影将','影兵'];
+      setPiece(15, c, names[i], RED);
+    });
+    // 红方底线
+    const bottomRed = [
+      [22,'天'],[21,'异炮'],[20,'异马'],[19,'异车'],[18,'悬'],[16,'翔'],[15,'石'],[14,'骥'],
+      [13,'城'],[12,'轰'],[11,'战车'],[10,'战马'],[9,'骑'],[8,'炮'],[7,'驼'],[6,'车'],[5,'骡'],
+      [4,'马'],[3,'象'],[2,'士'],[1,'天将'],[0,'天将'],[-1,'天将'],[-2,'士'],[-3,'天将'],[-4,'天将'],
+      [-5,'驼'],[-6,'炮'],[-7,'骑'],[-8,'战马'],[-9,'战车'],[-10,'轰'],[-11,'城'],[-12,'骥'],[-13,'石'],
+      [-14,'翔'],[-16,'悬'],[-17,'异车'],[-18,'异马'],[-19,'异炮'],[-20,'天']
+    ];
+    bottomRed.forEach(([col, name]) => {
+      setPiece(14, col, name, RED, name==='炮');
+      if (name.includes('异')) redLineCells.add(`14,${col}`);
+    });
+    // 红方行2（行13）
+    [[13,'骥'],[11,'飞炮'],[10,'飞士'],[9,'士'],[8,'国'],[7,'地'],[-11,'骥'],[-9,'战炮'],[-8,'战士'],[-7,'士'],[-6,'国'],[-2,'地'],[2,'诏'],[3,'御']]
+      .forEach(([c,n]) => setPiece(13,c,n,RED));
+    // 红方行3（行12）
+    [[13,'飞象'],[12,'飞马'],[7,'抛'],[6,'炮'],[-9,'战象'],[-8,'战马'],[-5,'抛'],[-3,'炮'],[2,'蝉']]
+      .forEach(([c,n]) => setPiece(12,c,n,RED));
+    // 红方行4（行11）
+    [4,1,-2,-7].forEach(c => setPiece(11,c,'斥',RED));
+    // 红方行5（行10）
+    [[8,'象'],[7,'士'],[-10,'士'],[-11,'象'],[4,'重'],[2,'重'],[0,'步'],[-1,'重'],[-3,'重'],[-5,'重'],
+     [-6,'象'],[-5,'士'],[12,'士'],[13,'象'],[-2,'重'],[0,'重'],[2,'步'],[3,'重'],[5,'重'],[7,'重']]
+      .forEach(([c,n]) => setPiece(10,c,n,RED));
+    // 红方兵线
+    [5,3,2,1,0,-1,-2,-3,-4,-5,-6,-7].forEach(c => {
+      let name;
+      if (c===2||c===-2||c===-6) name='勇';
+      else if (c===0||c===-4) name='雷';
+      else name='兵';
+      setPiece(10, c, name, RED);
     });
 
-    // ========== 鼠标悬停坐标提示 ==========
+    // ========== 悬停坐标 ==========
     canvas.addEventListener('mousemove', function(e) {
       const rect = canvas.getBoundingClientRect();
       const scaleX = canvas.width / rect.width;
       const scaleY = canvas.height / rect.height;
       const canvasX = (e.clientX - rect.left) * scaleX;
       const canvasY = (e.clientY - rect.top) * scaleY;
-      
-      // 计算最近的交叉点
       const colFloat = (canvasX - PADDING) / LINE_SPAN + COL_MIN;
       const rowFloat = (canvasY - PADDING) / LINE_SPAN + ROW_MIN;
       const logicCol = Math.round(colFloat);
       const logicRow = Math.round(rowFloat);
-      
-      // 判断是否在棋盘有效范围内
       if (logicRow >= ROW_MIN && logicRow <= ROW_MAX && logicCol >= COL_MIN && logicCol <= COL_MAX) {
         const distX = Math.abs(colFloat - logicCol);
         const distY = Math.abs(rowFloat - logicRow);
-        // 仅在鼠标靠近交叉点（半径一半以内）时显示
         if (distX < 0.45 && distY < 0.45) {
           const r = logicRow - ROW_MIN, c = logicCol - COL_MIN;
           const piece = board[r]?.[c];
           const pieceName = piece ? piece.name : '空';
           const pieceColor = piece ? (piece.color === RED ? '红' : '黑') : '';
           tooltipCoord.textContent = `📍 行 ${logicRow} · 列 ${logicCol}`;
-          if (piece) {
-            tooltipPiece.textContent = `♟️ ${pieceColor}方 · ${pieceName}`;
-          } else {
-            tooltipPiece.textContent = '· 空格 ·';
-          }
+          tooltipPiece.textContent = piece ? `♟️ ${pieceColor}方 · ${pieceName}` : '· 空格 ·';
           tooltip.style.display = 'block';
           tooltip.style.left = (e.clientX + 20) + 'px';
           tooltip.style.top = (e.clientY - 40) + 'px';
@@ -346,12 +350,9 @@
         tooltip.style.display = 'none';
       }
     });
+    canvas.addEventListener('mouseleave', () => tooltip.style.display = 'none');
 
-    canvas.addEventListener('mouseleave', function() {
-      tooltip.style.display = 'none';
-    });
-
-    // ========== 绘制函数 ==========
+    // ========== 绘制 ==========
     function fillRect(topRow, bottomRow, leftCol, rightCol, color) {
       const x = getX(leftCol), y = getY(topRow);
       const w = getX(rightCol) - x, h = getY(bottomRow) - y;
@@ -377,7 +378,6 @@
       ctx.fillStyle = piece.color; ctx.fill();
       ctx.shadowColor = 'transparent'; ctx.shadowBlur = 0; ctx.shadowOffsetY = 0;
       ctx.lineWidth = 2.8; ctx.strokeStyle = '#ffe0b5'; ctx.stroke();
-      
       if (piece.isSpecial) {
         ctx.font = `bold ${radius*0.65}px 'KaiTi', 'Noto Serif SC'`;
         ctx.fillStyle = '#fef9f0';
@@ -407,25 +407,27 @@
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.fillStyle = BG_COLOR; ctx.fillRect(0, 0, canvas.width, canvas.height);
       
+      // 黑方底色
       fillRect(-2, -2, -6, 6, JIAOHUO_BG);
-      fillRect(-1, -1, -4, 6, HUXUE_BG);
+      fillRect(-1, -1, 2, 6, HUXUE_BG);
       fillRect(0, 0, -6, 8, SHADOW_BG);
-      fillRect(-3, -1, -5, 8, HOUGONG_BG);
+      fillRect(-6, -1, -5, 8, HOUGONG_BG);
       fillRect(-12, -12, COL_MIN, COL_MAX, RECYCLE_BG);
-      fillRect(24, 24, COL_MIN, COL_MAX, RECYCLE_BG);
       fillRect(1, 3, -9, -7, FEI_BG);
       fillRect(1, 3, 12, 14, ZHAN_BG);
-      fillRect(-2, 0, -5, 8, HUTANG_BG);
+      fillRect(-2, 0, 2, 7, HUTANG_BG);
       fillRect(1, 6, 1, 6, MAIN_PALACE_BG);
       
+      // 红方底色
       fillRect(17, 17, -4, 8, JIAOHUO_BG);
-      fillRect(14, 14, -4, 6, HUXUE_BG);
+      fillRect(16, 16, -2, 4, HUXUE_BG);
       fillRect(15, 15, -6, 8, SHADOW_BG);
-      fillRect(16, 18, -6, 7, HOUGONG_BG);
+      fillRect(19, 21, -5, 1, HOUGONG_BG);
       fillRect(13, 15, 9, 11, FEI_BG);
       fillRect(13, 15, -12, -10, ZHAN_BG);
-      fillRect(13, 15, -6, 7, HUTANG_BG);
+      fillRect(13, 15, -5, 0, HUTANG_BG);
       fillRect(9, 14, -4, 1, MAIN_PALACE_BG);
+      fillRect(24, 24, COL_MIN, COL_MAX, RECYCLE_BG);
 
       ctx.lineWidth = 2.2; ctx.strokeStyle = NORMAL_LINE;
       for (let r = 0; r < ROWS; r++) {
@@ -437,8 +439,7 @@
         ctx.beginPath(); ctx.moveTo(x, PADDING); ctx.lineTo(x, canvas.height - PADDING); ctx.stroke();
       }
 
-      const riverTopY = getY(6);
-      const riverBottomY = getY(9);
+      const riverTopY = getY(6), riverBottomY = getY(9);
       ctx.fillStyle = RIVER_COLOR; ctx.globalAlpha = 0.3;
       ctx.fillRect(PADDING, riverTopY, canvas.width - 2*PADDING, riverBottomY - riverTopY);
       ctx.globalAlpha = 1.0;
@@ -466,10 +467,10 @@
       drawBorder(13, 15, 9, 11, '#2563eb', '飞将宫(红) 3x3');
       drawBorder(1, 3, 12, 14, '#16a34a', '战将宫(黑) 3x3');
       drawBorder(13, 15, -12, -10, '#16a34a', '战将宫(红) 3x3');
-      drawBorder(-3, -1, -5, 8, '#9333ea', '后宫(黑) 八妃');
-      drawBorder(16, 18, -6, 7, '#9333ea', '后宫(红) 八妃');
-      drawBorder(-2, 0, -5, 8, '#ea580c', '虎堂(黑)');
-      drawBorder(13, 15, -6, 7, '#ea580c', '虎堂(红)');
+      drawBorder(-6, -1, -5, 8, '#9333ea', '后宫(黑) 八妃');
+      drawBorder(19, 21, -5, 1, '#9333ea', '后宫(红) 八妃');
+      drawBorder(-2, 0, 2, 7, '#ea580c', '虎堂(黑)');
+      drawBorder(13, 15, -5, 0, '#ea580c', '虎堂(红)');
 
       ctx.lineWidth = 7; ctx.strokeStyle = OUTER_FRAME;
       ctx.strokeRect(PADDING, PADDING, canvas.width - 2*PADDING, canvas.height - 2*PADDING);
