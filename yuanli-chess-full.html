@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>源力象棋 · 全面版 · 最终静态布局（四角完整可见）</title>
+  <title>源力象棋 · 全面版 · 最终静态布局（悬停坐标）</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -22,16 +22,44 @@
       overflow: auto;
       max-width: 100%;
       border: 1px solid #ffe0b5;
+      position: relative;
+      -webkit-overflow-scrolling: touch;
     }
     canvas {
       display: block;
       background: #fff9ef;
       border-radius: 16px;
       box-shadow: inset 0 0 0 2px #d4b89c, 0 6px 12px rgba(0,0,0,0.05);
-      cursor: default;
+      cursor: crosshair;
       width: 100%;
       height: auto;
       image-rendering: crisp-edges;
+      min-width: 3000px;
+    }
+    .tooltip {
+      position: fixed;
+      pointer-events: none;
+      background: rgba(30,30,30,0.92);
+      color: #fff;
+      padding: 8px 14px;
+      border-radius: 12px;
+      font-family: 'Segoe UI', 'Noto Serif SC', 'KaiTi', serif;
+      font-size: 15px;
+      font-weight: bold;
+      white-space: nowrap;
+      z-index: 9999;
+      display: none;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+      border: 2px solid #ffe0b5;
+      line-height: 1.6;
+    }
+    .tooltip .coord {
+      color: #ffd700;
+      font-size: 17px;
+    }
+    .tooltip .piece-info {
+      color: #a7f3d0;
+      font-size: 14px;
     }
     .legend {
       margin-top: 18px;
@@ -72,17 +100,21 @@
   </style>
 </head>
 <body>
-<div class="board-wrapper">
-  <h2>⚔️ 源力象棋 · 全面版 · 最终静态布局（四角完整可见） ⚔️</h2>
-  <canvas id="chessCanvas" width="4300" height="3400"></canvas>
+<div class="board-wrapper" id="boardWrapper">
+  <h2>⚔️ 源力象棋 · 全面版 · 最终静态布局（悬停坐标） ⚔️</h2>
+  <canvas id="chessCanvas" width="5200" height="3800"></canvas>
+  <div class="tooltip" id="tooltip">
+    <span class="coord" id="tooltipCoord"></span><br>
+    <span class="piece-info" id="tooltipPiece"></span>
+  </div>
   <div class="legend">
     <span><span class="red-dot"></span> 红方</span>
     <span><span class="black-dot"></span> 黑方</span>
-    <span>📐 行-18~32 · 列-36~38 · 间距52px · 完美中心对称</span>
-    <span>🏛️ 四角外框清晰 · 楚河行6~9 · 棋子未动</span>
+    <span>📐 行-18~32 · 列-36~38 · 间距70px · 完美中心对称</span>
+    <span>🖱️ 悬停显示坐标 · 可左右滑动</span>
   </div>
   <div class="note">
-    ※ 棋子简称 · 红黑严格镜像 · 炮位叠舞 · 异棋红线 · 顶部留白充足
+    ※ 棋子简称 · 红黑严格镜像 · 炮位叠舞 · 异棋红线 · 鼠标悬停查看行列号
   </div>
 </div>
 
@@ -100,14 +132,18 @@
   (function() {
     const canvas = document.getElementById('chessCanvas');
     const ctx = canvas.getContext('2d');
+    const tooltip = document.getElementById('tooltip');
+    const tooltipCoord = document.getElementById('tooltipCoord');
+    const tooltipPiece = document.getElementById('tooltipPiece');
+    const boardWrapper = document.getElementById('boardWrapper');
 
     const ROW_MIN = -18, ROW_MAX = 32;
     const COL_MIN = -36, COL_MAX = 38;
     const ROWS = ROW_MAX - ROW_MIN + 1;
     const COLS = COL_MAX - COL_MIN + 1;
 
-    const LINE_SPAN = 52;
-    const PADDING = 60; // 四周留白增加，防止裁剪
+    const LINE_SPAN = 70;
+    const PADDING = 70;
     canvas.width = (COLS - 1) * LINE_SPAN + PADDING * 2;
     canvas.height = (ROWS - 1) * LINE_SPAN + PADDING * 2;
 
@@ -144,7 +180,6 @@
 
     // ========== 黑方（原始半区 + 竖轴对称补全） ==========
     
-    // 三十六计原始左侧 (列-30~-20)
     const thirtySixLeft = {
       '-15': ['美','反','借','调','牵','混'],
       '-14': ['声','无','欲','擒','瞒','暗'],
@@ -157,7 +192,6 @@
       const startCol = -30;
       cols.forEach((name, i) => setPiece(parseInt(row), startCol + i, name, BLACK));
     });
-    // 竖轴对称补全右侧
     Object.entries(thirtySixLeft).forEach(([row, cols]) => {
       cols.forEach((name, i) => {
         const leftCol = -30 + i;
@@ -166,12 +200,10 @@
       });
     });
 
-    // 聊斋原始左侧 (列-10~-7)
     const liaoZhaiLeft = { '-5':'狐', '-4':'鬼', '-3':'蛇', '-2':'画', '-1':'促' };
     Object.entries(liaoZhaiLeft).forEach(([row, name]) => {
       for (let c = -10; c <= -7; c++) setPiece(parseInt(row), c, name, BLACK);
     });
-    // 对称右侧
     Object.entries(liaoZhaiLeft).forEach(([row, name]) => {
       for (let c = -10; c <= -7; c++) {
         const sym = 2 - c;
@@ -179,24 +211,20 @@
       }
     });
 
-    // 外角官棋/追截（四角完整）
     setPiece(-9, -16, '官', BLACK); setPiece(-9, 2-(-16), '官', BLACK);
     setPiece(-9, 24, '官', BLACK); setPiece(-9, 2-24, '官', BLACK);
     setPiece(-9, -20, '追', BLACK); setPiece(-9, 2-(-20), '追', BLACK);
     setPiece(-9, -19, '截', BLACK); setPiece(-9, 2-(-19), '截', BLACK);
 
-    // 后宫
     const hougong = [[-6,4],[-6,7],[-5,5],[-3,3],[-3,4],[-3,7],[-3,8],[-2,5]];
     hougong.forEach(([r,c]) => {
       setPiece(r, c, (c===5?'帅':'妃'), BLACK);
       setPiece(r, 2-c, (c===5?'帅':'妃'), BLACK);
     });
 
-    // 虎穴
     setPiece(-1, 2, '穴', BLACK); setPiece(-1, 4, '虎', BLACK); setPiece(-1, 6, '穴', BLACK);
     setPiece(-1, 0, '穴', BLACK); setPiece(-1, -2, '虎', BLACK); setPiece(-1, -4, '穴', BLACK);
 
-    // 缴获线
     const jiaohuo = [-4,-3,-2,-1,0,1,2,3,4,5,6];
     jiaohuo.forEach(c => {
       const name = (c===0||c===4) ? '步' : '缴';
@@ -205,7 +233,6 @@
       if (sym !== c) setPiece(-2, sym, name, BLACK);
     });
 
-    // 影子行
     const shadowMap = [-2,0,2,4,6,8];
     const shadowNames = ['影车','影马','影相','影士','影将','影兵'];
     shadowMap.forEach((c,i) => {
@@ -214,7 +241,6 @@
       if (sym !== c) setPiece(0, sym, shadowNames[i], BLACK);
     });
 
-    // 底线 (行1)
     const bottom = [
       [-20,'天'],[-19,'异炮'],[-18,'异马'],[-17,'异车'],[-16,'悬'],[-14,'翔'],[-13,'石'],[-12,'骥'],
       [-11,'城'],[-10,'轰'],[-9,'战车'],[-8,'战马'],[-7,'骑'],[-6,'炮'],[-5,'驼'],[-4,'车'],[-3,'骡'],
@@ -232,23 +258,18 @@
       }
     });
 
-    // 行2
     const row2 = [[-11,'骥'],[-9,'战炮'],[-8,'战士'],[-7,'士'],[-6,'国'],[-2,'地'],[2,'诏'],[3,'御'],
                  [13,'骥'],[11,'飞炮'],[10,'飞士'],[9,'士'],[8,'国'],[7,'地']];
     row2.forEach(([c,n])=>{ setPiece(2,c,n,BLACK); const s=2-c; if(s!==c) setPiece(2,s,n,BLACK); });
 
-    // 行3
     const row3 = [[-9,'战象'],[-8,'战马'],[-5,'抛'],[-3,'炮'],[2,'蝉'],[13,'飞象'],[12,'飞马'],[7,'抛'],[6,'炮']];
     row3.forEach(([c,n])=>{ setPiece(3,c,n,BLACK); const s=2-c; if(s!==c) setPiece(3,s,n,BLACK); });
 
-    // 行4
     [ -2,1,6,9 ].forEach(c => { setPiece(4,c,'斥',BLACK); const s=2-c; if(s!==c) setPiece(4,s,'斥',BLACK); });
 
-    // 行5
     const row5 = [[-6,'象'],[-5,'士'],[12,'士'],[13,'象'],[-2,'重'],[0,'重'],[2,'步'],[3,'重'],[5,'重'],[7,'重'],
                  [8,'象'],[7,'士'],[-10,'士'],[-11,'象'],[4,'重'],[2,'重'],[0,'步'],[-1,'重'],[-3,'重'],[-5,'重']];
     row5.forEach(([c,n])=>{ setPiece(5,c,n,BLACK); const s=2-c; if(s!==c) setPiece(5,s,n,BLACK); });
-    // 兵线
     const pawns = [-3,-1,0,1,2,3,4,5,6,7,8,9];
     pawns.forEach(c => {
       let name;
@@ -285,6 +306,51 @@
       }
     });
 
+    // ========== 鼠标悬停坐标提示 ==========
+    canvas.addEventListener('mousemove', function(e) {
+      const rect = canvas.getBoundingClientRect();
+      const scaleX = canvas.width / rect.width;
+      const scaleY = canvas.height / rect.height;
+      const canvasX = (e.clientX - rect.left) * scaleX;
+      const canvasY = (e.clientY - rect.top) * scaleY;
+      
+      // 计算最近的交叉点
+      const colFloat = (canvasX - PADDING) / LINE_SPAN + COL_MIN;
+      const rowFloat = (canvasY - PADDING) / LINE_SPAN + ROW_MIN;
+      const logicCol = Math.round(colFloat);
+      const logicRow = Math.round(rowFloat);
+      
+      // 判断是否在棋盘有效范围内
+      if (logicRow >= ROW_MIN && logicRow <= ROW_MAX && logicCol >= COL_MIN && logicCol <= COL_MAX) {
+        const distX = Math.abs(colFloat - logicCol);
+        const distY = Math.abs(rowFloat - logicRow);
+        // 仅在鼠标靠近交叉点（半径一半以内）时显示
+        if (distX < 0.45 && distY < 0.45) {
+          const r = logicRow - ROW_MIN, c = logicCol - COL_MIN;
+          const piece = board[r]?.[c];
+          const pieceName = piece ? piece.name : '空';
+          const pieceColor = piece ? (piece.color === RED ? '红' : '黑') : '';
+          tooltipCoord.textContent = `📍 行 ${logicRow} · 列 ${logicCol}`;
+          if (piece) {
+            tooltipPiece.textContent = `♟️ ${pieceColor}方 · ${pieceName}`;
+          } else {
+            tooltipPiece.textContent = '· 空格 ·';
+          }
+          tooltip.style.display = 'block';
+          tooltip.style.left = (e.clientX + 20) + 'px';
+          tooltip.style.top = (e.clientY - 40) + 'px';
+        } else {
+          tooltip.style.display = 'none';
+        }
+      } else {
+        tooltip.style.display = 'none';
+      }
+    });
+
+    canvas.addEventListener('mouseleave', function() {
+      tooltip.style.display = 'none';
+    });
+
     // ========== 绘制函数 ==========
     function fillRect(topRow, bottomRow, leftCol, rightCol, color) {
       const x = getX(leftCol), y = getY(topRow);
@@ -294,7 +360,7 @@
 
     function drawBorder(topRow, bottomRow, leftCol, rightCol, color, label) {
       ctx.save();
-      ctx.lineWidth = 4.5; ctx.strokeStyle = color;
+      ctx.lineWidth = 5; ctx.strokeStyle = color;
       const x1 = getX(leftCol), y1 = getY(topRow), x2 = getX(rightCol), y2 = getY(bottomRow);
       ctx.strokeRect(x1, y1, x2 - x1, y2 - y1);
       ctx.font = `bold ${LINE_SPAN*0.45}px 'KaiTi', 'Noto Serif SC'`;
@@ -305,21 +371,21 @@
 
     function drawPiece(x, y, piece, scale = 1.0) {
       ctx.save();
-      const radius = LINE_SPAN * 0.36 * scale;
-      ctx.shadowColor = '#2a1e0f'; ctx.shadowBlur = 5; ctx.shadowOffsetY = 2;
+      const radius = LINE_SPAN * 0.38 * scale;
+      ctx.shadowColor = '#2a1e0f'; ctx.shadowBlur = 6; ctx.shadowOffsetY = 3;
       ctx.beginPath(); ctx.arc(x, y, radius, 0, 2*Math.PI);
       ctx.fillStyle = piece.color; ctx.fill();
       ctx.shadowColor = 'transparent'; ctx.shadowBlur = 0; ctx.shadowOffsetY = 0;
-      ctx.lineWidth = 2.2; ctx.strokeStyle = '#ffe0b5'; ctx.stroke();
+      ctx.lineWidth = 2.8; ctx.strokeStyle = '#ffe0b5'; ctx.stroke();
       
       if (piece.isSpecial) {
-        ctx.font = `bold ${radius*0.6}px 'KaiTi', 'Noto Serif SC'`;
+        ctx.font = `bold ${radius*0.65}px 'KaiTi', 'Noto Serif SC'`;
         ctx.fillStyle = '#fef9f0';
         ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-        ctx.fillText('炮', x, y - radius*0.3);
-        ctx.fillText('舞', x, y + radius*0.3);
+        ctx.fillText('炮', x, y - radius*0.35);
+        ctx.fillText('舞', x, y + radius*0.35);
       } else {
-        ctx.font = `bold ${radius*0.8}px 'KaiTi', 'Noto Serif SC'`;
+        ctx.font = `bold ${radius*0.85}px 'KaiTi', 'Noto Serif SC'`;
         ctx.fillStyle = '#fef9f0';
         ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
         ctx.fillText(piece.name, x, y-1);
@@ -329,10 +395,10 @@
 
     function drawRedLine(x, y) {
       ctx.save();
-      ctx.lineWidth = 5; ctx.strokeStyle = RED_LINE;
+      ctx.lineWidth = 6; ctx.strokeStyle = RED_LINE;
       ctx.beginPath();
-      ctx.moveTo(x - LINE_SPAN*0.3, y + LINE_SPAN*0.4);
-      ctx.lineTo(x + LINE_SPAN*0.3, y + LINE_SPAN*0.4);
+      ctx.moveTo(x - LINE_SPAN*0.35, y + LINE_SPAN*0.45);
+      ctx.lineTo(x + LINE_SPAN*0.35, y + LINE_SPAN*0.45);
       ctx.stroke();
       ctx.restore();
     }
@@ -355,13 +421,13 @@
       fillRect(17, 17, -4, 8, JIAOHUO_BG);
       fillRect(14, 14, -4, 6, HUXUE_BG);
       fillRect(15, 15, -6, 8, SHADOW_BG);
-      fillRect(16, 18, -5, 8, HOUGONG_BG);
+      fillRect(16, 18, -6, 7, HOUGONG_BG);
       fillRect(13, 15, 9, 11, FEI_BG);
       fillRect(13, 15, -12, -10, ZHAN_BG);
-      fillRect(13, 15, -5, 8, HUTANG_BG);
+      fillRect(13, 15, -6, 7, HUTANG_BG);
       fillRect(9, 14, -4, 1, MAIN_PALACE_BG);
 
-      ctx.lineWidth = 1.8; ctx.strokeStyle = NORMAL_LINE;
+      ctx.lineWidth = 2.2; ctx.strokeStyle = NORMAL_LINE;
       for (let r = 0; r < ROWS; r++) {
         const y = getY(ROW_MIN + r);
         ctx.beginPath(); ctx.moveTo(PADDING, y); ctx.lineTo(canvas.width - PADDING, y); ctx.stroke();
@@ -371,14 +437,13 @@
         ctx.beginPath(); ctx.moveTo(x, PADDING); ctx.lineTo(x, canvas.height - PADDING); ctx.stroke();
       }
 
-      // 楚河汉界（行6~9）
       const riverTopY = getY(6);
       const riverBottomY = getY(9);
       ctx.fillStyle = RIVER_COLOR; ctx.globalAlpha = 0.3;
       ctx.fillRect(PADDING, riverTopY, canvas.width - 2*PADDING, riverBottomY - riverTopY);
       ctx.globalAlpha = 1.0;
-      ctx.font = `bold ${LINE_SPAN*1.1}px 'KaiTi', 'Noto Serif SC'`;
-      ctx.fillStyle = '#ffffff'; ctx.shadowColor = '#1a3a4a'; ctx.shadowBlur = 8;
+      ctx.font = `bold ${LINE_SPAN*1.2}px 'KaiTi', 'Noto Serif SC'`;
+      ctx.fillStyle = '#ffffff'; ctx.shadowColor = '#1a3a4a'; ctx.shadowBlur = 10;
       ctx.fillText('楚 河', canvas.width*0.3, (riverTopY + riverBottomY)/2);
       ctx.fillText('汉 界', canvas.width*0.55, (riverTopY + riverBottomY)/2);
       ctx.shadowColor = 'transparent';
@@ -388,7 +453,7 @@
       ctx.globalAlpha = 1.0;
 
       const palaces = [ { rows:[1,6], cols:[1,6] }, { rows:[9,14], cols:[-4,1] } ];
-      ctx.lineWidth = 4.0; ctx.strokeStyle = PALACE_LINE;
+      ctx.lineWidth = 5; ctx.strokeStyle = PALACE_LINE;
       palaces.forEach(p => {
         const r1 = p.rows[0], r2 = p.rows[1], c1 = p.cols[0], c2 = p.cols[1];
         ctx.beginPath(); ctx.moveTo(getX(c1), getY(r1)); ctx.lineTo(getX(c2), getY(r2)); ctx.stroke();
@@ -402,18 +467,17 @@
       drawBorder(1, 3, 12, 14, '#16a34a', '战将宫(黑) 3x3');
       drawBorder(13, 15, -12, -10, '#16a34a', '战将宫(红) 3x3');
       drawBorder(-3, -1, -5, 8, '#9333ea', '后宫(黑) 八妃');
-      drawBorder(16, 18, -5, 8, '#9333ea', '后宫(红) 八妃');
+      drawBorder(16, 18, -6, 7, '#9333ea', '后宫(红) 八妃');
       drawBorder(-2, 0, -5, 8, '#ea580c', '虎堂(黑)');
-      drawBorder(13, 15, -5, 8, '#ea580c', '虎堂(红)');
+      drawBorder(13, 15, -6, 7, '#ea580c', '虎堂(红)');
 
-      ctx.lineWidth = 6;
-      ctx.strokeStyle = OUTER_FRAME;
+      ctx.lineWidth = 7; ctx.strokeStyle = OUTER_FRAME;
       ctx.strokeRect(PADDING, PADDING, canvas.width - 2*PADDING, canvas.height - 2*PADDING);
 
-      ctx.font = `bold ${LINE_SPAN*0.45}px 'KaiTi'`;
+      ctx.font = `bold ${LINE_SPAN*0.5}px 'KaiTi'`;
       ctx.fillStyle = '#047857';
-      ctx.fillText('再生走廊 · 圆位 · 箭头 →', canvas.width/2, getY(-12) - 20);
-      ctx.fillText('再生走廊 · 圆位 · 箭头 →', canvas.width/2, getY(24) + 35);
+      ctx.fillText('再生走廊 · 圆位 · 箭头 →', canvas.width/2, getY(-12) - 25);
+      ctx.fillText('再生走廊 · 圆位 · 箭头 →', canvas.width/2, getY(24) + 45);
 
       board.forEach((row, rIdx) => {
         const logicRow = ROW_MIN + rIdx;
@@ -437,7 +501,7 @@
       jujuPos.forEach(j => {
         const centerX = (getX(j.leftCol) + getX(j.rightCol)) / 2;
         const centerY = (getY(j.topRow) + getY(j.bottomRow)) / 2;
-        drawPiece(centerX, centerY, {name:'巨将', color:j.color}, 1.8);
+        drawPiece(centerX, centerY, {name:'巨将', color:j.color}, 2.0);
       });
 
       const blackShoreY = getY(6), redShoreY = getY(9);
@@ -450,7 +514,7 @@
       drawPiece(getX(-5), redShoreY, {name:'日', color:RED});
       drawPiece(getX(1), redShoreY, {name:'涉', color:RED});
 
-      ctx.font = `bold ${PADDING*0.4}px 'Segoe UI', 'KaiTi'`;
+      ctx.font = `bold ${PADDING*0.45}px 'Segoe UI', 'KaiTi'`;
       ctx.fillStyle = LABEL_COLOR;
       ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
       for (let r = 0; r < ROWS; r++) {
