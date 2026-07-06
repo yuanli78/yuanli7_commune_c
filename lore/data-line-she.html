@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据线社 · 源力公社 · W粒子技术路线</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif;
+            background: #fef9f0;
+            color: #2c2c2c;
+            line-height: 1.7;
+            padding: 2rem 1rem;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            overflow: hidden;
+            border: 1px solid #ffe0b5;
+        }
+        .header {
+            background: #b91c1c;
+            color: white;
+            padding: 2rem 2rem 1.5rem;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 2rem;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+        .header p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        .content {
+            padding: 2rem;
+        }
+        h2 {
+            color: #b91c1c;
+            margin: 1.8rem 0 1rem;
+            border-bottom: 2px solid #ffe0b5;
+            padding-bottom: 0.3rem;
+        }
+        h2:first-of-type {
+            margin-top: 0;
+        }
+        .section-card {
+            background: #faf6f0;
+            padding: 1.5rem 2rem;
+            border-radius: 16px;
+            margin: 1.5rem 0;
+        }
+        .tree-list {
+            list-style: none;
+            padding-left: 0;
+            font-family: 'SF Mono', 'Consolas', monospace;
+        }
+        .tree-list ul {
+            list-style: none;
+            padding-left: 2rem;
+            border-left: 1px dashed #d4b89c;
+            margin-left: 0.5rem;
+        }
+        .tree-list li {
+            position: relative;
+            padding-left: 0.5rem;
+            margin: 0.3rem 0;
+        }
+        .tree-list li::before {
+            content: "├── ";
+            color: #a51a1a;
+        }
+        .tree-list li:last-child::before {
+            content: "└── ";
+        }
+        .note-box {
+            background: #fff3e0;
+            border-left: 5px solid #b91c1c;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+        .badge {
+            display: inline-block;
+            background: #b91c1c;
+            color: white;
+            padding: 0.2rem 1rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            margin-left: 1rem;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            color: #b91c1c;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        .footer {
+            background: #f0ece4;
+            text-align: center;
+            padding: 1.5rem;
+            font-size: 0.85rem;
+            color: #5e5e5e;
+            border-top: 1px solid #ffe0b5;
+        }
+        a {
+            color: #b91c1c;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 600px) {
+            .header h1 { font-size: 1.5rem; }
+            .content { padding: 1.5rem; }
+            .section-card { padding: 1.2rem 1rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>🔌 数据线社 <span style="opacity: 0.8; font-size: 1.2rem;">· 总部</span></h1>
+        <p>源力公社 · 数据线驱动器技术发源地</p>
+    </div>
+    <div class="content">
+        <div class="note-box">
+            📌 本页面为数据线社总部设定档案。具体细节待委员会补充完善。
+        </div>
+
+        <h2>📁 组织概况</h2>
+        <div class="section-card">
+            <p><strong>核心理念：</strong>以人造源力对抗神赐源力，用科学的力量解放人类。数据线驱动器是公社科技的最高结晶，证明不依赖神恩，人也能掌握自己的力量。</p>
+            <p><strong>技术路线：</strong>W粒子路线——主张通过数据线驱动器的组合与合体来增强战斗力，反对等级化的力量体系。社内成员在未来的两派分裂中可能走向不同选择。</p>
+            <p><strong>标志/象征：</strong>数据线（连接与传输的隐喻）</p>
+            <p><strong>现任社长：</strong>优幻（在第七分社原社长牺牲后危难之时接任）</p>
+            <p><strong>知名成员：</strong>希晞、佑国、布尔克等</p>
+        </div>
+
+        <h2>⚙️ 驱动器类型</h2>
+        <div class="section-card">
+            <p><strong>数据线驱动器</strong> —— 数据线社的核心发明，佩戴于手腕上的装置。</p>
+            <p>驱动器内储存200种以上的数据线，每根数据线代表一种基础功能。使用者通过将两根数据线连接（"编织"）在一起，组合出具体的技能效果。数据线的连接与切换需要一定的熟练度，新手可能会出现举不起武器等情况。</p>
+            <p><strong>基础功能线（部分列举）：</strong></p>
+            <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+                <li><strong>长剑线</strong> — 召唤出一柄长剑作为武器</li>
+                <li><strong>防反线</strong> — 赋予武器格挡反击的能力</li>
+                <li><strong>蜻眼线（绿线）</strong> — 获得昆虫般的复眼视觉，洞察细微动静</li>
+                <li><strong>空抓线（白线）</strong> — 凭空抓取远程投射物</li>
+                <li><strong>治愈线（十字线）</strong> — 治愈伤口，但无法补充血液</li>
+                <li><strong>金色钥匙线</strong> — 用于解锁镣铐等束缚装置</li>
+                <li><strong>数据破解线</strong> — 破解电子/源力锁具</li>
+                <li><strong>火焰线（赤红线）</strong> — 产生高温火焰</li>
+                <li><strong>雷达线</strong> — 探测周围环境的生物信号</li>
+                <li><strong>红外线</strong> — 获得热感应视野，区分敌我（蓝点为友方/同志，红点为敌方/危险目标）</li>
+                <li><strong>迷彩线</strong> — 使身体颜色与环境融为一体，实现视觉隐形</li>
+                <li><strong>土转化线</strong> — 将泥土转化为可食用的营养膏</li>
+                <li><strong>声纳线</strong> — 发射定向声波，通过回声定位探测水下或不可视环境</li>
+                <li><strong>冰冻线</strong> — 释放极寒能量，冻结物体表面或整片水域</li>
+                <li><strong>声波线</strong> — 发射可调频率的杀伤性声波，配合冰冻线生成定向声波操作器</li>
+                <li><strong>汽油线</strong> — 产生可燃性液体</li>
+                <li><strong>内衣线 + 外衣制作线</strong> — 从驱动器快速生长出完整的公社制服</li>
+                <li><strong>强拆线</strong> — 强行破坏结构性物体（锁具、铁笼等）</li>
+                <li><strong>回收线</strong> — 将物体分解为数据流并回收，用于重新制造</li>
+                <li><strong>制造线</strong> — 将回收的素材重新制造成新的物品或简易驱动器</li>
+                <li><strong>望远线</strong> — 获得远距离视觉，可放大对焦远处的目标</li>
+                <li><strong>闪光线</strong> — 发射强光闪光，可致盲敌人或用于信号</li>
+                <li><strong>烟雾线</strong> — 制造与自然雾几乎相同的人造浓雾，遮蔽视野</li>
+                <li><strong>风向线</strong> — 感知气流方向，配合烟雾线精确控制烟雾扩散</li>
+                <li><strong>挖掘线</strong> — 生成数据线挖掘爪，用于快速挖掘地道和洞穴</li>
+                <li><strong>束缚线</strong> — 生成数据线绳索，缠绕束缚敌人</li>
+                <li><strong>切割线</strong> — 生成锋利的切割数据线，可精准切割物体</li>
+                <li><strong>止血线</strong> — 切割后迅速止血，防止目标失血过多</li>
+                <li><strong>医疗线</strong> — 进行详细医疗诊断和治疗，可处理复杂伤势</li>
+                <li><strong>热胀线</strong> — 远程提升目标温度，使物体受热膨胀</li>
+                <li><strong>冷缩线</strong> — 远程降低目标温度，使物体遇冷收缩</li>
+                <li><strong>扫描线</strong> — 扫描目标神经元信息，读取记忆和思维数据</li>
+                <li><strong>打印线</strong> — 将扫描到的信息以纸质文档形式输出</li>
+                <li><strong>药剂线</strong> — 制作各类药剂，配合制造线可生成吐真剂等功能性药水</li>
+                <li><strong>粒子捕捉线</strong> — 捕捉S（科学认知）、M（个人意志）、P（实践指数）、T（技术放大系数）四种基本粒子，用于制造驱动器</li>
+                <li><strong>麻醉线</strong> — 生成麻醉药剂，配合针头线可进行注射麻醉</li>
+                <li><strong>针头线</strong> — 生成注射针头，用于输送麻醉剂或药物</li>
+                <li><strong>喇叭线</strong> — 放大声音，用于对多人广播和喊话</li>
+                <li><strong>扩音线</strong> — 增强音量和传播距离，配合喇叭线可用于囚犯管理和指挥</li>
+                <li><strong>数据化线</strong> — 将人的意识（神经元）转换为数据元（Data Elements），实现意识向驱动器的转移（人机一体计划的核心）</li>
+                <li><strong>拍摄线</strong> — 记录视觉信息，用于取证和记录</li>
+                <li><strong>录像线</strong> — 连续记录动态画面，配合拍摄线可录制完整视频</li>
+                <li><strong>透视线</strong> — 获得透视视觉，可穿透墙壁等障碍物观察</li>
+                <li><strong>星球区域投影线</strong> — 投影星际地图，显示周围星域势力和航线</li>
+                <li><strong>合体线</strong> — 将两个人的数据流融合成新的身体，共同操作同一躯体（基于多重人格逆推原理）</li>
+                <li><strong>解体线</strong> — 将合体状态下的身体重新分解为数据流</li>
+                <li><strong>分离线</strong> — 配合解体线将数据流分离回各自原本的身体</li>
+            </ul>
+            <p>驱动器还具备<strong>工具制作模式</strong>，可利用基础材料制作铲子、手电筒等实用工具。</p>
+            <p style="margin-top: 0.8rem; font-style: italic; color: #666;">（以上为前十二章已出现的驱动器功能，完整200种以上数据线待后续补充）</p>
+        </div>
+
+        <h2>⚙️ 一体机 vs 分体机</h2>
+        <div class="section-card">
+            <p><strong>一体机（数据线社使用）：</strong>技能使用与技能切换在同一台机器上完成。优点：低失误率，单手操作。缺点是技术诞生较晚（分体机出现几千年后）且被公社总部抵制。</p>
+            <p><strong>分体机（其他分社使用）：</strong>技能使用与技能切换分离。以U盘社为例，分为驱动器主机与技能U盘。使用技能需将特定U盘插入驱动器，过程需要极高手速。U盘易被破坏，每人携带数量有限（最多20块）。</p>
+            <p><strong>总部的垄断逻辑：</strong>强制推行分体机是为了将技能发动与技能切换分开。非战斗时切换部分被收起，只留无用的发动部分——本质上是防止有人推翻总部的统治。总部将买卖技能作为一项生意，技能越强则金钱越多，技能越弱则金钱越少，与神权方的垄断在本质上并无区别。</p>
+        </div>
+
+        <h2>🪢 翻花绳传统</h2>
+        <div class="section-card">
+            <p>数据线社的独特传统，源自链路社长在公社第一次大会上的即兴发挥。当时各分社纷纷亮明特色，链路社长原想展示刺绣但与针线社重叠，便随手撑开一根绳子成矩形，称"这就是我们的特色"。</p>
+            <p><strong>数据四形：</strong>翻花绳的基本形状。</p>
+            <p><strong>四颗钻石：</strong>第七分社的正式番号——数据线社四颗钻石社。翻花绳中段呈现四个菱形，也可视为桥的形状。这是每个社员必须掌握的技能，也是区分敌我的手段之一。</p>
+        </div>
+
+        <h2>📜 源力版权法理论</h2>
+        <div class="section-card">
+            <p>希晞用翻花绳比喻阐释了源力版权法的本质：</p>
+            <ul style="margin-left: 1.5rem; margin-bottom: 0.5rem;">
+                <li><strong>翻花绳的类比：</strong>谁都可以用绳子翻出同一个形状，互不妨碍。如果有人将其注册为版权，向其他人收税，这就是赤裸裸的压迫。</li>
+                <li><strong>源力版权垄断：</strong>先一步强大起来的家族垄断特定源力（如火源力），其他人修炼需每年交版权税。税收多少完全取决于垄断家族的心情。</li>
+                <li><strong>剩余修炼率：</strong>大部分税上交给创世神，垄断者躺在剩下的金山上享受。</li>
+                <li><strong>个人崇拜：</strong>捧几个天才让群众以为努力就能成功，实际上成为"红人"的概率不到1%。</li>
+                <li><strong>源力的双重性：</strong>用对了可以创造，用错了就是破坏。火可以取暖也可以引发火灾。</li>
+                <li><strong>崇尚破坏贬低创造：</strong>人们习惯崇尚力量的破坏感，而轻视创造的价值。</li>
+            </ul>
+        </div>
+
+        <h2>👕 公社制服</h2>
+        <div class="section-card">
+            <p>通过"内衣线 + 外衣制作线"组合生成的标准公社战斗服。</p>
+            <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+                <li><strong>颜色：</strong>灰蓝色，与身体完全贴合</li>
+                <li><strong>领章：</strong>立领处有数据线缠绕形状的红色领章</li>
+                <li><strong>臂章：</strong>左肩黄色五角星臂章，内书白色大字"源力公社数据线分社第七分社"</li>
+                <li><strong>绑腿：</strong>裤脚有两条洁白的数据线缠绕式绑带</li>
+                <li><strong>特性：</strong>有效抵御严寒等极端环境，比普通奴隶服舒适得多</li>
+            </ul>
+        </div>
+
+        <h2>🔊 声波武器系统</h2>
+        <div class="section-card">
+            <p>通过"冰冻线 + 声波线"组合生成的定向声波攻击系统。驱动器向后颈延伸出一条数据线，沿手臂缠绕至左手，生成一个<strong>定向声波操作器</strong>，可对指定方向发射各种杀伤性声波。</p>
+            <p><strong>攻击模式：</strong></p>
+            <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+                <li><strong>高频高能聚焦超声波</strong> — 从敌人内部将器官直接"烤熟"，体表无明显伤痕</li>
+                <li><strong>低频高强度声波</strong> — 引发内脏器官强烈共振碎裂，致命且迅速</li>
+            </ul>
+            <p>声波武器对鳄鱼人等水生爬行类种族有特效，因其身体结构对声波传导尤为敏感。</p>
+        </div>
+
+        <h2>🔧 技能种类</h2>
+        <div class="section-card">
+            <p>数据线驱动器的技能通过两根数据线的组合（"编织"）实现。以下为小说前三章中出现的已知组合：</p>
+            <table style="width: 100%; border-collapse: collapse; margin-top: 0.8rem;">
+                <tr style="background: #b91c1c; color: white;">
+                    <th style="padding: 0.5rem 1rem; text-align: left; border: 1px solid #ffe0b5;">组合</th>
+                    <th style="padding: 0.5rem 1rem; text-align: left; border: 1px solid #ffe0b5;">效果</th>
+                    <th style="padding: 0.5rem 1rem; text-align: left; border: 1px solid #ffe0b5;">首次使用</th>
+                </tr>
+                <tr style="background: #faf6f0;">
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5; font-weight: 500;">长剑 + 防反</td>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5;">召唤带有自动反击能力的长剑，可在格挡时反击敌人</td>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5;">优幻（第一章）</td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5; font-weight: 500;">蜻眼 + 空抓（绿线 + 白线）</td>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5;">获得昆虫视觉，同时凭空抓取敌人的远程攻击并反投回去</td>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5;">优幻（第一章）</td>
+                </tr>
+                <tr style="background: #faf6f0;">
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5; font-weight: 500;">十字治愈线（双线）</td>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5;">治愈肉体创伤，但无法补充流失的血液</td>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5;">优幻（第一章）</td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5; font-weight: 500;">金色钥匙 + 数据破解</td>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5;">解锁源力锁具、镣铐等束缚装置</td>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5;">优幻（第一章）</td>
+                </tr>
+                <tr style="background: #faf6f0;">
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5; font-weight: 500;">雷达 + 红外线</td>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5;">生物探测 + 热感应视野，区分敌我（蓝点为友，红点为敌）</td>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5;">希晞 + 优幻（第二章）</td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5; font-weight: 500;">迷彩线</td>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5;">身体颜色与周围环境融为一体，实现隐形</td>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5;">优幻（第二章）</td>
+                </tr>
+                <tr style="background: #faf6f0;">
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5; font-weight: 500;">火焰 + 长剑（赤红线 + 长剑）</td>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5;">召唤火焰长剑或制造火墙，对碳基生物有强效威慑</td>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5;">优幻（第二章）</td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5; font-weight: 500;">土转化（土色线 + 面包水线）</td>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5;">将泥土转化为红砖状营养膏，可食用补充能量与水分</td>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5;">优幻（第二章）</td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5; font-weight: 500;">内衣 + 外衣制作</td>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5;">快速生长出与身体完全贴合的灰蓝色公社制服，具有防寒等特性</td>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5;">优幻（第三章）</td>
+                </tr>
+                <tr style="background: #faf6f0;">
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5; font-weight: 500;">汽油 + 火焰</td>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5;">产生无温度火焰，用于焚烧被极寒症污染的衣物，火焰不烧伤附近的人但能销毁污染物</td>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5;">优幻（第三章）</td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5; font-weight: 500;">声纳线（单线探测）</td>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5;">以身体为中心散发隐形音波，通过回声感知水下环境及隐蔽目标</td>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5;">优幻（第三章）</td>
+                </tr>
+                <tr style="background: #faf6f0;">
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5; font-weight: 500;">冰冻 + 声波</td>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5;">冻结指定区域（如整条河面），同时生成定向声波操作器，可发射高频或低频杀伤声波</td>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5;">优幻（第三章）</td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5; font-weight: 500;">开锁 + 强拆</td>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5;">强行破坏锁具或结构性物体，用于救援被困同志</td>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5;">希晞指挥优幻（第三章）</td>
+                </tr>
+                <tr style="background: #faf6f0;">
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5; font-weight: 500;">回收 + 制造</td>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5;">将物体分解为数据流并重新制造成新物品，可快速制作简易数据线驱动器（但功能受限）</td>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5;">优幻（第四章）</td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5; font-weight: 500;">望远 + 闪光</td>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5;">远距离精准对焦目标眼部发动闪光致盲攻击</td>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5;">优幻（第四章）</td>
+                </tr>
+                <tr style="background: #faf6f0;">
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5; font-weight: 500;">烟雾 + 风向</td>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5;">在左手腕生成烟雾制造器，顺风释放与自然雾相同的人造浓雾，遮蔽敌人视线</td>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5;">优幻（第四章）</td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5; font-weight: 500;">挖掘 + 雷达</td>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5;">双手生成数据线挖掘爪，配合雷达网格视野进行精确地下挖掘</td>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5;">优幻（第四章）</td>
+                </tr>
+                <tr style="background: #faf6f0;">
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5; font-weight: 500;">束缚线（单线）</td>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5;">生成数据线绳索沿物体缠绕，将目标捆绑束缚</td>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5;">优幻（第四章）</td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5; font-weight: 500;">切割 + 止血</td>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5;">精准切割目标肢体同时止血，切割面无血液流出</td>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5;">优幻（第四章）</td>
+                </tr>
+                <tr style="background: #faf6f0;">
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5; font-weight: 500;">医疗 + 医疗</td>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5;">进行详细全面的医疗诊断和治疗，可处理复杂伤势（双线增强效果）</td>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5;">优幻（第五章）</td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5; font-weight: 500;">热胀 + 冷缩</td>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5;">同时操控远程目标的冷热温度，通过热胀冷缩使目标脱水、金属疲劳，或造成极端温差不适使其昏厥</td>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5;">优幻（第五章）</td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5; font-weight: 500;">制造 + 药剂</td>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5;">制作功能性药剂，如绿油油的吐真剂（极苦），迫使被审讯者开口</td>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5;">优幻（第六章）</td>
+                </tr>
+                <tr style="background: #faf6f0;">
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5; font-weight: 500;">扫描 + 打印</td>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5;">生成扫描头盔读取目标神经元信息，以纸质文档形式输出记忆和思维数据</td>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5;">优幻（第六章）</td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5; font-weight: 500;">粒子捕捉 + S + M + P + T</td>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5;">依次捕捉科学认知、个人意志、实践指数、技术放大系数四种粒子，凝聚成淡蓝色光球以制造新驱动器</td>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5;">优幻（第八章）</td>
+                </tr>
+                <tr style="background: #faf6f0;">
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5; font-weight: 500;">麻醉 + 针头</td>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5;">生成麻醉药剂并通过针头注射，用于手术前麻醉或制服危险目标</td>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5;">公社同志（第九章）</td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5; font-weight: 500;">喇叭 + 扩音</td>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5;">放大声音进行远距离广播，用于对俘虏喊话、管理囚犯和传递命令</td>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5;">佑国（第九章）</td>
+                </tr>
+                <tr style="background: #faf6f0;">
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5; font-weight: 500;">拍摄 + 录像</td>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5;">记录视频内容用于取证，山楂糖曾用于拍摄莱吉尔指导表演的证据</td>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5;">山楂糖（第十一章）</td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5; font-weight: 500;">透视 + 红外</td>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5;">穿透障碍物进行热感应观察，用于监视谈判过程</td>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5;">希晞（第十一章）</td>
+                </tr>
+                <tr style="background: #faf6f0;">
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5; font-weight: 500;">合体线 + 合体线</td>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5;">两人数据流融合成新的身体，进入数据神经元中转站大厅，共同操作同一身体</td>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5;">希晞+优幻（第十二章）</td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5; font-weight: 500;">解体 + 分离</td>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5;">将合体状态下的身体分解为数据流，分离回各自原本的身体</td>
+                    <td style="padding: 0.5rem 1rem; border: 1px solid #ffe0b5;">希晞（第十二章）</td>
+                </tr>
+            </table>
+            <p style="margin-top: 0.8rem; font-style: italic; color: #666;">（更多技能组合待后续章节补充）</p>
+        </div>
+
+        <h2>🤝 合体系统</h2>
+        <div class="section-card">
+            <p>合体是基于人机一体计划之后开发的数据线组合技术，其原理源自对<strong>多重人格</strong>现象的逆推：</p>
+            <ul style="margin-left: 1.5rem; margin-bottom: 0.5rem;">
+                <li>两人使用合体线后，身体变为鲜红色数据流相互纠缠融合成新身体</li>
+                <li>意识汇聚于<strong>数据神经元中转站</strong>（一座鲜红色大厅），可在此共同操纵新身体</li>
+                <li>每个人既是新身体的主人格，也是其副人格——所有人的意识同时存在</li>
+                <li>合体后可穿上<strong>数据线驱动甲</strong>，大幅增强战斗力</li>
+                <li>使用解体+分离线可恢复原状</li>
+            </ul>
+            <p>希晞对合体的诠释："团结就是力量，我们合体就是将力量团结在一起。"如果所有奴隶都团结起来，合体的力量就是无穷的，剥削者就只是纸老虎。</p>
+        </div>
+
+        <h2>📅 重要事件</h2>
+        <div class="section-card">
+            <p><strong>第七分社清洗事件</strong> —— 在另一条时间线上，第七分社（别号"四颗钻石"）遭到先锋军国派的全面清洗，仅剩约一万名同志搭乘最后一艘飞船逃亡。社长优幻与佑国同志决定将危机信息通过跨宇宙通讯发送到平行宇宙的另一位优幻处，全船耗尽能量坠入黑洞。</p>
+            <p><strong>命运赛相遇</strong> —— 在本时间线上，第七分社成员希晞在神权方举办的命运赛中与奴隶优幻相遇。驱动器意外绑定在优幻手上，两人合作在命运赛中幸存，并成功营救了布尔克等同志。优幻在希晞的引导下加入源力公社数据线社。</p>
+            <p><strong>冰河救援</strong> —— 优幻与希晞追踪到被关押在河流铁笼中的叶石政委、冰糖和爱德胜三位同志。优幻首次使用冰冻+声波组合，将整条河面冰封，用声波武器击杀了数条鳄鱼人，成功救出被困同志。</p>
+            <p><strong>傀儡师之战</strong> —— 优幻与希晞在森林中遭遇来自情脉协调圣所的莱吉尔。莱吉尔使用提线木偶类源力控制十余名同志，并设置了防护线陷阱。优幻与希晞配合使用烟雾、挖掘和束缚战术，从地下突破防线，切断了莱吉尔的双臂，解救了被控制的同志。</p>
+            <p><strong>龙骑士之战</strong> —— 优幻与希晞等同志在森林擂台遭遇龙思德·福龙骑士。龙思德身着重甲可一招斩杀20名参赛者，优幻使用热胀+冷缩组合远程操控其盔甲温度，使其在冷热交替中脱水昏厥。同时解放了被其奴役的乐热、乐冷兄妹，救出土龙一、水参三两名同志。</p>
+            <p><strong>莱吉尔审讯与罪证打印</strong> —— 优幻与希晞在魔方地道中对莱吉尔进行审讯。莱吉尔承认了情脉协调圣所垄断娱乐行业、迫害奴隶等罪行。优幻使用扫描+打印组合将莱吉尔神经元中的罪证信息全部打印成纸质档案——包括殴打奴隶、拆散母女、倾销成瘾药物、欠薪演员等罪行。希晞宣判她将面临公审死刑。</p>
+            <p><strong>W粒子爆发事件</strong> —— 优幻在制造驱动器时，其体内的负源力粒子与M粒子碰撞，意外诞生了全新的W粒子（集体意志）。红蓝光球激烈争斗后红色光球撕裂蓝色光球，红色光柱冲天而起持续一分多钟，整条地道被红光覆盖。20个红色W粒子驱动器被成功制作并在紧急状态下配发。该事件是日后公社彻底革命派与先锋军国派分裂的伏笔。</p>
+            <p><strong>人机一体计划实施</strong> —— 为治疗优幻的绝症并彻底摆脱创世神的身体控制，第七分社全体同志实施了绝密的人机一体计划。使用数据化线将意识（神经元）转换为数据元转移至驱动器内，身体被回收后由数据元完全重构。重构后的身体消除了所有旧伤痕和创世神留下的身体后门。具体理论详见<a href="consciousness-transfer.html">人机一体计划</a>页面。</p>
+            <p><strong>第一次谈判</strong> —— 夏微公主以测试为名用黑色火焰试探优幻，希晞使用透视+红外监视并及时冲入救下优幻。谈判结果：神权方无条件归还3000多具烈士遗骸。优幻成功扮演绝症病人，取得了夏微的信任。</p>
+            <p><strong>莱吉尔被迫指导表演</strong> —— 莱吉尔被佑国抓来指导优幻和希晞的贵族表演。山楂糖使用拍摄+录像记录下莱吉尔配合公社工作的全过程，以此作为日后令其贵族圈颜面扫地的把柄。莱吉尔开始意识到自己的思想正在被公社"腐化"。</p>
+            <p><strong>逃脱计划制定</strong> —— 第七分社制定调虎离山逃脱计划：要求神权方提供飞船，在地道下挖第二层，优幻将敌人引入地道后传送走并宣称星球即将爆炸，敌人追空船时引爆整个星球，同志们躲入人造陨石以超光速逃离。同时发现周边被四大神权势力包围（东：千年圣盾帝国、西：鬼镇圣仔团、南：因果弦剪者刺杀厅、北：武德教化宣讲团）。</p>
+            <p><strong>合体训练</strong> —— 为对抗高阶神赐源力者，希晞与优幻进行了首次合体训练。二人成功融合并操作同一身体，进入数据神经元中转站大厅。</p>
+            <p><strong>神权建立史课程</strong> —— 希晞为优幻讲授了神权建立史。从伊甸天国起源到宇宙大一统，揭示了神赐源力的修炼时间剥削机制——你越努力修炼，创世神就越强大。这是古往今来起义失败的根源。</p>
+            <p><strong>宇宙四大星域解析</strong> —— 希晞为优幻讲解了宇宙地缘：南神（神权核心）、北混（流放混沌）、西帝（公社发源/殖民地）、死亡地（环境恶劣的东区）。优幻坚持认为死亡地可以被改造，这预言了未来数据线社东进长征至东革区的命运。</p>
+            <p><strong>源力劳动价值论教育</strong> —— 贺阳向罢工的俘虏阐述了源力的本质：源力来源于劳动力而非修炼，修炼者吸收的是劳动外溢。通过劳动改造将剥削者多余的源力回归自然，使源力成为真正的公共资源。</p>
+            <p><strong>舟亢叛徒真相揭晓</strong> —— 希晞向优幻坦白了她前警卫员舟亢的叛变经过：因M粒子长期战斗突变成战斗特化型粒子，骄傲自大、向希晞示爱被拒，最终背叛导致三万名同志死亡。优幻手腕上的驱动器正是舟亢的。希晞一直为此自责。</p>
+            <p><strong>混入运尸船的危机</strong> —— 叛徒舟亢接受了混沌卵实验获得混沌力量，混入三千多具烈士遗骸的运尸船中，计划突袭地道。春微研究员感知到了混沌生命的存在，准备提醒优幻。</p>
+            <p><strong>创世神的宇宙阴谋揭露</strong> —— 创世神亲自揭露了他的多重伪装：他是公社最初创始人之一，伪装成第二任总社长将链路社长（提出W粒子者）打成反革命丢入黑洞。他现在正伪装成志齿社长（银色公社服、齿轮驱动器）参加总部会议。他计划在北区培养混沌真神、在南区发动永恒圣战、在西帝利用M粒子使革命褪色。这是全书最大的世界观反转之一。</p>
+            <p><strong>舟亢的过去揭露</strong> —— 舟亢在运尸船中回忆了自己的堕落史：小资家庭出身在校收保护费打死同学，被捕入狱。公社劫狱后加入但始终无法认同纪律，认为"规矩是对人的束缚"，享受虐杀投降者。体内存在第二层混沌卵，真正的混沌生物正在吸收他的养分。</p>
+            <p><strong>春微基因编辑演示</strong> —— 春微在运尸船上用老鼠测试混沌战斗力。将DNA链条打入老鼠体内，制造出半人半兽怪物蛮序。蛮序被舟亢轻松以装甲化形态杀死（拔桡骨做锤子）。春微确认了舟亢体内第二层混沌卵的存在。</p>
+            <p><strong>冰糖的过去</strong> —— 冰糖在树冠上回忆起自己的身世：在雪原与爷爷一起猎鹰，误杀骑士老爷的老鹰导致爷爷被召入城堡。爷爷留下遗忘药水对抗奴隶卷轴。冰糖喝下后忘记原名，翻越雪山成为工人，后加入数据线社。</p>
+            <p><strong>链路社长的性格</strong> —— 希晞透露，数据线社初代社长链路与优幻性格极其相似：做事前唯唯诺诺，做起事来认真无比。</p>
+            <p><strong>第二次谈判</strong> —— 优幻与春微谈判。春微同意派记者采访俘虏拍纪录片。优幻拒绝透露人机一体技术细节。春微表示"去跟你们公社其他派别谈"。3000烈士遗骸正式归还。</p>
+            <p><strong>运尸船伏击战</strong> —— 舟亢突袭运尸船，率先攻击叶石和爱德胜。火焰和冰冻对舟亢均无效。优幻个人主义冲锋被希晞批评。二人合体为驱动先锋与舟亢交战，数据身体假死能力救了一命。</p>
+            <p><strong>混沌卵破蛹</strong> —— 舟亢在战斗中体内混沌卵破蛹而出，真正的混沌真神诞生，混合所有物种特征飞向北混。舟亢只剩皮囊被创世神回收，灌入黑洞后融合穿越者灵魂，植入系统后丢向四大星域中央星球。</p>
+            <p><strong>驱动先锋初登场</strong> —— 希晞与优幻首次以驱动先锋形态实战。数据驱动甲、数据驱动枪、量子凭空制造武器、大脑分散全身等特性得到验证。</p>
+            <p><strong>烈士追悼仪式</strong> —— 第七分社为三千名烈士举行追悼会。行驱动器礼（左肩缠红色数据线，右臂平放胸前与左肩五角星平行）。优幻在仪式上产生了偶然性与必然性的哲学思考。</p>
+            <p><strong>莱吉尔毒杀阴谋</strong> —— 莱斯德与教会修女长交易以毒蛋糕换取免税权。莱天真准备毒果汁争夺继承权。两种无色无味的毒素混合后变为剧毒。管家收买彤布（莱吉尔的代罚童）送毒食入地道。</p>
+            <p><strong>人类分类学课程</strong> —— 希晞为优幻讲授人类与亚人类分类体系。揭示种族分化是创世神为转移阶级矛盾而制造的。</p>
+            <p><strong>教会新闻记者出发</strong> —— 教会新闻分部的摄影师石十成和记者岛珠希抽中红签，乘飞船前往命运大赛星采访异教徒。</p>
+            <p><strong>数据盾构机与地心挖掘</strong> —— 第七分社启动打穿地心计划，使用数据盾构机从下地幔向液态外核挖掘（温度达3500℃）。同时进行了地核物理学和文明生存条件的讨论。</p>
+            <p><strong>彤布冤屈真相</strong> —— 彤布在飞船上向记者讲述了当年被莱吉尔老师陷害的真相，石十成和岛珠希承诺将真相公之于众。</p>
+            <p><strong>公社内部体制全面解析</strong> —— 冰糖和希晞向优幻系统讲解了公社内部状况：一体机vs分体机的技术路线矛盾、公社总部的官僚垄断、二十级天文选举制度与四级基层补充、八部制度、工资与军衔制度争议、公社宇宙联合体愿景。</p>
+            <p><strong>第三次谈判</strong> —— 优幻与秋微就命运观和选举制度展开意识形态辩论。优幻以三重代表制和亲属回避制度回应秋微对血缘政治的质疑，赢得辩论。</p>
+            <p><strong>俘虏去留意愿</strong> —— 044号（柿子枪）等5名俘虏自愿留下参加公社，精神面貌远超其他84名选择离开的俘虏。</p>
+            <p><strong>系统持有者夺舍事件</strong> —— 088号（转生舟亢）在探视中冲向优幻企图夺舍，被W粒子和社会关系线击败。优幻缴获剩余修炼率3000%的神赐源力核心机（系统）。</p>
+            <p><strong>社会关系线理论揭示</strong> —— 希晞揭示四维宇宙和社会关系线原理：人的记忆可以被掠夺，但社会关系无法被掠夺。</p>
+            <p><strong>彤布毒杀案</strong> —— 彤布携带毒蛋糕和毒果汁被水参三查出。莱吉尔得知父亲和弟弟都要毒死她后精神崩溃。</p>
+            <p><strong>地心打通</strong> —— 数据盾构机到达铁熔地核，隧道稳定，随时可投放数据炸弹。</p>
+            <p><strong>源力版权法课程</strong> —— 希晞用翻花绳教授源力版权垄断理论：先垄断者收版权税、个人崇拜捧红人、源力的双重性。</p>
+            <p><strong>朝冰星冬税事件</strong> —— 穿越者胡凡靠系统成为星主挪用冬税，冬微奉司神官长之命前往处理。</p>
+            <p><strong>米米尔袭击命运大赛星</strong> —— 天使团长米米尔因路法失联和红光柱亲临。冰糖阻击未果疑似牺牲。优幻迷晕战友独自携数据炸弹前往地心。希晞追向地底阻止。</p>
+            <p><strong>冬微分赃大会</strong> —— 朝冰星贵族瓜分胡凡绝户。胡凡被公开殴打（一巴掌100创世币）后送往冬微私人领域与穿越者共同劳动。</p>
+            <p><strong>W粒子集体治愈绝症</strong> —— 驱动先锋将W粒子分散链接至多名负源力者同志（轮胎社谭伦铜等），蓝光转红光，负源力绝症被集体治愈。这是W粒子首次展现超越M粒子的医疗能力。</p>
+        </div>
+
+        <h2>📜 发展历史</h2>
+        <div class="section-card">
+            <p>数据线社是源力公社的核心技术组织之一，走W粒子技术路线。该社坚信人造源力的力量可以超越神赐源力，致力于通过数据线驱动器技术武装公社成员，从神权手中解放人类。</p>
+            <p>社内成员在未来可能走向不同的路线选择——W粒子与M粒子的分歧是技术路线之争，不是社与社之间的对立。具体谁走哪条路，由时间线发展决定。</p>
+            <p>数据线社下辖多个分社，其中第七分社（四颗钻石）是小说故事主线所聚焦的分社。分社成员希晞在命运赛中招募了新成员优幻。优幻在冰河救援中救出了叶石政委等同志，并进一步在地道区域击败了情脉协调圣所的莱吉尔。随着同志们的陆续汇合，第七分社正在地道中建设钢铁堡垒，准备迎接神权方的进一步围剿。</p>
+        </div>
+
+        <h2>👤 重要人物</h2>
+        <div class="section-card">
+            <h3>链路社长</h3>
+            <p>数据线社的创始人/第二任社长。性格与优幻极其相似——做事前唯唯诺诺，做起事来认真无比。他是提出W粒子（集体意志）概念的第一人，主张人造源力应建立在集体意志之上。</p>
+            <p>在竞争公社总社长时与创世神（伪装者）针锋相对。创世神伪装成第二任总社长，捏造罪名将链路打成反革命，丢入黑洞杀害。数据线社的其他同志随后被安排到最危险的任务区域。</p>
+        </div>
+
+        <h2>🏛️ 特色制度</h2>
+        <div class="section-card">
+            <p>（待补充）</p>
+        </div>
+
+        <!-- 新增：总部分社公社区 -->
+        <h2>🏘️ 总部分社公社区</h2>
+        <div class="section-card">
+            <p>（待补充）</p>
+        </div>
+
+        <!-- 新增：各地要塞 -->
+        <h2>🏰 各地要塞</h2>
+        <div class="section-card">
+            <p>（待补充）</p>
+        </div>
+
+        <h2>📂 下属分社</h2>
+        <div class="section-card">
+            <ul class="tree-list">
+                <li>第一分社（未设定）</li>
+                <li>第二分社（未设定）</li>
+                <li>第三分社（未设定）</li>
+                <li>第四分社（未设定）</li>
+                <li>第五分社（未设定）</li>
+                <li>第六分社（未设定）</li>
+                <li><a href="seventh-branch-four-diamonds.html">第七分社（四颗钻石）</a>（已设定）</li>
+                <li>其他分社（未设定）</li>
+            </ul>
+        </div>
+
+        <p><a href="../worldview.html" class="back-link">← 返回世界观目录</a> · <a href="../index.html">返回首页</a></p>
+    </div>
+    <div class="footer">
+        源力公社 · 集体版权 · 设定持续更新中
+    </div>
+</div>
+</body>
+</html>

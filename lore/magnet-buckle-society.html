@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>磁铁代扣社 · 源力公社</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif;
+            background: #fef9f0; color: #2c2c2c; line-height: 1.7; padding: 2rem 1rem;
+        }
+        .container {
+            max-width: 900px; margin: 0 auto; background: white; border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); overflow: hidden; border: 1px solid #ffe0b5;
+        }
+        .header { background: #b91c1c; color: white; padding: 2rem 2rem 1.5rem; text-align: center; }
+        .header h1 { font-size: 2rem; letter-spacing: 1px; margin-bottom: 0.5rem; }
+        .header p { font-size: 1rem; opacity: 0.9; }
+        .content { padding: 2rem; }
+        h2 { color: #b91c1c; margin: 1.8rem 0 1rem; border-bottom: 2px solid #ffe0b5; padding-bottom: 0.3rem; }
+        h2:first-of-type { margin-top: 0; }
+        h3 { color: #a51a1a; margin: 1.5rem 0 0.8rem; }
+        .section-card { background: #faf6f0; padding: 1.5rem 2rem; border-radius: 16px; margin: 1.5rem 0; }
+        .note-box { background: #fff3e0; border-left: 5px solid #b91c1c; padding: 1rem 1.5rem; border-radius: 8px; margin: 1.5rem 0; }
+        .tree-list { list-style: none; padding-left: 0; font-family: 'SF Mono', 'Consolas', monospace; }
+        .tree-list ul { list-style: none; padding-left: 2rem; border-left: 1px dashed #d4b89c; margin-left: 0.5rem; }
+        .tree-list li { position: relative; padding-left: 0.5rem; margin: 0.3rem 0; }
+        .tree-list li::before { content: "├── "; color: #a51a1a; }
+        .tree-list li:last-child::before { content: "└── "; }
+        .back-link { display: inline-block; margin-top: 2rem; color: #b91c1c; text-decoration: none; font-weight: 500; }
+        .back-link:hover { text-decoration: underline; }
+        .footer { background: #f0ece4; text-align: center; padding: 1.5rem; font-size: 0.85rem; color: #5e5e5e; border-top: 1px solid #ffe0b5; }
+        a { color: #b91c1c; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        @media (max-width: 600px) { .header h1 { font-size: 1.5rem; } .content { padding: 1.5rem; } }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>🧲 磁铁代扣社 <span style="opacity: 0.8; font-size: 1.2rem;">· 总部</span></h1>
+        <p>源力公社 · 磁铁系能力组织</p>
+    </div>
+    <div class="content">
+        <div class="note-box">
+            📌 本页面为磁铁代扣社总部设定档案。代扣之名，源自两极磁铁连接处的形似带扣的装置。具体细节待委员会补充完善。
+        </div>
+
+        <h2>📁 组织概况</h2>
+        <div class="section-card">
+            <p><strong>核心理念：</strong>以量子磁铁的两极分离为底层逻辑——南极（形态极）决定武器形态，北极（属性极）决定能量属性。两极通过代扣装置连接，既可自由切换又可独立组合。</p>
+            <p><strong>标志/象征：</strong>量子磁铁 · 两极代扣 · N/S极标识</p>
+            <p><strong>技术特点：</strong>量子磁铁打破普通磁铁物理形状与磁极的绑定关系，实现形态与属性的彻底解耦。掰弯（条形→U形）和拉直（U形→条形）是核心操作，分别对应近战与远程两种战斗姿态。</p>
+        </div>
+
+        <h2>⚙️ 驱动器类型</h2>
+        <div class="section-card">
+            <p><strong>量子磁铁驱动器</strong> —— 本社专属驱动器，佩戴于手腕处，以代扣装置连接两极。</p>
+            <p><strong>核心机制：两极分离</strong></p>
+            <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+                <li><strong>南极（形态极）</strong>——决定武器形态。条形模式下为近战握把，可塑形为剑、刀、斧、锤；U形模式下为远程握把，可塑形为弓、弩。</li>
+                <li><strong>北极（属性极）</strong>——决定能量属性。独立切换火、冰、雷、水、风等元素，附加于当前武器形态上。</li>
+                <li><strong>代扣装置</strong>——连接两极的枢纽，确保两极同时存在且保持磁连接。一旦断开，武器瞬间失效，磁铁回到初始条形状态。</li>
+                <li><strong>掰弯/拉直</strong>——切换战斗姿态的核心动作。掰弯（条形→U形）切换远程，拉直（U形→条形）切换近战。切换过程有短暂硬直，但成功切换后第一击获得形态切换强化效果。</li>
+            </ul>
+        </div>
+
+        <h2>🔧 技能种类</h2>
+        <div class="section-card">
+            <p><strong>条形模式（近战）：</strong></p>
+            <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+                <li><strong>剑</strong>——均衡劈砍，攻速和伤害平衡。</li>
+                <li><strong>刀</strong>——高速斩击，攻速快但单发伤害较低。</li>
+                <li><strong>斧</strong>——沉重劈砍，高伤害但攻速慢。</li>
+                <li><strong>锤</strong>——钝器冲击，可破防和击退。</li>
+            </ul>
+            <p><strong>U形模式（远程）：</strong></p>
+            <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+                <li><strong>弓</strong>——拉开弓弦射箭，蓄力可提升伤害和射程。</li>
+                <li><strong>弩</strong>——快速射击弩箭，射速快但单发伤害较低。</li>
+                <li><strong>发射物</strong>——远程攻击射出的弹丸，形状分为条形弹（穿透）、环形弹（回旋）、瓦形弹（碎裂）、圆片弹（弹射）。发射物形状仅为视觉差异和打击感，不影响伤害判定，所有功能效果由北极属性决定。</li>
+            </ul>
+            <p><strong>北极属性（通用）：</strong></p>
+            <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+                <li><strong>火</strong>——灼烧持续伤害。</li>
+                <li><strong>冰</strong>——减速/冻结。</li>
+                <li><strong>雷</strong>——麻痹/感电。</li>
+                <li><strong>水</strong>——冲击/湿润。</li>
+                <li><strong>风</strong>——切割/击退。</li>
+            </ul>
+            <p><strong>自由组合示例：</strong>条形·剑+火=火焰长剑近战劈砍；条形·锤+雷=雷电战锤破防；U形·弓+冰=寒冰弓射出寒冰箭；U形·弩+风=风暴弩射出风刃弩箭。</p>
+        </div>
+
+        <h2>👤 重要人物</h2>
+        <div class="section-card">
+            <p>（待补充）</p>
+        </div>
+
+        <h2>📂 下属分社</h2>
+        <div class="section-card">
+            <ul class="tree-list">
+                <li>第一分社（未设定）</li>
+                <li>第二分社（未设定）</li>
+                <li>其他分社（未设定）</li>
+            </ul>
+        </div>
+
+        <p><a href="../worldview.html" class="back-link">← 返回世界观目录</a> · <a href="../index.html">返回首页</a></p>
+    </div>
+    <div class="footer">
+        源力公社 · 集体版权 · 设定持续更新中
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>命运赛 · 源力公社</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif;
+            background: #fef9f0;
+            color: #2c2c2c;
+            line-height: 1.7;
+            padding: 2rem 1rem;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            overflow: hidden;
+            border: 1px solid #ffe0b5;
+        }
+        .header {
+            background: #b91c1c;
+            color: white;
+            padding: 2rem 2rem 1.5rem;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 2rem;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        .content {
+            padding: 2rem;
+        }
+        h2 {
+            color: #b91c1c;
+            margin: 1.8rem 0 1rem;
+            border-bottom: 2px solid #ffe0b5;
+            padding-bottom: 0.3rem;
+        }
+        h2:first-of-type {
+            margin-top: 0;
+        }
+        h3 {
+            color: #a51a1a;
+            margin: 1.5rem 0 0.8rem;
+        }
+        .section-card {
+            background: #faf6f0;
+            padding: 1.5rem 2rem;
+            border-radius: 16px;
+            margin: 1.5rem 0;
+        }
+        .highlight-box {
+            background: #fff3e0;
+            border-left: 5px solid #b91c1c;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            color: #b91c1c;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        .footer {
+            background: #f0ece4;
+            text-align: center;
+            padding: 1.5rem;
+            font-size: 0.85rem;
+            color: #5e5e5e;
+            border-top: 1px solid #ffe0b5;
+        }
+        a {
+            color: #b91c1c;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 600px) {
+            .header h1 { font-size: 1.5rem; }
+            .content { padding: 1.5rem; }
+            .section-card { padding: 1.2rem 1rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>⚔️ 命运赛</h1>
+        <p>神权方选拔制度 · 残酷的杀戮竞赛</p>
+    </div>
+    <div class="content">
+        <div class="highlight-box">
+            <p>📌 "你已不是参赛者，你已成为全民公敌，你是邪恶的异教徒，价值一千万积分。"</p>
+            <p style="text-align: right;">—— 命运赛终端对优幻的悬赏通告</p>
+        </div>
+
+        <h2>📋 赛制概述</h2>
+        <div class="section-card">
+            <p>命运赛是神权方举办的大型选拔竞赛。参赛者主要为奴隶、罪犯和底层民众，被神权方以"给予改变命运的机会"为名驱赶入场。实际上，这是一场残酷的杀戮淘汰——大多数参赛者都会在比赛中丧命，只有极少数人能够生存并获得晋升。</p>
+            <p><strong>比赛时长：</strong>24小时</p>
+            <p><strong>比赛场地：</strong>通常在一片封闭的森林中进行，场地内有各种地形和隐蔽点。</p>
+            <p><strong>参赛方式：</strong>奴隶们在监工的押送下排队进入"命运赛大厅"，领取源力技能后被传送至比赛地点。</p>
+            <p><strong>晋级规则：</strong>在比赛结束前30分钟，大天使会广播通告。排名前20的参赛者直接晋级下一轮。剩余人员将由飞船遣送回原本的星球——意味着参赛者来自不同的星球/星域。</p>
+            <p><strong>星际背景：</strong>命运赛的参赛者不仅来自同一星球，而是从多个星球/星域征召而来。比赛结束后，未被淘汰的参赛者会被飞船遣返回各自的星球。</p>
+        </div>
+
+        <h2>🎯 源力技能领取</h2>
+        <div class="section-card">
+            <p>参赛者进入大厅后，需要通过一台机器领取自己的"源力技能"。然而，技能分配并不公平：</p>
+            <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+                <li><strong>优秀技能全部被垄断</strong>——有权有势的参赛者早已通过后台操作获得了强力技能</li>
+                <li><strong>底层参赛者只能领取烂技能</strong>——如"塑料剑""盘子""旋转"等毫无战斗力的技能</li>
+                <li><strong>源力检测值过低者无法领取技能</strong>——如优幻的源力检测值为"负无穷大"，机器直接显示红字拒绝发放</li>
+            </ul>
+        </div>
+
+        <h2>💀 积分与悬赏系统</h2>
+        <div class="section-card">
+            <p>参赛者的手腕终端会显示积分信息。击杀其他参赛者可以获得积分，积分越高排名越靠前。但这一系统对源力公社成员极其不利：</p>
+            <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+                <li>一旦被系统识别为"异教徒"（源力公社成员），将自动成为<strong>全民公敌</strong></li>
+                <li>异教徒的悬赏金额极高，例如优幻被悬赏<strong>一千万积分</strong></li>
+                <li>高额悬赏会吸引所有参赛者前来追杀</li>
+            </ul>
+            <p><strong>赛后积分兑换：</strong>比赛结束后，排名前20的参赛者可将积分兑换奖品。排名20名之后的参赛者（无论死活）可将积分按10:1兑换为创世币。阵亡人员的家属可获得三年免税。</p>
+        </div>
+
+        <h2>👼 天使系统</h2>
+        <div class="section-card">
+            <p>命运赛由天使系统负责运营管理。</p>
+            <h3>路法天使</h3>
+            <p>命运赛的现场主持天使。能通过翅膀包裹身体、伴随正十字闪光进行瞬间移动。声音具有穿透全场的神圣效果。</p>
+            <p><strong>职责：</strong></p>
+            <ul style="margin-left: 1.5rem; margin-bottom: 0.5rem;">
+                <li>宣布比赛开始与结束</li>
+                <li>主持积分兑换和证书颁发</li>
+                <li>接收神官（如冬微）的请求并进行交易</li>
+                <li>掌握<a href="conversion-camp.html">皈依营</a>的分配权，可指定异教徒送入特定皈依营星球</li>
+                <li>在赛后发布追加任务（如清剿异教徒）</li>
+            </ul>
+            <p><strong>圣餐：</strong>路法可用翅膀上的羽毛变出餐桌和圣餐。圣餐中掺有特殊兴奋药剂，参赛者吃得越多就越狂热，自发为神服务。这是一种操控参赛者情绪的卑劣手段。</p>
+        </div>
+
+        <h2>📺 直播与解说系统</h2>
+        <div class="section-card">
+            <p>命运赛全程由神权方进行直播。高空中部署有隐形摄像头，可实时追踪每一位参赛者的动向。</p>
+            <p><strong>主播：</strong>身穿神权方风格服装、佩戴"神圣耳机"的专职解说员。主播以半开玩笑的语气解说参赛者的死亡，调动观众情绪，并随时接收来自神官们的通讯指令。当冬微神官直接连线要求切换优幻的直播通道时，主播"瞬间冷汗直流"，可见神官对直播系统拥有最高干预权限。</p>
+            <p><strong>直播画面：</strong>主播身后的大屏幕可随时切换显示任何参赛者的实时画面。系统支持画中画、分屏、特写放大等多种播控功能。</p>
+            <p><strong>热门冠军：</strong>直播系统会标注"热门冠军人选"，例如鳄鱼人大王子、情脉协调圣所的莱吉尔、龙思德·福龙骑士等。观众可直观了解哪些参赛者最受关注。</p>
+            <p><strong>天使广播：</strong>比赛的重要节点由天使进行全场广播通告。已知会在比赛结束前30分钟通报剩余时间和晋级规则。天使广播系统覆盖整个赛场，所有参赛者都能听到。</p>
+        </div>
+
+        <h2>🎯 赛后追加任务</h2>
+        <div class="section-card">
+            <p>比赛正式结束后，主持天使可能会发布追加任务。例如路法天使曾发布"清剿地下异教徒"的追加任务，承诺完成任务者也可获得认证书——而认证书上附加了许多人渴望的社会权利。</p>
+            <p>为了激励参赛者接受任务，天使会提供掺杂兴奋药剂的"圣餐"，使参赛者陷入狂热状态，自发为神服务。</p>
+            <p>追加任务通常是危险的，且与<a href="conversion-camp.html">皈依营</a>系统相衔接——如果异教徒能在追加任务中存活，天使将与之谈判释放人质事宜，然后将异教徒送入皈依营。</p>
+            <p><strong>追加任务失败：</strong>在第七章的追加任务中，路法天使派出的400余名参赛者（含50名精英元素使用者）被地道公社成员以零伤亡全歼。路法因此颜面尽失，开始考虑与异教徒谈判。他召唤了无数普通天使将地道团团围住，禁止任何人靠近。事后冬微神官前来嘲讽他的失败，并提醒他履行之前的约定。</p>
+            <p><strong>天使正规军：</strong>当追加任务也无法消灭异教徒时，天使可能会召唤天使正规军进行围剿。但路法最终选择了谈判而非正规军介入，暗示天使系统内部可能存在资源或权限限制。</p>
+        </div>
+
+        <h2>🎲 赌注系统</h2>
+        <div class="section-card">
+            <p>命运赛的一大特色是贯穿全程的公开赌注系统。观众可使用<strong>创世币</strong>下注。</p>
+            <p><strong>货币：</strong>创世币，神权方的通行货币。</p>
+            <p><strong>赌注形式：</strong></p>
+            <ul style="margin-left: 1.5rem; margin-bottom: 0.5rem;">
+                <li><strong>生死赌</strong>——赌某位参赛者能否活过比赛（如优幻：选"是"或"否"，每注1万创世币）</li>
+                <li><strong>时间赌</strong>——赌异教徒会在多长时间内被特定热门选手杀死（如莱吉尔：一分钟/五分钟/十分钟，每注5000创世币）</li>
+                <li>赌注实时累积显示在屏幕上，观众可以随时加注</li>
+            </ul>
+            <p>如果赌中，观众"可能就会从流浪汉变为一个大富翁"，可见赔率极高。</p>
+        </div>
+
+        <h2>💔 社会影响</h2>
+        <div class="section-card">
+            <p>命运赛的赌注系统对神权方社会造成了深远的破坏。无数家庭因赌输了家当而家破人亡：</p>
+            <ul style="margin-left: 1.5rem; margin-bottom: 0.5rem;">
+                <li>许多观众押上了全部家当赌优幻等异教徒会死，结果血本无归</li>
+                <li>"这是我的救命钱，我怎么能这么糊涂呢"——输光救命钱的人不计其数</li>
+                <li>赌注越滚越大，富人愈富、穷人愈穷，进一步加剧社会不平等</li>
+            </ul>
+            <p>正如小说中所述："这场命运赛，又导致了多少家庭家破人亡呢？没人知道。"</p>
+        </div>
+
+        <h2>🔗 镣铐系统</h2>
+        <div class="section-card">
+            <p>被识别为异教徒的参赛者（如希晞、布尔克等）手上会戴着<strong>特制源力镣铐</strong>，限制其行动能力和源力使用。镣铐可通过数据线驱动器的"金色钥匙线 + 数据破解线"组合解锁。</p>
+        </div>
+
+        <h2>🏆 已知参赛者</h2>
+        <div class="section-card">
+            <ul style="margin-left: 1.5rem;">
+                <li><strong>优幻</strong> —— 源力检测值负无穷大，未能领取技能。后绑定数据线驱动器，反杀多名追杀者。被悬赏一千万积分。</li>
+                <li><strong>希晞</strong> —— 源力公社社员，被戴上源力镣铐。虽失去驱动器但凭借战术经验坚持战斗。</li>
+                <li><strong>布尔克</strong> —— 源力公社社员，受重伤后获救。</li>
+                <li><strong>戴尔沃尔夫</strong> —— 狼人首领，带手下参赛追杀异教徒。</li>
+                <li><strong>德古奈特</strong> —— 血族亲王，带手下参赛追杀异教徒。</li>
+                <li><strong>莱吉尔</strong> —— 情脉协调圣所神阀家族的明星大小姐，热门冠军人选。使用提线木偶类控制源力，被优幻与希晞联手击败，双臂被切除。</li>
+                <li><strong>龙思德·福龙</strong> —— 神权方骑士，身着重型龙纹板甲。在森林中设擂台打劫参赛者，一招斩杀20人。被优幻用热胀冷缩战术击败，倒吊在自己的笼子里。</li>
+                <li><strong>鳄鱼人大王子</strong> —— 鳄鱼人王国的王子，热门冠军人选之一，在冰河中被优幻的声波武器杀死。</li>
+            </ul>
+        </div>
+
+        <h2>⚠️ 神官监督</h2>
+        <div class="section-card">
+            <p>命运赛由神权方各级神官监督进行。神官不直接参与普通参赛者的争斗，但有权介入处理异教徒。</p>
+            <p>例如<a href="winter-priest-corps.html">冬之神官团</a>的冬微神官就曾在命运赛中亲自出手追杀优幻等人。此外她还有权直接干预直播系统，要求主播切换特定参赛者的直播通道，并影响赌注的开设。</p>
+        </div>
+
+        <p><a href="../worldview.html" class="back-link">← 返回世界观目录</a> · <a href="../index.html">返回首页</a></p>
+    </div>
+    <div class="footer">
+        源力公社 · 集体版权 · 设定持续更新中
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中象社 · 源力公社</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif;
+            background: #fef9f0;
+            color: #2c2c2c;
+            line-height: 1.7;
+            padding: 2rem 1rem;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            overflow: hidden;
+            border: 1px solid #ffe0b5;
+        }
+        .header {
+            background: #b91c1c;
+            color: white;
+            padding: 2rem 2rem 1.5rem;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 2rem;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+        .header p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        .content {
+            padding: 2rem;
+        }
+        h2 {
+            color: #b91c1c;
+            margin: 1.8rem 0 1rem;
+            border-bottom: 2px solid #ffe0b5;
+            padding-bottom: 0.3rem;
+        }
+        h2:first-of-type {
+            margin-top: 0;
+        }
+        .section-card {
+            background: #faf6f0;
+            padding: 1.5rem 2rem;
+            border-radius: 16px;
+            margin: 1.5rem 0;
+        }
+        .tree-list {
+            list-style: none;
+            padding-left: 0;
+            font-family: 'SF Mono', 'Consolas', monospace;
+        }
+        .tree-list ul {
+            list-style: none;
+            padding-left: 2rem;
+            border-left: 1px dashed #d4b89c;
+            margin-left: 0.5rem;
+        }
+        .tree-list li {
+            position: relative;
+            padding-left: 0.5rem;
+            margin: 0.3rem 0;
+        }
+        .tree-list li::before {
+            content: "├── ";
+            color: #a51a1a;
+        }
+        .tree-list li:last-child::before {
+            content: "└── ";
+        }
+        .note-box {
+            background: #fff3e0;
+            border-left: 5px solid #b91c1c;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+        .badge {
+            display: inline-block;
+            background: #b91c1c;
+            color: white;
+            padding: 0.2rem 1rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            margin-left: 1rem;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            color: #b91c1c;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        .footer {
+            background: #f0ece4;
+            text-align: center;
+            padding: 1.5rem;
+            font-size: 0.85rem;
+            color: #5e5e5e;
+            border-top: 1px solid #ffe0b5;
+        }
+        a {
+            color: #b91c1c;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 600px) {
+            .header h1 { font-size: 1.5rem; }
+            .content { padding: 1.5rem; }
+            .section-card { padding: 1.2rem 1rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>♟️ 中象社 <span style="opacity: 0.8; font-size: 1.2rem;">· 总部</span></h1>
+        <p>源力公社 · 象棋系能力组织</p>
+    </div>
+    <div class="content">
+        <div class="note-box">
+            📌 本页面为中象社总部设定档案。具体细节待委员会补充完善。
+        </div>
+
+        <h2>📁 组织概况</h2>
+        <div class="section-card">
+            <p><strong>核心理念：</strong>以棋为兵，以盘为疆，在规则中演练战争与革命。</p>
+            <p><strong>标志/象征：</strong>中国象棋棋盘 · 红黑对峙</p>
+        </div>
+
+        <h2>⚙️ 驱动器类型</h2>
+        <div class="section-card">
+            <p><strong>中象驱动器</strong> —— 本社专属驱动器，将中国象棋的棋局规则映射为实战力量。</p>
+            <p><strong>基础操作逻辑：</strong>点击驱动器上对应的棋子，角色的身体动作就会被该棋子的走法规则驱动。每一枚棋子对应一种战斗方式，用过的棋子会被"吃掉"，需等待恢复。</p>
+            <p><strong>已知棋子用法：</strong></p>
+            <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+                <li><strong>车</strong>——向前直冲，直线攻击。速度快但轨迹单一，容易被预判和侧身躲避。</li>
+                <li><strong>炮</strong>——将自身变为炮弹高速旋转撞向目标。可切换子模式：<strong>散弹</strong>（撞击后爆炸散射，范围大但威力分散）。炮需要"炮架"才能发挥最大威力（隔一子打一子）。</li>
+                <li><strong>马</strong>——走"日"字形轨迹，可绕过障碍物攻击。</li>
+                <li><strong>象/相</strong>——防御型走法，田字格轨迹，多用于防守和阵地战。</li>
+                <li><strong>士/仕</strong>——斜线短距移动，适合近身缠斗和护卫。</li>
+                <li><strong>兵/卒</strong>——基础步法，过河后可横移， versatility高。</li>
+            </ul>
+            <p><strong>特殊状态：</strong>棋盘总行18（-3~14），总列43（-20~22），对称轴位于行5.5、列1。包含三十六计、聊斋、影子、虎穴、缴获、天兵、翔、悬、红线等特殊区域与棋子。详细棋盘布局请参阅 <a href="yuanli-chess-full.html">源力象棋全面版</a>。</p>
+        </div>
+
+        <h2>🔧 技能种类</h2>
+        <div class="section-card">
+            <p>中象驱动器的战斗方式遵循中国象棋的走法规则：</p>
+            <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+                <li><strong>基础规则：</strong>每一枚棋子执行一次走法后即被"吃掉"，不可连续使用同一棋子。需要等待该棋子恢复后才能再次使用。</li>
+                <li><strong>战术组合：</strong>可以使用多枚棋子进行连续攻击或防守，形成"棋谱"式的连招。</li>
+                <li><strong>炮架机制：</strong>炮的核心特色是"隔一子打一子"。如果己方或敌方中间有棋子充当炮架，炮的威力会大幅提升。</li>
+                <li><strong>局面控制：</strong>优秀的棋手可以通过对棋子的选择来预判和限制对手的行动路线。</li>
+            </ul>
+        </div>
+
+        <h2>👤 重要人物</h2>
+        <div class="section-card">
+            <h3>🌟 齐良</h3>
+            <p><strong>身份：</strong>中象社正式社员</p>
+            <p><strong>背景：</strong>原为神权方的奴隶，被迫给人当"桌子"——用身体支撑棋盘供贵族下棋。因连续三天不给水不给食物，体力不支导致棋盘散落，遭到毒打。后被奴隶头目刁难，被迫清洗堆积如山的脏衣服。因洗衣机房超负荷爆炸被栽赃为"凶手"，经神法官宣判后被送往命运大赛星作为猎物供人狩猎。在命运赛中与米米尔对战，展示了中象驱动器的实战用法。</p>
+            <p><strong>特征：</strong>坚韧隐忍，在绝境中仍渴望"人人生而平等的世界"。善于从象棋规则中寻找战术可能。</p>
+        </div>
+
+        <h2>📅 重要事件</h2>
+        <div class="section-card">
+            <p>（待补充）</p>
+        </div>
+
+        <h2>📜 发展历史</h2>
+        <div class="section-card">
+            <p>（待补充）</p>
+        </div>
+
+        <h2>🏛️ 特色制度</h2>
+        <div class="section-card">
+            <p>（待补充）</p>
+        </div>
+
+        <h2>🏘️ 总部分社公社区</h2>
+        <div class="section-card">
+            <p>（待补充）</p>
+        </div>
+
+        <h2>🏰 各地要塞</h2>
+        <div class="section-card">
+            <p>（待补充）</p>
+        </div>
+
+        <h2>📂 下属分社</h2>
+        <div class="section-card">
+            <ul class="tree-list">
+                <li>第一分社（未设定）</li>
+                <li>第二分社（未设定）</li>
+                <li>第三分社（未设定）</li>
+                <li>其他分社（未设定）</li>
+            </ul>
+        </div>
+
+        <!-- 临时存放：齐良背景故事，待正式移入小说连载页面 -->
+        <h2>📖 人物故事（暂存）</h2>
+        <div class="section-card" style="border-left: 5px solid #ffe0b5;">
+            <p style="font-style: italic; color: #999; margin-bottom: 1rem;">以下内容为齐良个人背景故事，待作者正式写中象社故事时移入小说连载页面。</p>
+            <p>"当桌子你给我当好了，谁允许你趴在地上休息的，快给老子我起来！"一位极其凶狠的老头坐在奴隶的背上，猛的一蹬腿踢在了一位青年奴隶的肚子上，哗啦一声青年奴隶身上的棋盘与棋子们散落一地。</p>
+            <p>"真是扫兴，我告诉你个小王八蛋，给我当桌子是你的荣幸，还敢嫌累，快去把我的棋子们都会捡起来，我就打得你皮开肉绽。"</p>
+            <p>"是是是，老爷，我这就去捡。"青年奴隶刚想伸手去捡棋子，手就被老头狠狠的踩在地上。</p>
+            <p>"我叫你用手了吗？"老头恶狠狠的说，青年奴隶强忍钻心疼痛与眼泪，只得用嘴去叼棋子，将它们一个个摆放在棋盘上的正确位置。</p>
+            <p>青年心中清楚，这老头子就是故意找自己茬。自己已经连续三天给他当桌子了，这期间不给水不给吃的，自己岂能不倒。</p>
+            <p>老头看他捡完了过后就说："还不快滚，看到你我就晦气。你个叫齐良的是专门过来欺负我这种善良的人吗？我给你们吃，给你们穿，你们就要给我当牛做马。"</p>
+            <p>"是我这就滚。"齐良赶紧跑开，生怕这个老头再刁难自己。</p>
+            <p>齐良不知跑了多久，总算来到自己的奴隶宿舍。他刚想坐下来休息一下，就被奴隶头头一把拽了起来，扔下了床。他一把薅起齐良的头发，不顾他的惨叫将他拖拽到有一枚钉子钉在了日历墙上，把他死死摁住，指着日历说："小子，三天前是你打扫卫生的日子，你为什么不打扫卫生？接下来三个月的卫生等你来给我们打扫。"</p>
+            <p>"可是，我一直在——啊啊啊！"齐良刚想辩解就被奴隶头头猛的撞向墙面，痛得他脑袋直晃，眼泪直流浸湿了墙面。</p>
+            <p>"还敢反驳我，接下来一年都由你来打扫卫生！去把我们的衣服都给洗了，洗不完不准睡。"</p>
+            <p>"是！"</p>
+            <p>齐良一边擦着眼泪一边推着极其恶心的脏衣服堆来到了洗衣机房，将它们分批推入了每一个空的洗衣机里后，他坐在屋外的地上看向天空中的月亮叹气道："这样的人生，就是我的命运吗？如果能有个人人平等的世界就好了……想想就行了，这是不可能的事情，老爷们用那么强大的源力。"</p>
+            <p>齐良看着四下无人，他找了一个隐秘的位置，想着就眯一小会，却不知不觉地睡到了第二天。他醒来闻到一股剧烈的烧焦味——看来昨晚洗衣机房超负荷运作爆炸了。</p>
+            <p>他迷迷糊糊之间被两个人架了起来，等他彻底醒来发现自己在某个法院中。神法官高声宣判："经查，爆炸凶手齐良已经认罪，即日起被羁押送往命运大赛星，作为猎物供人狩猎，现游行三日。"</p>
+            <p>齐良被粗暴地绑在了一根柱子上，嘴巴都被堵住了。没有什么青天大老爷，也没有什么勇者，更不会有什么心地善良的贵族大小姐。贵族们只会朝着他扔更贵重的、被他们遗弃的蛋糕。</p>
+            <p>就这样一连持续了三天，他像一件货物一样被送进了一艘飞船中。在一片漆黑中不知道度过了多久，来到了命运大赛星。</p>
+        </div>
+
+        <p><a href="../worldview.html" class="back-link">← 返回世界观目录</a> · <a href="../index.html">返回首页</a></p>
+    </div>
+    <div class="footer">
+        源力公社 · 集体版权 · 设定持续更新中
+    </div>
+</div>
+</body>
+</html>
