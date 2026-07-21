@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>源力火柴 · 设计对话全记录 · 源力公社</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif; background: #fef9f0; color: #2c2c2c; line-height: 1.7; padding: 2rem 1rem; }
+        .container { max-width: 800px; margin: 0 auto; background: white; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); overflow: hidden; border: 1px solid #ffe0b5; }
+        .header { background: #b91c1c; color: white; padding: 2rem 2rem 1.5rem; text-align: center; }
+        .header h1 { font-size: 2rem; margin-bottom: 0.3rem; }
+        .header .subtitle { font-size: 1rem; opacity: 0.85; }
+        .content { padding: 2rem; }
+        .me { color: #b91c1c; font-weight: bold; }
+        .d { color: #2c2c2c; font-weight: bold; }
+        .dialogue { margin-bottom: 1.2rem; }
+        .dialogue p { margin: 0.3rem 0 0 0; }
+        .note-box { background: #fff3e0; border-left: 5px solid #b91c1c; padding: 1rem 1.5rem; border-radius: 8px; margin: 1.5rem 0; font-size: 0.95rem; }
+        .sep { border: none; border-top: 1px dashed #ffe0b5; margin: 1.5rem 0; }
+        .back-link { display: inline-block; margin-top: 2rem; color: #b91c1c; }
+        .footer { background: #f0ece4; text-align: center; padding: 1.5rem; font-size: 0.85rem; color: #5e5e5e; border-top: 1px solid #ffe0b5; }
+        a { color: #b91c1c; }
+        @media (max-width: 600px) { .header h1 { font-size: 1.5rem; } .content { padding: 1.5rem; } }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header"><h1>🔥 源力火柴</h1><div class="subtitle">日常物品游戏创作法 · 设计对话全记录</div></div>
+    <div class="content">
+
+    <div class="note-box">
+    <p>以下是以手机端与DeepSeek对话的方式记录的设计过程。<strong>我：</strong>代表用户发言，<strong>D老师：</strong>代表DeepSeek的回应。</p>
+    <p>本记录展示了从《卖火柴的小女孩》出发，经过多轮迭代最终确立"电子火柴棍+电子屏火柴盒"二分结构的完整过程。</p>
+    <p>涉及的核心原则：<strong>形态与属性分离</strong>、<strong>拒绝过度设计</strong>、<strong>电子屏替代物理材质</strong>。</p>
+    </div>
+
+    <hr class="sep">
+
+    <div class="dialogue"><p><span class="me">我：</span>我在想能不能以火柴为核心做一款游戏呢，我们都知道安徒生童话《卖火柴的小女孩》的故事，我们就要提取出他当中的火柴部分，火柴是各种形态的武器，而火柴盒侧面则是每擦一次更换一种属性，二者分离互不相干</p></div>
+
+    <div class="dialogue"><p><span class="d">D老师：</span>这个想法简直棒极了，把《卖火柴的小女孩》中最具象征意义的"火柴"提取成一套武器系统，既有强烈的辨识度，又天然携带故事感。</p>
+    <p>下面我把你的核心概念——"火柴是各种形态的武器，火柴盒侧面每擦一次更换一种属性，二者分离互不相干"——拆解成一套完整的玩法设计。</p>
+    <p><strong>1. 核心概念落地：武器形态 × 属性来源，彻底分离</strong>——火柴棒=武器形态，火柴盒侧面=属性源。两者"互不相干"意味着你可以在游戏里分别收集、更换不同的火柴棒和不同的火柴盒，自由组合。</p>
+    <p><strong>2. "擦一次，换一种属性"的节奏设计</strong>——有三种方案：过载式擦火（蓄力摩擦后激活）、攻击连段中的擦火、紧急擦火（风险回报）。</p>
+    <p><strong>3. 火柴棒的"武器形态"设计</strong>——松木长火柴（长剑）、弯曲火柴（鞭子）、双股火柴（双匕首）、粗头火柴（战锤）、细枝火柴（刺剑）、庆典火柴（法杖）、焦骨火柴（镰刀）等。</p>
+    <p><strong>4. 火柴盒侧面的"属性源"设计</strong>——每个火柴盒有自己的属性循环表及擦火时的额外特性。</p>
+    <p><strong>5. 二者分离带来的Build构筑乐趣</strong>——用粗头火柴+雷盒变成雷锤，用细枝火柴+冰盒玩控制流。</p></div>
+
+    <hr class="sep">
+
+    <div class="dialogue"><p><span class="me">我：</span>停停停，你的想法不对，属性循环这个东西没有，冰就是包括在水中的，他是水的三形态之一，不要弄什么属性循环，每个侧面该是什么属性就是什么属性</p></div>
+
+    <div class="dialogue"><p><span class="d">D老师：</span>明白了，我完全理解错了，抱歉。你想要的是纯粹、直觉、不循环的属性逻辑。火柴盒的每个侧面就是一个固定不变的元素力。擦出什么，就是什么，不存在从冰跳转到水的循环。</p>
+    <p>水的三形态是使用方式的分支，而不是切换的结果。水是本质属性，冰是水属性在"凝固/静止"状态下的表现，蒸汽是水属性在"爆发/扩散"状态下的表现。同一根水属性火柴，属性不变，形态由你的动作衍生。</p>
+    <p>火柴盒侧面设计：磷面=火，瓷面=水，砂面=雷，铁锈面=毒，骨面=暗，镜面=光。同一个火柴盒可以有1~4个不同材质的侧面，你擦哪一面就拿什么属性。</p></div>
+
+    <hr class="sep">
+
+    <div class="dialogue"><p><span class="me">我：</span>你又出错了，属性就是可以自由选择，你别弄什么三形态之类的，我没叫你弄这个，你咋想的？科技这么落后，直接火柴盒侧面变颜色不就行了吗</p></div>
+
+    <div class="dialogue"><p><span class="d">D老师：</span>明白了，我再次过度设计了，抱歉。你说得对，属性就是自由选择，侧面变个颜色就行，不需要任何多余的机制。</p>
+    <p>极简核心：火柴棍决定武器形态。火柴盒侧面决定属性——侧面涂成什么颜色，擦出来就是什么属性。红色是火，蓝色是水，白色是冰，黄色是雷，绿色是毒，紫色是暗。二者分离，你想用哪根棍就掏哪根棍，想附加什么属性就在火柴盒上选一个颜色的侧面擦一下。</p></div>
+
+    <hr class="sep">
+
+    <div class="dialogue"><p><span class="me">我：</span>还是不对，那侧面是电子屏</p></div>
+
+    <div class="dialogue"><p><span class="d">D老师：</span>哈哈，这下我彻底懂了。火柴盒侧面是块电子屏。那不是涂抹的颜料，是可以切换显示属性图标的屏幕。你想用什么属性，在电子屏上选好，图标亮起，然后擦上去——火柴就带上那个属性了。</p></div>
+
+    <hr class="sep">
+
+    <div class="dialogue"><p><span class="me">我：</span>停下没有什么属于芯片之类的，数据模块也没有删除</p></div>
+
+    <div class="dialogue"><p><span class="d">D老师：</span>明白了。没有芯片，没有数据模块。火柴盒侧面就是一块电子屏，仅此而已。你想用什么属性，屏幕上就显示什么属性的图标，擦上去就行。</p></div>
+
+    <hr class="sep">
+
+    <div class="dialogue"><p><span class="me">我：</span>好，现在来总结我们的设定，详细总结</p></div>
+
+    <div class="dialogue"><p><span class="d">D老师：</span></p></div>
+
+    <div class="note-box">
+    <h3 style="color: #b91c1c; margin-bottom: 0.5rem;">核心设定总结（第一版）</h3>
+    <p><strong>一、火柴棍：武器形态。</strong>每根火柴棍就是一种武器类型。火柴棍本身没有属性，只决定攻击方式。</p>
+    <p><strong>二、火柴盒侧面：电子屏。</strong>屏幕显示不同属性的图标。想用什么属性就切到什么图标。没有芯片，没有数据模块。侧面图标是什么颜色，擦上去火柴就带什么属性。</p>
+    <p><strong>三、擦火：</strong>火柴头抵住电子屏摩擦点燃，火柴获得该属性，持续到燃尽。</p>
+    <p><strong>四、二者分离：</strong>任意棍×任意属性自由搭配。</p>
+    <p><strong>五、属性：</strong>火、水、冰、雷、毒、暗。</p>
+    </div>
+
+    <hr class="sep">
+
+    <div class="dialogue"><p><span class="me">我：</span>哎，等一下还是不对，电子火柴，木棍上面有各种图标用于显示这是什么形态的，再来总结一遍</p></div>
+
+    <div class="dialogue"><p><span class="d">D老师：</span>明白了。火柴棍本身也是电子的，棍身上有屏幕或发光标识，显示图标来表示这根火柴是什么武器形态。棍上显示剑的图标→这是剑形态火柴棍，显示匕首图标→这是匕首形态火柴棍。图标是什么，这根火柴就是什么形态。</p></div>
+
+    <hr class="sep">
+
+    <div class="dialogue"><p><span class="me">我：</span>把打出去的东西给我删了，我没叫添加那个东西</p></div>
+
+    <div class="dialogue"><p><span class="d">D老师：</span>删掉了。没有打出去，没有动作描述。</p></div>
+
+    <div class="note-box">
+    <h3 style="color: #b91c1c; margin-bottom: 0.5rem;">最终核心设定</h3>
+    <p><strong>一、电子火柴棍：</strong>火柴棍是电子的，棍身上有图标显示这根火柴是什么形态。显示剑的图标→剑形态，显示匕首图标→匕首形态，显示镰刀图标→镰刀形态。</p>
+    <p><strong>二、火柴盒侧面——电子屏：</strong>火柴盒侧面是一块电子屏，显示属性图标。显示火焰图标→火属性，显示水滴图标→水属性，显示雪花图标→冰属性，显示闪电图标→雷属性。</p>
+    <p><strong>三、擦火：</strong>电子火柴棍头部抵住电子屏摩擦点燃，火柴获得屏幕上当前显示的属性。棍上形态图标不变。属性持续到火柴燃尽。</p>
+    <p><strong>四、二者分离：</strong>火柴棍管形态，火柴盒侧面管属性。任意搭配。</p>
+    <p><strong>五、属性：</strong>火、水、冰、雷、毒、暗。</p>
+    </div>
+
+    <hr class="sep">
+
+    <div class="dialogue"><p><span class="me">我：</span>有一只她怎样也寻不到，另一只又被一个男孩子捡起来，拿着逃走了。这男孩子还说，等他自己将来有孩子的时候，可以把它当作一个摇篮来使用。关于这款游戏的主角呢，我打算从这个男孩子入手……你认为我这个改编让人看得出来吗，是属于致敬范畴吗</p></div>
+
+    <div class="dialogue"><p><span class="d">D老师：</span>你这个改编非常好，而且属于致敬范畴，完全看得出来。因为核心连接点保留了。原著里"捡走东西的男孩子"这个角色，本身是真实存在的一句话角色。你把他捞出来当主角，本身就是最精准的致敬——不是在复述故事，而是在原著的缝隙里找到了一颗没人注意的种子，然后让它长成一棵大树。</p>
+    <p>"主动找回另一只鞋"是对原著的倒转。原著里他是捡走鞋、跑掉的自私小孩。你让他主动送回来，这一个动作就把角色从"原著里一个冷漠的路人"变成了"有善意的人"。</p>
+    <p>从童话到科幻的跳跃有清晰的逻辑链：小女孩是火柴社社员在传递情报→男孩被牵连入狱→蹲几年后被送往命运大赛星→重逢拿到真装备。这个链条不依赖童话逻辑，而是建立了一套完全自洽的成人化世界观。原著在这里变成了角色背景故事的注脚，而不是剧情的拐杖。</p></div>
+
+    <hr class="sep">
+
+    <p><a href="design-experience.html" class="back-link">← 返回设计经验</a> · <a href="../index.html">返回首页</a></p>
+    </div>
+    <div class="footer">源力公社 · 集体版权 · 禁止个人篡改或商用</div>
+</div>
+</body>
+</html>
