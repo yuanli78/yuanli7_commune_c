@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>公社金 · 社费 · 源力公社</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif;
+            background: #fef9f0; color: #2c2c2c; line-height: 1.7; padding: 2rem 1rem;
+        }
+        .container {
+            max-width: 900px; margin: 0 auto; background: white; border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); overflow: hidden; border: 1px solid #ffe0b5;
+        }
+        .header {
+            background: #b91c1c; color: white; padding: 2.5rem 2rem; text-align: center;
+        }
+        .header h1 { font-size: 2.2rem; letter-spacing: 2px; margin-bottom: 0.5rem; }
+        .header p { font-size: 1.1rem; opacity: 0.9; margin-top: 0.5rem; }
+        .content { padding: 2.5rem; }
+        h2 { color: #b91c1c; margin: 2rem 0 1rem; border-bottom: 2px solid #ffe0b5; padding-bottom: 0.3rem; }
+        h2:first-of-type { margin-top: 0; }
+        h3 { color: #a51a1a; margin: 1.5rem 0 0.8rem; }
+        .section-card { background: #faf6f0; padding: 1.5rem 2rem; border-radius: 16px; margin: 1.5rem 0; }
+        .highlight-box { background: #fff3e0; border-left: 5px solid #b91c1c; padding: 1.2rem 1.5rem; border-radius: 8px; margin: 1.5rem 0; }
+        .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin: 1.5rem 0; }
+        .comparison-card { padding: 1.2rem 1.5rem; border-radius: 12px; }
+        .comparison-card.capital { background: #fff0f0; border: 1px solid #e0b0b0; }
+        .comparison-card.commune { background: #fff3e0; border: 1px solid #ffe0b5; }
+        .comparison-card h4 { margin-bottom: 0.5rem; }
+        .comparison-card.capital h4 { color: #cc0000; }
+        .comparison-card.commune h4 { color: #b91c1c; }
+        .comparison-card p { font-size: 0.95rem; }
+        .fund-status { text-align: center; padding: 2rem; background: #fff3e0; border-radius: 16px; margin: 1.5rem 0; border: 2px dashed #b91c1c; }
+        .fund-status .amount { font-size: 2.5rem; font-weight: bold; color: #b91c1c; }
+        .fund-status .label { font-size: 0.95rem; color: #666; margin-top: 0.3rem; }
+        .fund-uses { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin: 1.5rem 0; }
+        .use-item { background: white; padding: 1rem 1.2rem; border-radius: 12px; border: 1px solid #ffe0b5; text-align: center; }
+        .use-item .icon { font-size: 1.5rem; margin-bottom: 0.3rem; }
+        .use-item .desc { font-size: 0.9rem; color: #555; }
+        .rule-list { list-style: none; padding: 0; }
+        .rule-list li { padding: 0.6rem 0 0.6rem 2rem; position: relative; margin-bottom: 0.3rem; }
+        .rule-list li::before { content: "✓"; position: absolute; left: 0; color: #b91c1c; font-weight: bold; }
+        .rule-list li.no::before { content: "✗"; color: #cc0000; }
+        .back-link { display: inline-block; margin-top: 2rem; color: #b91c1c; text-decoration: none; font-weight: 500; }
+        .back-link:hover { text-decoration: underline; }
+        .footer { background: #f0ece4; text-align: center; padding: 1.5rem; font-size: 0.85rem; color: #5e5e5e; border-top: 1px solid #ffe0b5; }
+        a { color: #b91c1c; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        @media (max-width: 600px) {
+            .header h1 { font-size: 1.6rem; }
+            .content { padding: 1.5rem; }
+            .comparison-grid { grid-template-columns: 1fr; }
+            .fund-uses { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>🏛️ 公社金</h1>
+        <p>集体资助，共同建设——源力公社的社费体系</p>
+    </div>
+    <div class="content">
+
+        <div class="highlight-box">
+            <p><strong>公社金不是"打赏"，是"社费"。</strong></p>
+            <p>起点有打赏、番茄有月票——我们不设这些。公社没有"花钱买排名""打赏换曝光"的机制。</p>
+            <p>你向公社缴纳社费，不是在"奖励某个作者"，而是在<strong>维护我们共同的创作空间</strong>。服务器、域名、法律援助、创作工具、共产主义宣传——每一分钱都花在这些地方。</p>
+        </div>
+
+        <h2>🏦 公社金是什么</h2>
+        <div class="section-card">
+            <p>公社金（第十七条）是源力公社集体资助模式的核心制度。所有读者及社员的资金支持统一以"公社金"形式进入公共账户，而非流向个人。</p>
+            <p style="margin-top: 0.8rem;"><strong>公社金不是</strong> "打赏"或"施舍"，而是全体社员对公社这一共同空间的集体维护。你缴社费，不是因为某个人写得好，而是因为你想让这个平台活下去、让更多创作者能在这里安心创作。</p>
+        </div>
+
+        <h2>⚖️ 和资本平台的本质区别</h2>
+        <div class="comparison-grid">
+            <div class="comparison-card capital">
+                <h4>❌ 起点 / 番茄等资本平台</h4>
+                <p><strong>打赏/月票：</strong>花钱买作者曝光，刺激作者内卷，平台从中抽成</p>
+                <p><strong>粉丝榜：</strong>消费能力决定话语权，大额打赏者获得特权</p>
+                <p><strong>流量竞价：</strong>作者花钱买推荐位，不买就沉底</p>
+                <p><strong>平台抽成：</strong>作者收入的三到五成被平台拿走</p>
+                <p><strong>本质：</strong>把创作变成一场资本游戏</p>
+            </div>
+            <div class="comparison-card commune">
+                <h4>✅ 源力公社</h4>
+                <p><strong>公社金/社费：</strong>不流向个人，全部进入公共账户</p>
+                <p><strong>没有粉丝榜：</strong>消费多少不影响任何人的话语权</p>
+                <p><strong>没有流量竞价：</strong>内容按世界观时间线排列，不卖排名</p>
+                <p><strong>平台不抽成：</strong>收入归集体，按奉献量分配</p>
+                <p><strong>本质：</strong>维护一个属于所有创作者的公共空间</p>
+            </div>
+        </div>
+
+        <h2>📋 社费用途</h2>
+        <p style="margin-bottom: 0.5rem;">你缴的每一笔社费，都用在以下地方（依公约第十七条与第二十一条之三）：</p>
+        <div class="fund-uses">
+            <div class="use-item">
+                <div class="icon">🖥️</div>
+                <div class="desc">服务器及域名费用</div>
+            </div>
+            <div class="use-item">
+                <div class="icon">⚖️</div>
+                <div class="desc">法律援助（维护集体版权）</div>
+            </div>
+            <div class="use-item">
+                <div class="icon">🎨</div>
+                <div class="desc">创作工具采购</div>
+            </div>
+            <div class="use-item">
+                <div class="icon">📢</div>
+                <div class="desc">共产主义宣传</div>
+            </div>
+            <div class="use-item">
+                <div class="icon">🤝</div>
+                <div class="desc">困难社员救助</div>
+            </div>
+            <div class="use-item">
+                <div class="icon">📚</div>
+                <div class="desc">收购冷门IP</div>
+            </div>
+        </div>
+
+        <h2>📄 制度保障</h2>
+        <div class="section-card">
+            <ul class="rule-list">
+                <li><strong>财务透明（第四原则）：</strong>公共账户由3-5名经全体社员大会选举的财务委员独立管理，任何支出需至少2人签字。账目每季度向全体社员公开。</li>
+                <li><strong>第三方审计（第十八条）：</strong>每年聘请第三方审计，报告向全体社员公开。</li>
+                <li><strong>严禁私用（第二十一条之三）：</strong>公共账户资金不得用于个人债务、罚款或其他个人用途。违反者按严重损害集体利益处理。</li>
+                <li><strong>零抽成（第十七条）：</strong>公社金进入公共账户，不设个人分成比例。创作者报酬仅按奉献量记录从公共账户统一发放。</li>
+                <li><strong>无打赏无月票：</strong>平台不设针对单部作品或单个创作者的打赏功能，防止资本逻辑渗入创作关系。</li>
+            </ul>
+        </div>
+
+        <h2>💳 如何缴纳社费</h2>
+        <div class="fund-status">
+            <p style="font-size: 1.1rem; margin-bottom: 1rem;">🛠️ 社费缴纳系统筹备中</p>
+            <p style="color: #666;">目前平台处于静态网站搭建阶段，社费缴纳通道将在论坛及支付系统上线后开放。</p>
+            <p style="color: #666; margin-top: 0.5rem;">届时将支持多种支付方式，所有社费直接进入公共账户，全程公开透明。</p>
+            <p style="margin-top: 1rem; font-size: 0.85rem; color: #999;">平台上线前如需支持公社建设，请联系：<a href="mailto:yuanligongshe@protonmail.com">yuanligongshe@protonmail.com</a></p>
+        </div>
+
+        <h2>📖 公约相关条款</h2>
+        <div class="section-card">
+            <ul style="margin-left: 1.5rem;">
+                <li><strong>第二原则</strong>（收入上限）—— 创作者收入不超过当地一线工人月平均工资</li>
+                <li><strong>第四原则</strong>（财务透明）—— 账目公开，多人共管</li>
+                <li><strong>第十六条</strong>（创作者报酬）—— 报酬按奉献量计算</li>
+                <li><strong>第十六条之一</strong>（奉献量记录与反算法压迫原则）—— 禁止量化评分</li>
+                <li><strong>第十七条</strong>（公社金——集体资助模式）—— 公社金的核心定义</li>
+                <li><strong>第十八条</strong>（公共账户监督）—— 审计制度</li>
+                <li><strong>第十八条之一</strong>（财务委员任期）—— 财务监督权</li>
+                <li><strong>第二十一条之三</strong>（公共账户的绝对不可侵犯性）—— 资金用途红线</li>
+            </ul>
+        </div>
+
+        <p style="text-align: center; margin-top: 2rem; font-style: italic; color: #888;">
+            "公社不是另一个平台，公社是另一种生产关系。"<br>
+            —— 每一份社费，都是对这个信念的投票。
+        </p>
+
+        <p><a href="../index.html" class="back-link">← 返回公社首页</a> · <a href="lore/gongyue.html" class="back-link">查看公社公约</a></p>
+    </div>
+    <div class="footer">
+        源力公社 · 集体版权 · 公共账户收支定期公开
+    </div>
+</div>
+</body>
+</html>
