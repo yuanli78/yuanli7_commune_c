@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>手机社 · 源力公社</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif; background: #fef9f0; color: #2c2c2c; line-height: 1.7; padding: 2rem 1rem; }
+        .container { max-width: 900px; margin: 0 auto; background: white; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); overflow: hidden; border: 1px solid #ffe0b5; }
+        .header { background: #b91c1c; color: white; padding: 2rem 2rem 1.5rem; text-align: center; }
+        .header h1 { font-size: 2rem; letter-spacing: 1px; margin-bottom: 0.3rem; }
+        .header .badge { display: inline-block; background: rgba(255,255,255,0.2); padding: 0.2rem 1rem; border-radius: 30px; font-size: 0.85rem; }
+        .header p { font-size: 1rem; opacity: 0.9; margin-top: 0.5rem; }
+        .content { padding: 2rem; }
+        h2 { color: #b91c1c; margin: 1.8rem 0 1rem; border-bottom: 2px solid #ffe0b5; padding-bottom: 0.3rem; }
+        h3 { color: #a51a1a; margin: 1.5rem 0 0.8rem; }
+        .section-card { background: #faf6f0; padding: 1.5rem 2rem; border-radius: 16px; margin: 1.5rem 0; }
+        .note-box { background: #fff3e0; border-left: 5px solid #b91c1c; padding: 1rem 1.5rem; border-radius: 8px; margin: 1.5rem 0; }
+        .symbol-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin: 1rem 0; }
+        .symbol-item { background: white; padding: 0.8rem 1rem; border-radius: 8px; border: 1px solid #ffe0b5; text-align: center; font-size: 0.95rem; }
+        .symbol-item .sym { font-size: 1.5rem; font-weight: bold; color: #b91c1c; display: block; margin-bottom: 0.3rem; }
+        .back-link { display: inline-block; margin-top: 2rem; color: #b91c1c; text-decoration: none; font-weight: 500; }
+        .back-link:hover { text-decoration: underline; }
+        .footer { background: #f0ece4; text-align: center; padding: 1.5rem; font-size: 0.85rem; color: #5e5e5e; border-top: 1px solid #ffe0b5; }
+        a { color: #b91c1c; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        @media (max-width: 600px) { .header h1 { font-size: 1.5rem; } .content { padding: 1.5rem; } .symbol-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>📱 手机社</h1>
+        <p>源力公社 · 颜文字与符号触屏战斗系统</p>
+    </div>
+    <div class="content">
+        <div class="note-box">
+            📌 本页面根据米米尔无限格斗第三章（燕巧VS米米尔）的战斗记录整理。完整战斗过程请参阅：<a href="../spin-off/mimir-chapter3.html">米米尔无限格斗第三章·手机驱动器 →</a>
+        </div>
+
+        <h2>📁 组织概况</h2>
+        <div class="section-card">
+            <p><strong>核心理念：</strong>以手机触屏为操作界面，通过输入符号调用不同战斗功能。笔画和字母决定武器形态，颜文字决定属性附魔。每个社员独立操作，无等级、无权限分级、无变身仪式、无合体技——所有符号对全体社员开放，力量源于个人操作的熟练度。</p>
+            <p><strong>技术路线：</strong>触屏符号识别系统。手机驱动器内置符号库，社员通过手指在触屏上绘制符号轮廓，系统识别后实时生成对应武器或附加属性。绘制越精准、速度越快，效果越强。</p>
+            <p><strong>标志/象征：</strong>📱 触屏手机 · 颜文字符号</p>
+            <p><strong>现任社长：</strong>（待补充）</p>
+            <p><strong>知名成员：</strong>燕巧</p>
+        </div>
+
+        <h2>⚙️ 驱动器机制</h2>
+        <div class="section-card">
+            <p><strong>手机驱动器</strong> —— 社员佩戴于右腕的触屏手机，内置完整的符号识别系统和能量转化模块。</p>
+            <p><strong>核心操作：</strong></p>
+            <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+                <li><strong>生成武器：</strong>在触屏上绘制笔画或字母轮廓，系统识别后生成对应武器形态</li>
+                <li><strong>赋予属性：</strong>在武器持续期间，绘制颜文字，为当前武器附加属性/能量附魔</li>
+                <li><strong>切换武器：</strong>擦除当前符号，重新绘制新符号替换武器</li>
+                <li><strong>切换属性：</strong>直接绘制另一个颜文字，覆盖前一个属性效果</li>
+                <li><strong>身份验证：</strong>首次激活需输入本社编号（如620），验证通过后方可解锁系统</li>
+            </ul>
+            <p><strong>核心原则：</strong>笔画和字母之间没有功能分工，两者都只做武器形态，不区分近战/远程、冷兵器/热兵器。颜文字只负责属性附魔，不生成武器形态。</p>
+        </div>
+
+        <h2>🔤 符号系统详解</h2>
+
+        <h3>一、笔画——基础武器形态</h3>
+        <div class="section-card">
+            <p>汉字基础笔画，每种笔画对应一种武器构型，全凭自身形状决定。</p>
+            <div class="symbol-grid">
+                <div class="symbol-item"><span class="sym">一（横）</span>长刀</div>
+                <div class="symbol-item"><span class="sym">丨（竖）</span>长剑</div>
+                <div class="symbol-item"><span class="sym">丿（撇）</span>弯刃镰</div>
+                <div class="symbol-item"><span class="sym">㇏（捺）</span>长刀·斜</div>
+                <div class="symbol-item"><span class="sym">㇄（折）</span>钩爪</div>
+                <div class="symbol-item"><span class="sym">丶（点）</span>飞镖</div>
+            </div>
+            <p style="margin-top: 0.8rem;"><strong>关于派生形态：</strong>笔画上方带'（撇号）为派生形态，如丨'≠丨，表示同笔画的不同武器变体。同笔画不带'与带'是不同的武器，不可混为一谈。</p>
+        </div>
+
+        <h3>二、字母——基础武器形态</h3>
+        <div class="section-card">
+            <p>拉丁字母或拼音声母，按字母几何形状映射武器形态。</p>
+            <div class="symbol-grid">
+                <div class="symbol-item"><span class="sym">A</span>钻头</div>
+                <div class="symbol-item"><span class="sym">A'</span>尖刀</div>
+                <div class="symbol-item"><span class="sym">S</span>长鞭</div>
+                <div class="symbol-item"><span class="sym">O</span>圆环刃</div>
+                <div class="symbol-item"><span class="sym">X</span>探测目镜</div>
+                <div class="symbol-item"><span class="sym">d</span>剑鱼剑</div>
+                <div class="symbol-item"><span class="sym">D</span>盾牌</div>
+                <div class="symbol-item"><span class="sym">I'</span>鱼叉</div>
+            </div>
+            <p style="margin-top: 0.8rem;"><strong>关于派生形态：</strong>字母上方带'为派生形态，与基础字母是不同的武器。如A（钻头）≠ A'（尖刀），B ≠ B'，以此类推。同一字母带'与否代表两种不同的武器构型。</p>
+        </div>
+
+        <h3>三、颜文字——属性/能量附魔</h3>
+        <div class="section-card">
+            <p>颜文字用于为前述任何武器附加属性效果。颜文字是情绪能量的载体，每种颜文字对应一种属性或状态。</p>
+            <div class="symbol-grid">
+                <div class="symbol-item"><span class="sym">ԅ(✧_✧ԅ)</span>光属性</div>
+                <div class="symbol-item"><span class="sym">(｡í _ ì｡)</span>水属性</div>
+                <div class="symbol-item"><span class="sym">(〝▼皿▼)</span>火属性</div>
+                <div class="symbol-item"><span class="sym">（ΩДΩ）</span>力量增幅</div>
+                <div class="symbol-item"><span class="sym">ε=ε=ε=(ﾟ◇ﾟﾉ)ﾉ</span>极速</div>
+                <div class="symbol-item"><span class="sym">( ´ﾟжﾟ｀ )</span>速游</div>
+                <div class="symbol-item"><span class="sym">◖⁠⚆⁠Ⱉ⁠⚆⁠◗</span>分身</div>
+                <div class="symbol-item"><span class="sym">ᔦ ° ꒳ ° ᔨ</span>钻头光标</div>
+                <div class="symbol-item"><span class="sym">((((*^}{^*))))</span>声波</div>
+                <div class="symbol-item"><span class="sym">^⎚‸⎚^</span>红外视野</div>
+            </div>
+        </div>
+
+        <h2>⚔️ 经典战斗组合实例</h2>
+        <div class="section-card">
+            <p>以下为燕巧在米米尔无限格斗中实际使用的组合：</p>
+            <ul style="margin-left: 1.5rem; margin-bottom: 0.5rem;">
+                <li>丨（剑）+ ԅ(✧_✧ԅ)（光属性）→ 光剑，近战斩击</li>
+                <li>A（钻头）+ 无属性 → 沙地钻行，地下突袭</li>
+                <li>S（长鞭）+ (｡í _ ì｡)（水属性）→ 水流鞭，中距离抽打</li>
+                <li>A'（尖刀）+ ε=ε=ε=(ﾟ◇ﾟﾉ)ﾉ（极速）→ 超高速突刺</li>
+                <li>O（圆环刃）+ ◖⁠⚆⁠Ⱉ⁠⚆⁠◗（分身）→ 多重圆环刃散射</li>
+                <li>I'（鱼叉）+ (〝▼皿▼)（火属性）→ 高温鱼叉，融化海水</li>
+                <li>D（盾牌）+ ((((*^}{^*))))（声波）→ 共振盾，通过盾牌传导声波攻击</li>
+                <li>X（目镜）+ ^⎚‸⎚^（红外视野）→ 热感应探测</li>
+            </ul>
+        </div>
+
+        <h2>📜 起源</h2>
+        <div class="section-card">
+            <p>手机社的战斗系统灵感来源于手机触屏的操作逻辑。在源力公社的技术路线中，手机社将互联网亚文化中的颜文字、汉字书写中的笔画以及拉丁字母的几何形状结合起来，创造了一套全新的战斗符号系统。</p>
+            <p>在米米尔无限格斗中登场的燕巧是手机社的代表人物。他在海滩、水中、沉船群等复杂环境中展现出了手机驱动器在多种地形下的应变能力。</p>
+            <p><strong>关于设计过程：</strong>手机社的战斗系统经历了从拼音→笔画→颜文字→三者分工的多次迭代。详细的设计推演过程参见<a href="../method/phone-driver-dialogue-1.html">源力手机设计对话全记录</a>。</p>
+        </div>
+
+        <h2>🎯 战术特点</h2>
+        <div class="section-card">
+            <ul style="margin-left: 1.5rem; margin-bottom: 0.5rem;">
+                <li><strong>符号切换快速：</strong>触屏输入比物理按键更灵活，可以在战斗中高频切换武器和属性</li>
+                <li><strong>派生形态丰富：</strong>同一字母/笔画的带'派生形态提供了更多武器选择</li>
+                <li><strong>环境适应性强：</strong>颜文字属性可在不同环境下灵活切换，水性环境换上速游和分身</li>
+                <li><strong>无等级限制：</strong>所有符号对所有社员开放，没有"解锁"门槛，只有操作精度差异</li>
+            </ul>
+        </div>
+
+        <h2>📂 下属分社</h2>
+        <div class="section-card">
+            <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+                <li>第一分社（未设定）</li>
+                <li>第二分社（未设定）</li>
+                <li>其他分社（未设定）</li>
+            </ul>
+        </div>
+
+        <p><a href="../worldview.html" class="back-link">← 返回世界观目录</a> · <a href="../spin-off/mimir-chapter3.html">查看完整战斗 →</a></p>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem;">设计过程参考：<a href="../method/phone-driver-dialogue-1.html">源力手机设计对话全记录（上）→</a> · <a href="../method/phone-driver-dialogue-2.html">（下）→</a></p>
+    </div>
+    <div class="footer">源力公社 · 集体版权 · 设定持续更新中</div>
+</div>
+</body>
+</html>
