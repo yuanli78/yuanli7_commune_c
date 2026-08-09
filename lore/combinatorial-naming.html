@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>论组合性命名 · 源力公社</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif; background: #fef9f0; color: #2c2c2c; line-height: 1.9; padding: 2rem 1rem; }
+        .container { max-width: 900px; margin: 0 auto; background: white; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); overflow: hidden; border: 1px solid #ffe0b5; }
+        .header { background: #b91c1c; color: white; padding: 2rem 2rem 1.5rem; text-align: center; }
+        .header h1 { font-size: 2rem; letter-spacing: 1px; margin-bottom: 0.3rem; }
+        .header .subtitle { font-size: 0.95rem; opacity: 0.85; }
+        .content { padding: 2.5rem; }
+        h2 { color: #b91c1c; margin: 2.2rem 0 1rem; border-bottom: 2px solid #ffe0b5; padding-bottom: 0.3rem; }
+        .section-card { background: #faf6f0; padding: 1.5rem 2rem; border-radius: 16px; margin: 1.5rem 0; }
+        .highlight-box { background: #fff3e0; border-left: 5px solid #b91c1c; padding: 1rem 1.5rem; border-radius: 8px; margin: 1.5rem 0; }
+        .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin: 1.5rem 0; }
+        .comparison-card { padding: 1.2rem 1.5rem; border-radius: 12px; }
+        .comparison-card.bad { background: #fff0f0; border: 1px solid #e0b0b0; }
+        .comparison-card.good { background: #fff3e0; border: 1px solid #ffe0b5; }
+        .comparison-card h4 { margin-bottom: 0.5rem; }
+        .comparison-card.bad h4 { color: #cc0000; }
+        .comparison-card.good h4 { color: #b91c1c; }
+        .back-link { display: inline-block; margin-top: 2rem; color: #b91c1c; text-decoration: none; font-weight: 500; }
+        .back-link:hover { text-decoration: underline; }
+        .footer { background: #f0ece4; text-align: center; padding: 1.5rem; font-size: 0.85rem; color: #5e5e5e; border-top: 1px solid #ffe0b5; }
+        a { color: #b91c1c; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        @media (max-width: 600px) { .header h1 { font-size: 1.5rem; } .content { padding: 1.5rem; } .comparison-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>🔤 论组合性命名</h1>
+        <div class="subtitle">为什么可推导的技能名优于孤立的技能名</div>
+    </div>
+    <div class="content">
+
+        <div class="highlight-box">
+            <p><strong>核心命题：</strong>旧世界的技能命名是英语式的——孤立、任意、无内在联系，导致读者记不住。源力宇宙的命名规则是中文式的——组合、可推导、名字即说明书。组合性命名一旦被读者习惯，就会迅速占领旧世界的一切技能名称，因为记忆的负担被系统性解决了。</p>
+        </div>
+
+        <h2>一、两种命名的本质区别</h2>
+        <div class="section-card">
+            <p>旧世界的技能命名与源力宇宙的命名规则，是两种完全不同的命名系统——对应着语言学的"任意性"与"组合性"。</p>
+            <div class="comparison-grid">
+                <div class="comparison-card bad">
+                    <h4>❌ 英语式命名（旧世界）</h4>
+                    <p><strong>特征：</strong>孤立符号，无内在联系</p>
+                    <p><strong>例：</strong>烈焰风暴、冰霜新星、暗影箭、雷霆之枪</p>
+                    <p><strong>问题：</strong>"烈焰风暴"和"火焰斩"有什么关系？"暗影箭"和"阴影之刃"是不是一个体系？</p>
+                    <p><strong>记忆负担：</strong>每个名字都是死记硬背的单词，看设定时脑子绕</p>
+                </div>
+                <div class="comparison-card good">
+                    <h4>✅ 中文式命名（源力宇宙）</h4>
+                    <p><strong>特征：</strong>组合符号，可推导生成</p>
+                    <p><strong>例：</strong>光数据剑、水磁极盾、火火柴枪</p>
+                    <p><strong>逻辑：</strong>属性+中间词+形态，看到名字就能推出效果</p>
+                    <p><strong>记忆负担：</strong>名字即说明书，认识规则就能记住一切</p>
+                </div>
+            </div>
+        </div>
+
+        <h2>二、为什么英语式命名让读者记不住</h2>
+        <div class="section-card">
+            <p>英语式命名的核心问题在于：<strong>相似的能力之间没有任何共同的词汇。</strong>fireball、flame strike、inferno blast——这三个技能本质上是同一种东西（火焰攻击），但它们的名字没有任何共享的部分。读者必须把每个名字当作完全独立的事物来记忆——就像背英语单词一样，每个单词都是孤立的符号。</p>
+            <p>这导致了一个恶果：<strong>看完设定脑子也绕。</strong>读者记住的不是"这个体系怎么运作"，而是一堆互不相关的名字。他们记不住"烈焰风暴"和"赤炎爆"谁强谁弱，记不住"寒冰箭"和"冰霜新星"是不是一回事——因为这些名字没有提供任何推导线索。</p>
+            <p>而中文天然具有组合性：你认识"火"和"车"，就能推出"火车"的大概含义；你认识"光"和"剑"，就能推出"光剑"是什么。组合性让记忆有了锚点——你不需要背每个词，你只需要背规则。</p>
+        </div>
+
+        <h2>三、为什么组合性命名会"占领"旧世界的命名</h2>
+        <div class="section-card">
+            <p>一旦读者习惯了可推导的命名，就再也回不去死记硬背的命名了。</p>
+            <p>就像用惯了拼音输入法的人不会回去背五笔字根——不是五笔不好，是拼音的逻辑更直接。读者看源力宇宙的世界观，不需要背技能表——看到"水数据剑"就懂，看到"火火柴枪"就懂，命名规则给了他们全部答案。回到旧世界作品，又要开始背"烈焰风暴""冰霜新星""暗影箭"这些毫无联系的单词——这种体验落差会让组合性命名显得特别友好。</p>
+            <p>而且这个优势会自我强化：<strong>集体创作中，新创作者看到"光数据剑"，自然就会推出"水数据剑""火数据剑"。</strong>他们不需要问"这个技能叫什么"，因为命名规则已经给了他们答案。这比旧世界每个技能都要作者发明一个新名字的效率高一个数量级。当一个创作体系内的所有技能都能被规则推导出来时，这个体系的学习成本就趋近于零——而学习成本趋近于零的体系，天然会吸引更多的人。</p>
+        </div>
+
+        <h2>四、组合性命名的深层意义</h2>
+        <div class="section-card">
+            <p>组合性命名不只是"好记"——它背后是一种世界观：<strong>知识是公共的，规则是共享的，一切都可以被理解。</strong></p>
+            <p>旧世界的技能命名带着一种"神秘化"的倾向——名字越玄，越像"只有天赋者才能理解的力量"。"烈焰风暴"听起来像咒语，它暗示着力量是不可言说的、只能被少数人掌握的。而组合性命名是"祛魅"的——"火火柴枪"清清楚楚地告诉你：这就是火柴+火+枪，人人都能理解，人人都能推导。</p>
+            <p>这与源力公社的整个理论体系一脉相承：天赋论是伪概念，力量应该被普及；命名也应如此——不需要"天赋"才能记住技能名，规则本身就给了你推导能力。组合性命名是对"知识垄断"的一次祛魅：当名字不再神秘，力量就不再神秘。</p>
+        </div>
+
+        <div class="highlight-box">
+            <p><strong>总结：</strong>旧世界的技能命名是英语式的——孤立、任意、记不住。源力宇宙的命名是中文式的——组合、可推导、名字即说明书。组合性命名会迅速占领旧世界的一切技能名称，不是因为它更好听，是因为它更好记——而更好记的体系，天然会赢。它同时也是对"力量神秘化"的一次祛魅：当名字可以被规则推导，力量就不再是少数人的专利。</p>
+        </div>
+
+        <p><a href="../index.html" class="back-link">← 返回公社首页</a> · <a href="../method/daily-objects-route.html">关联：日常物品创作法·技能命名规范</a></p>
+    </div>
+    <div class="footer">源力公社 · 集体版权 · 理论文献</div>
+</div>
+</body>
+</html>
