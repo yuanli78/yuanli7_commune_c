@@ -5,131 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>源力体系 · 源力公社</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif;
-            background: #fef9f0;
-            color: #2c2c2c;
-            line-height: 1.7;
-            padding: 2rem 1rem;
-        }
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 24px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            overflow: hidden;
-            border: 1px solid #ffe0b5;
-        }
-        .header {
-            background: #b91c1c;
-            color: white;
-            padding: 2rem 2rem 1.5rem;
-            text-align: center;
-        }
-        .header h1 {
-            font-size: 2rem;
-            letter-spacing: 1px;
-            margin-bottom: 0.5rem;
-        }
-        .header p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
-        .content {
-            padding: 2rem;
-        }
-        h2 {
-            color: #b91c1c;
-            margin: 1.8rem 0 1rem;
-            border-bottom: 2px solid #ffe0b5;
-            padding-bottom: 0.3rem;
-        }
-        h2:first-of-type {
-            margin-top: 0;
-        }
-        h3 {
-            color: #a51a1a;
-            margin: 1.5rem 0 0.8rem;
-        }
-        .section-card {
-            background: #faf6f0;
-            padding: 1.5rem 2rem;
-            border-radius: 16px;
-            margin: 1.5rem 0;
-        }
-        .highlight-box {
-            background: #fff3e0;
-            border-left: 5px solid #b91c1c;
-            padding: 1rem 1.5rem;
-            border-radius: 8px;
-            margin: 1.5rem 0;
-        }
-        .dual-layout {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            margin: 1.5rem 0;
-        }
-        .dual-card {
-            background: #faf6f0;
-            padding: 1.5rem;
-            border-radius: 16px;
-        }
-        .dual-card h3 {
-            margin-top: 0;
-        }
-        .dual-card.god {
-            border-left: 5px solid #6b7db3;
-        }
-        .dual-card.man {
-            border-left: 5px solid #b91c1c;
-        }
-        .back-link {
-            display: inline-block;
-            margin-top: 2rem;
-            color: #b91c1c;
-            text-decoration: none;
-            font-weight: 500;
-        }
-        .back-link:hover {
-            text-decoration: underline;
-        }
-        .footer {
-            background: #f0ece4;
-            text-align: center;
-            padding: 1.5rem;
-            font-size: 0.85rem;
-            color: #5e5e5e;
-            border-top: 1px solid #ffe0b5;
-        }
-        a {
-            color: #b91c1c;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        @media (max-width: 600px) {
-            .header h1 { font-size: 1.5rem; }
-            .content { padding: 1.5rem; }
-            .section-card { padding: 1.2rem 1rem; }
-            .dual-layout { grid-template-columns: 1fr; }
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif; background: #fef9f0; color: #2c2c2c; line-height: 1.7; padding: 2rem 1rem; }
+        .container { max-width: 800px; margin: 0 auto; background: white; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); overflow: hidden; border: 1px solid #ffe0b5; }
+        .header { background: #b91c1c; color: white; padding: 2rem 2rem 1.5rem; text-align: center; }
+        .header h1 { font-size: 2rem; margin-bottom: 0.3rem; }
+        .header .subtitle { font-size: 1rem; opacity: 0.85; }
+        .content { padding: 2rem; }
+        h2 { color: #b91c1c; margin: 1.8rem 0 1rem; border-bottom: 2px solid #ffe0b5; padding-bottom: 0.3rem; }
+        h2:first-of-type { margin-top: 0; }
+        .highlight-box { background: #fff3e0; border-left: 5px solid #b91c1c; padding: 1rem 1.5rem; border-radius: 8px; margin: 1.5rem 0; }
+        .section-card { background: #faf6f0; padding: 1.5rem 2rem; border-radius: 16px; margin: 1.5rem 0; }
+        .section-card ul { margin-left: 1.5rem; }
+        .section-card li { margin: 0.5rem 0; }
+        .dual-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 1.5rem 0; }
+        .dual-card { background: #faf6f0; padding: 1.5rem; border-radius: 16px; }
+        .dual-card h3 { margin-top: 0; color: #b91c1c; }
+        .dual-card.god { border-left: 5px solid #6b7db3; }
+        .dual-card.man { border-left: 5px solid #b91c1c; }
+        .back-link { display: inline-block; margin-top: 2rem; color: #b91c1c; text-decoration: none; font-weight: 500; }
+        .back-link:hover { text-decoration: underline; }
+        .footer { background: #f0ece4; text-align: center; padding: 1.5rem; font-size: 0.85rem; color: #5e5e5e; border-top: 1px solid #ffe0b5; }
+        a { color: #b91c1c; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        @media (max-width: 600px) { .header h1 { font-size: 1.5rem; } .content { padding: 1.5rem; } .dual-layout { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
 <div class="container">
     <div class="header">
         <h1>⚡ 源力体系</h1>
-        <p>贯穿世界观的核心能量系统 · 神赐与人造的对立</p>
+        <div class="subtitle">贯穿世界观的核心能量系统 · 神赐与人造的对立</div>
     </div>
     <div class="content">
+
         <div class="highlight-box">
             <p>📌 "人造源力既然能超过神赐源力。"</p>
             <p style="text-align: right;">—— 优幻的梦呓</p>
@@ -159,251 +68,20 @@
             </div>
         </div>
 
-        <h2>🔬 驱动器制造原理</h2>
+        <h2>🗂️ 分篇索引</h2>
         <div class="section-card">
-            <p>数据线驱动器的制造基于四种基本粒子的合成，其公式为：</p>
-            <div style="background: #fff3e0; padding: 1rem; border-radius: 8px; text-align: center; font-size: 1.2rem; font-weight: bold; margin: 1rem 0;">
-                Ω = (S × M × P)^(1/3) × ln(T)
-            </div>
-            <p>四种粒子的含义：</p>
-            <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
-                <li><strong>S（科学认知）</strong>——对自然规律的理解和掌握</li>
-                <li><strong>M（个人意志）</strong>——个体的主观能动性和精神力量</li>
-                <li><strong>P（实践指数）</strong>——在实践中积累的经验和改造世界的能力</li>
-                <li><strong>T（技术放大系数）</strong>——技术对上述三者效果的放大作用</li>
-            </ul>
-            <p>制造过程：先使用<strong>粒子捕捉线</strong>捕获四类粒子，在双手间凝聚成淡蓝色光球，待其完全定型后注入驱动器外壳。过去需要巨大的粒子对撞捕获机才能生产，现在使用已有的驱动器即可自行制造新驱动器。</p>
-        </div>
-
-        <h2>🎲 命运概率调谐天使团</h2>
-<div class="section-card">
-<p>米米尔为团长的天使团。核心机为<strong>九号</strong>，可在微观世界中将观测结果直接坍缩为好运，厄运直接抛出。米米尔所过之处会引发各种大灾难（火山喷发、超级台风等）——这些灾难是厄运被抛出的表现形式。</p>
-<p><strong>米米尔：</strong>天使团团长，路法的上级。性格疯狂大笑，将战斗视为喜剧表演。实力远超驱动先锋（21人合体也无法伤害她）。在得知路法15天杳无音讯后亲自前往命运大赛星。</p>
-</div>
-
-<h2>🔴 W粒子爆发事件</h2>
-        <div class="section-card">
-            <p>在第八章中，优幻制造驱动器时发生了一次震惊全场的科学事故。当蓝色光球即将定型之际，M粒子与优幻体内的负源力粒子在微观世界发生了碰撞，一个与M粒子完全相反的<strong>W粒子</strong>应运而生。</p>
-            <p><strong>事件经过：</strong></p>
-            <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
-                <li>红蓝双色光球互相撕扯争斗</li>
-                <li>红色光球最终撕裂了蓝色光球</li>
-                <li>红色光芒瞬间充满了整个房间和整条地道</li>
-                <li>一道冲天的红色光柱从地道口喷涌而出，持续一分多钟</li>
-                <li>该事件被命名为<strong>"W粒子爆发事件"</strong></li>
-            </ul>
-            <p>这次事件在神权方引起的注意较小，但在公社内部埋下了日后<strong>彻底革命派与先锋军国派分裂</strong>的伏笔。20个红色光球驱动器被制作成功，并在紧急状态下配发给同志们使用（副作用待回到根据地排查）。</p>
-        </div>
-
-        <h2>⚛️ M粒子与W粒子</h2>
-        <div class="section-card">
-            <p><strong>M粒子（个人意志）</strong>是传统人造源力驱动器的核心粒子，象征着个人意志的力量。然而M粒子存在严重的不稳定性问题：</p>
-            <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
-                <li>不同驱动器之间存在细微差距，且差距会随时间不断扩大</li>
-                <li>M粒子会以年为单位发生不可逆的突变</li>
-                <li>长期处于战斗状态会使驱动器向战斗方面高度特化，其他功能退化</li>
-                <li>这种分化最终可能导致<strong>技术官僚主义</strong>——擅长战斗的军人和技术开发者联合起来压制其他群体</li>
-                <li>M粒子的既得利益者会将不平等"放在桌面之下"，制造出虚假的平等</li>
-            </ul>
-            <p><strong>W粒子（集体意志）</strong>是优幻在意外中创造的全新人造源力粒子，与M粒子完全相反。其公式为：</p>
-            <div style="background: #fff3e0; padding: 1rem; border-radius: 8px; text-align: center; font-size: 1.2rem; font-weight: bold; margin: 1rem 0;">
-                Ψ = (S × W × P)^(1/3) × ln(T)
-            </div>
-            <p>W粒子的含义是<strong>集体意志</strong>（由优幻命名）。如果W粒子能够解决M粒子的不稳定性问题，它可能成为源力公有制的技术基础。但W粒子的推广必然会遭到M粒子既得利益者的强烈反对，引发公社内部路线斗争。</p>
-            <p><strong>W粒子治愈负源力绝症：</strong>在第二十五章中，驱动先锋将W粒子通过数据线分散链接到其他分社的负源力者。一束束蓝光被转换成红光，所有患有负源力绝症的同志（均不超过16岁）都被治愈。希晞指出：M粒子并不能彻底治愈负源力绝症，但W粒子可以。</p>
-            <p><strong>颜色区分：</strong></p>
-            <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
-                <li>神赐源力——金黄色</li>
-                <li>传统人造源力（M粒子）——蓝色</li>
-                <li>新型人造源力（W粒子）——红色</li>
+            <ul>
+                <li><strong>神赐源力</strong>（异化理论、检测值、核心机/系统、源力种子、时间系源力、元素源力、负源力绝症）→ <a href="god-source-power.html">《神赐源力》</a></li>
+                <li><strong>人造源力</strong>（驱动器制造原理、M粒子与W粒子、W粒子爆发事件、驱动先锋与联合先锋）→ <a href="artificial-source-power.html">《人造源力》</a></li>
+                <li><strong>源力政治经济学</strong>（劳动价值论、固定源力与流动源力、神赐源力晋级的三循环公式）→ <a href="source-power-economics.html">《源力政治经济学》</a></li>
+                <li><strong>混沌生物兵器</strong>（混沌卵与混沌真神）→ <a href="chaos.html">《混沌（虚无之神）》</a></li>
+                <li><strong>加速世界</strong>（奴隶生产系统）→ <a href="host-faction.html">《主机势力》</a></li>
             </ul>
         </div>
 
-        <h2>📖 源力异化理论</h2>
-        <div class="section-card">
-            <p>异化是理解源力体系的核心哲学概念。在公社的理论中，<strong>异化</strong>指在神权制度下，人的本质力量和自己创造的产物反过来支配人、与人对抗，导致人丧失自我与自由的状态。</p>
-            <p><strong>源力的异化：</strong></p>
-            <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
-                <li>源力本应只是服务人的一种工具</li>
-                <li>但在神权制度下，它反过来支配人、与人对抗</li>
-                <li>创世神通过垄断源力工具，将其伪装成"天赋"和"血统"——这就是源力异化的根源</li>
-                <li>人源力的强弱不是因为天赋不足或血统不纯，而是源力工具分配不公的结果</li>
-            </ul>
-            <p><strong>神赐源力的单一性：</strong>神创源力的能力特性永远围绕一种单一的力量——如果你用火，就只能一路增强火，其他源力无法使用。这一特性与修仙世界中的"单源根"类似。所谓的"几阶几级"实质上是阶级的具象化——每向上一阶垄断的源力就越多。</p>
-            <p><strong>阶与级的剥削关系：</strong>在神权体制下，一阶不等于一级。能够修炼到一阶的源力者已经不从事劳动了。最简单的剥削形式就是父亲压榨儿子，但父亲自己也要劳动。一个不劳动的剥削者至少需要两个被剥削者昼夜不停地生产抽象劳动来供应他修炼——一人白天劳动，一人晚上劳动。因此一阶对应的剥削基数至少为二级：</p>
-            <ul style="margin-left: 1.5rem; margin-bottom: 0.5rem;">
-                <li><strong>一阶 = 二级</strong>（剥削2人：一人白天一人晚上）</li>
-                <li><strong>二阶 = 四级</strong>（剥削4人）</li>
-                <li><strong>三阶 = 十二级</strong>（剥削12人）</li>
-            </ul>
-            <p>对应公式为：一阶=1×2，二阶=2×2，三阶=3×4。越往上走需要剥削的人越多。所谓"源力天赋"的本质，就是一个人的修炼建立在多少人的抽象劳动之上。神赐源力的等级制不是天赋的等级制，是剥削的等级制。</p>
-            <p><strong>人造源力的出路：</strong>人造源力将源力重新变回可供人类自由支配的工具。但必须配套<strong>源力公有制</strong>，否则人造源力也会走上异化的老路。目前公社面临的主要矛盾是神与人的矛盾，M粒子既得利益者与彻底革命派的矛盾是次要矛盾——等主要矛盾解决后，次要矛盾将上升为主要矛盾。</p>
-        </div>
-
-        <h2>📊 源力检测值</h2>
-        <div class="section-card">
-            <p>神权方使用专门的检测设备测定个体的源力值。检测值决定了个体在社会中的定位：</p>
-            <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
-                <li><strong>正无穷大 ~ 高额正值</strong>—— 天之骄子，被神眷顾者，进入神权体系上层</li>
-                <li><strong>普通正值</strong>—— 正常人，可领取普通源力技能</li>
-                <li><strong>零或负值</strong>—— 被视为"废物""天生弱者"，沦为奴隶或底层</li>
-                <li><strong>负无穷大</strong>—— 极端罕见的情况。机器会显示红字"对不起，你的源力检测值为负数无穷大，你是个天生的弱者"。此类个体被认为毫无价值，连领取源力技能的资格都没有</li>
-            </ul>
-        </div>
-
-        <h2>📋 源力劳动价值论</h2>
-<div class="section-card">
-<p>贺阳同志在劳动改造教育中阐述了公社的源力经济学理论：</p>
-<ul style="margin-left: 1.5rem; margin-bottom: 0.5rem;">
-    <li>空气中原本并不存在源力</li>
-    <li><strong>源力来源于劳动力</strong>——源于人与各种自然物的交换产生的劳动生产物，是抽象劳动产物</li>
-    <li>修炼不论哪个等级都不产生源力——修炼者吸收的是各种劳动外溢到空气中的源力</li>
-    <li>剥削者的具体财产好没收，但抽象财产（源力）需要通过让他们劳动来使多余的源力回归自然</li>
-    <li>当源力回归自然成为公共资源后，驱动器与空气中源力的交互会平均增强</li>
-</ul>
-</div>
-
-<h2>📦 形态与属性的经济基础：固定源力与流动源力</h2>
-<div class="section-card">
-<p>马克思在《资本论》第二卷中区分了固定资本与流动资本：固定资本（如机器、厂房）在生产过程中多次转移其价值；流动资本（如原材料、劳动力）在一次生产过程中一次性消耗其价值。这一区分直接对应源力体系中的<strong>形态与属性</strong>之分：</p>
-<p><strong>形态 = 固定源力：</strong>有实际可触摸的物理形态，可以被长期持有和反复使用，在多次使用中逐步转移其价值。一把剑可以反复劈砍，不需要在每次使用后重新制造。对应马克思的固定资本——多次转移价值，不因一次使用而消耗自身。</p>
-<p><strong>属性 = 流动源力：</strong>没有实际可触摸的物理形态，只能被短暂持有，在使用过程中一次性消耗完自身。火焰只能燃烧一次，燃烧之后就消失了；食物只能吃一次，吃完就不存在了。对应马克思的流动资本——在一次使用中一次性消耗并完成价值转移。</p>
-<p>这解释了为什么形态与属性必须在设计上严格分离：两者的经济性质完全不同。剑（固定资本/形态）是载体，火（流动资本/属性）是消耗品。把火属性附在剑上，是在固定资本上叠加流动资本——剑不会被消耗，但火会被一次性消耗完。这个区分在马克思的资本循环理论中有最坚实的根据。</p>
-<p>形态与属性的分离不是审美选择，是对经济规律的认识。</p>
-</div>
-
-<h2>🔁 神赐源力晋级的三循环公式</h2>
-<div class="section-card">
-<p>神赐源力者到底是怎么晋级的？不能仅靠简单的"剩余修炼率"来概括——那只是剥削环节。完整的晋级过程必须打通资本的三个循环公式，这是马克思在《资本论》第二卷中揭示的资本运动规律在源力体系中的映射。</p>
-
-<p><strong>货币资本循环：</strong>G — W…P…W' — G'</p>
-<p style="padding-left: 1.5rem;">起点是神权赐予的源力种子（G），购买修炼所需的资源（W：灵丹妙药、秘籍功法），进入生产过程（P：打坐修炼、突破瓶颈），产出更高阶的源力技能（W'），最终获得更强大的源力地位（G' = G+g，即剩余修炼率剥削的产出）。当前的"剩余修炼率"概念只套用在这个环节——你越努力修炼，创世神获得的g就越多。</p>
-
-<p><strong>生产资本循环：</strong>P…W' — G' — W…P</p>
-<p style="padding-left: 1.5rem;">生产过程本身成为起点。源力者以现有的修炼境界（P）为基础，产出更高阶的技能（W'），将其兑换为更多的修炼资源（G' → W：功勋、丹药、神器），再投入下一轮生产。这个循环的核心是P（生产）——各种灵丹妙药、天材地宝就是原材料，完整的源力晋级体系就是商品。修炼者实际上是在进行一场永不停息的生产劳动。</p>
-
-<p><strong>商品资本循环：</strong>W' — G' — W…P…W'</p>
-<p style="padding-left: 1.5rem;">从商品（源力技能）出发。修炼者将自身的高阶技能（W'）投入到神权体制的服务中（如参加命运赛、镇压起义），换取神权的赏赐（G'），再用赏赐购买下一轮修炼所需的资源（W），进入新一轮生产。这个循环揭示了神赐源力的本质——源力本身就是一种商品，源力者是这种商品的生产者，而创世神是最大的商品囤积者。</p>
-
-<p><strong>三个循环的关系：</strong>三个循环不是独立运行的，而是同时进行、相互交织。神赐源力者必须将三个循环全部打通，才能在神权体制中完成晋级。任何一个循环断裂（如买不到突破所需的丹药、产出的技能无法兑换功勋、神权不再需要他的服务），晋级就停止了。这正是神权体制对源力者的全面控制——不仅控制他的生产（P），还控制他的流通（G—W和W'—G'），控制他的整个生命活动。</p>
-
-<p>传统修仙小说中那些不可明说的"修炼过程"，在这里被清晰地拆解为三个资本循环公式。修炼不是什么玄妙的天人感应——修炼就是劳动，晋级就是扩大再生产，而神权就是那个占有全部剩余价值的资本家。</p>
-</div>
-
-<h2>🥚 混沌卵与混沌真神</h2>
-<div class="section-card">
-<p>创世神亲自下场制造的生物兵器系统。通过在宿主体内植入混沌卵，使其获得强大的混沌力量。</p>
-<p><strong>多层结构：</strong>舟亢体内的混沌卵实为第二层（蛹状态）。真正的混沌生物在舟亢体内吸收养分，最终破蛹而出——蝴蝶翅膀覆盖几十个星域吸收能量，混合所有物种特征（人类大脑、吸血鬼獠牙、狼人鼻子、龙尾巴、天使翅膀），自称"虚无的神"前往北混。舟亢只是过渡状态的"蝴蝶蛹"。</p>
-<p>春微的评价："渴望力量便给他力量，让他被力量所吞噬。"创世神只给了力量没给寿命。</p>
-<p><strong>创世神的再利用：</strong>创世神捡起舟亢空皮囊，灌入小型黑洞（黑洞=宇宙），从黑洞宇宙中抓取濒死身躯融合，编了个黄色立方体"系统"塞入大脑，将其丢向四大星域中央星球。新舟亢变成另一副模样——利己主义、杀伐果断、渴望开后宫的穿越者。</p>
-</div>
-
-<h2>🤖 驱动先锋</h2>
-<div class="section-card">
-<p>合体技术的高阶应用形态。两人使用合体线后融合成的战斗形态被称为<strong>驱动先锋</strong>：</p>
-<ul style="margin-left: 1.5rem; margin-bottom: 0.5rem;">
-    <li>身穿数据驱动甲</li>
-    <li>可使用数据驱动枪（通过量子凭空制造，发射高温能量弹）</li>
-    <li>数据身体的大脑可在身体任何位置——即使头部被击中也能进入假死状态保命</li>
-    <li>可切换为数据激光枪等不同武器</li>
-</ul>
-<p>但合体也并非万能——驱动先锋仍不敌舟亢的混沌装甲化力量，需要更多人的合体才能对抗高阶敌人。</p>
-</div>
-
-<h2>🤝 驱动先锋与联合先锋</h2>
-<div class="section-card">
-<p>那么，能不能有两个不同的日常物品组合合体呢？我的回答是：<strong>能，又不能。</strong>打个简单的比喻：你打算让 A 型血的人，把自己的血输给 B 型血的人——都是血，但血型不同，是无法融合在一块的。同样的，都是量子，但量子类型不同，也是无法融合在一块的。</p>
-<p>但是，现实世界中，人类已经将不同血型进行了转换。所以：<strong>二人之间的直接合体，是不行的；不同的社，要使用联合机进行合体。</strong>这种跨社合体，称之为<strong>联合先锋</strong>。</p>
-<p>但在这里要明确的是：<strong>联合先锋，不是驱动先锋的上位替代，他们两个是相等的。</strong>不同社之间组合的联合先锋，不一定强于相同社之间组合的驱动先锋。</p>
-<p><strong>驱动先锋与联合先锋的含义，分别是：</strong></p>
-<ul style="margin-left: 1.5rem; margin-bottom: 0.5rem;">
-    <li><strong>先锋</strong>——无产阶级先锋队；</li>
-    <li><strong>驱动</strong>——阶级斗争是历史的直接驱动力；</li>
-    <li><strong>联合</strong>——无产者们联合起来。</li>
-</ul>
-<p>驱动先锋，是同社之间的团结（血型相同，直接融合）；联合先锋，是跨社之间的团结（血型不同，通过"联合机"转换后融合）。两者平等，都是"无产者联合起来"在不同尺度上的体现——<strong>先在同社内驱动，再到跨社间联合，一步都不能少。</strong></p>
-</div>
-
-<h2>⏳ 时间系源力</h2>
-<div class="section-card">
-<p>时间系源力是神赐源力的一个特殊分支，极难掌握但极为危险。犯罪率极高。</p>
-<p><strong>核心原理：</strong>质量越大时间越慢，质量越小时间越快。时间系能力者本质上是改变自身的质量。</p>
-<p><strong>已知能力：</strong></p>
-<ul style="margin-left: 1.5rem; margin-bottom: 0.5rem;">
-    <li><strong>时间加速/减缓</strong>——通过改变自身质量来实现，可以让服刑者的主观感受缩短为一天</li>
-    <li><strong>时间暂停</strong>——通过近乎无限减小自身质量来实现</li>
-    <li><strong>时间回溯</strong>——最特殊的一种，本质是制造一个稳定的虫洞，通过源力物质连同其他人一起返回过去。可以使犯罪证据消失</li>
-</ul>
-<p><strong>公社的对抗手段：</strong>自身也可以改变质量来对抗时间系者。抓捕后在其身上安装迷你黑洞，使其无法改变自身质量。此外公社的数据机存储文件可远程销毁，防止时间暂停偷窃。</p>
-</div>
-
-<h2>📦 神赐源力核心机（系统）</h2>
-<div class="section-card">
-<p>创世神制造的智能核心机，即所谓"系统"。外观呈金色漩涡状，向外散发粒子。被植入者大脑中的黄色小立方体即为此物。</p>
-<p><strong>特征：</strong></p>
-<ul style="margin-left: 1.5rem; margin-bottom: 0.5rem;">
-    <li>剩余修炼率极高（088号的核心机达3000%）</li>
-    <li>可辅助宿主进行夺舍等操作</li>
-    <li>本质上是创世神收割源力的工具——宿主越努力，创世神获益越多</li>
-    <li>曾被多个系统持有者潜伏进公社，大搞个人主义、社会达尔文主义、山头主义、军阀主义</li>
-</ul>
-</div>
-
-<h2>🏭 加速世界（奴隶生产系统）</h2>
-<div class="section-card">
-<p>神权方的奴隶工业化生产基地。从1岁到18岁出栏，一直被训练做重复的事情，直到没有任何个人想法为止。可进行基因筛选培养（如耐寒基因）。价格极低——100万个奴隶仅需1个创世币。</p>
-<p>但与工业化奴隶相比，价值100创世币的自然奴隶仍被保留——因为"总归是要有人提供情绪价值的"。加速世界的存在深刻揭示了神权体制下"人命不是命"的本质。</p>
-</div>
-
-<h2>💡 源力种子</h2>
-        <div class="section-card">
-            <p>源力种子是神赐源力体系中的核心概念。每个从神权处领取源力技能的人体内会被种下源力种子。数据线驱动器的"防反"技能可以连同源力种子一起将敌人斩断，这意味着驱动器不仅能击败敌人，还能<strong>彻底摧毁敌人体内的神赐源力根基</strong>。</p>
-        </div>
-
-        <h2>🩺 负源力器官衰竭</h2>
-        <div class="section-card">
-            <p>负源力器官衰竭是神赐源力体系中的一种罕见绝症，在源力检测值为负的人中有极低概率（亿亿分之一）发病。</p>
-            <p><strong>病因：</strong>正物质身体与负物质源力在微观层面产生排斥反应。随着宿主年龄增长、身体逐渐完善，排斥反应逐渐加剧，最终导致器官衰竭死亡。</p>
-            <p><strong>发病特征：</strong></p>
-            <ul style="margin-left: 1.5rem; margin-bottom: 0.5rem;">
-                <li>童年时期症状不明显</li>
-                <li>随年龄增长逐渐发作，表现为突然性的呼吸困难、身体不适</li>
-                <li>此病只出现在世世代代都是奴隶的人身上</li>
-                <li>奴隶主和贵族看优幻的眼神不是在看一件物品，而是在看一个"即将死去的无用之物"</li>
-                <li>绝大多数携带者活不过16岁</li>
-            </ul>
-            <p><strong>治疗困境：</strong>此病无法通过常规医疗手段治愈。即使更换全身所有器官，排斥反应依然会发作。目前唯一的理论治疗方案是将人的<strong>意识连续性转移到驱动器内</strong>，让身体彻底成为一个载具（意识上传/数字化），但这仅为理论假设，从未有人实践过。</p>
-            <p><strong>神权方的应对：</strong>已知神权方有多种手段可以延缓病情一至两年（如仙丹、特制十字架植入体、研究院技术、特殊盔甲等），但均无法根治。这成为神权方谈判团试图分化瓦解公社的重要筹码。</p>
-        </div>
-
-        <h2>🔥 元素源力体系</h2>
-        <div class="section-card">
-            <p>神赐源力的应用形式大致分为两类——<strong>技能型</strong>（领取固定技能）和<strong>元素型</strong>（操控自然元素）。元素源力使用者通常在命运赛中排名较高，被神权方视为"精英"。</p>
-            <p><strong>已知元素类型：</strong></p>
-            <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
-                <li><strong>火焰系</strong>——释放火焰进行攻击，可制造火龙等范围伤害</li>
-                <li><strong>闪电系</strong>——释放高压电流，可贯穿整条地道（弱点：绝缘物质可抵挡）</li>
-                <li><strong>水流系</strong>——操控水流，可用于淹没或冲击敌人</li>
-                <li><strong>土石系</strong>——操控泥土和岩石，用于防御或构筑</li>
-                <li><strong>金属系</strong>——操控金属物体进行攻击或防御</li>
-                <li><strong>光线系</strong>——发射高能光束，威力巨大但难以精确控制（容易误伤友军）</li>
-                <li><strong>基因编辑系</strong>——操控DNA链条，可开启生物体所有基因链进行任意改造。仅对碳基生物起作用（人机一体后的重构身体可免疫）。春微即为此系使用者</li>
-            </ul>
-            <p><strong>体术类源力（非元素类精英）：</strong></p>
-            <p><strong>装甲化（通用战斗技巧）：</strong>将自身源力进行装甲化包裹全身。在同等能力水平下，装甲化战士强于非装甲化。舟亢的灰白色混沌甲为此技术的混沌变体。</p>
-            <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
-                <li><strong>力大无穷</strong>——超越常人的力量，可徒手掰开铁壁</li>
-                <li><strong>钢筋铁骨</strong>——肉体坚硬如钢铁，但无法防御烟雾窒息</li>
-                <li><strong>血肉重生</strong>——快速再生能力，但无法对抗细胞脱水</li>
-            </ul>
-            <p><strong>已知弱点：</strong>精英参赛者虽然个人能力强大，但缺乏统一指挥和战术配合，在地道复杂环境中各自为战，容易自相残杀或被针对性陷阱各个击破。此外元素源力之间存在相互克制。</p>
-        </div>
-
-        <p><a href="../worldview.html" class="back-link">← 返回世界观目录</a> · <a href="../index.html">返回首页</a></p>
+        <p><a href="../index.html" class="back-link">← 返回公社首页</a> · <a href="../worldview.html">返回世界观目录</a></p>
     </div>
-    <div class="footer">
-        源力公社 · 集体版权 · 设定持续更新中
-    </div>
+    <div class="footer">源力公社 · 集体版权 · 设定持续更新中</div>
 </div>
 </body>
 </html>
