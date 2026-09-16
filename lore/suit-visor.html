@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>论皮套的窥视孔问题 · 源力公社</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif; background: #fef9f0; color: #2c2c2c; line-height: 1.9; padding: 2rem 1rem; }
+        .container { max-width: 900px; margin: 0 auto; background: white; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); overflow: hidden; border: 1px solid #ffe0b5; }
+        .header { background: #b91c1c; color: white; padding: 2rem 2rem 1.5rem; text-align: center; }
+        .header h1 { font-size: 1.8rem; letter-spacing: 1px; margin-bottom: 0.3rem; }
+        .header .subtitle { font-size: 0.95rem; opacity: 0.85; }
+        .content { padding: 2.5rem; }
+        h2 { color: #b91c1c; margin: 2.2rem 0 1rem; border-bottom: 2px solid #ffe0b5; padding-bottom: 0.3rem; }
+        .section-card { background: #faf6f0; padding: 1.5rem 2rem; border-radius: 16px; margin: 1.5rem 0; }
+        .highlight-box { background: #fff3e0; border-left: 5px solid #b91c1c; padding: 1rem 1.5rem; border-radius: 8px; margin: 1.5rem 0; }
+        .quote-box { background: #f5f0e8; border-left: 3px solid #b91c1c; padding: 1rem 1.5rem; border-radius: 8px; margin: 1.2rem 0; font-style: italic; }
+        .warn { background: #fff8e1; border-left: 5px solid #d97706; padding: 1rem 1.5rem; border-radius: 8px; margin: 1.5rem 0; }
+        .compare-table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+        .compare-table th, .compare-table td { border: 1px solid #ffe0b5; padding: 0.6rem 0.9rem; text-align: left; vertical-align: top; }
+        .compare-table th { background: #fff3e0; color: #b91c1c; }
+        .back-link { display: inline-block; margin-top: 2rem; color: #b91c1c; text-decoration: none; font-weight: 500; }
+        .back-link:hover { text-decoration: underline; }
+        .footer { background: #f0ece4; text-align: center; padding: 1.5rem; font-size: 0.85rem; color: #5e5e5e; border-top: 1px solid #ffe0b5; }
+        a { color: #b91c1c; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        @media (max-width: 600px) { .header h1 { font-size: 1.35rem; } .content { padding: 1.5rem; } }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>🪟 论皮套的窥视孔问题</h1>
+        <div class="subtitle">原理早就有，缺的是形态——单向可视材料与它意味着什么</div>
+    </div>
+    <div class="content">
+
+        <div class="highlight-box">
+            <p><strong>核心结论：</strong>皮套演员的视野问题，日本那边几十年没解决。但仔细拆开看，<strong>缺的不是原理（半透半反镜早就有），缺的是形态</strong>——把玻璃基的单向镜，变成能贴曲面、不反光、够清晰的<strong>柔性材料</strong>。而这正好又是<a href="../method/proletarian-narrative-technique-6.html">形态与属性分离法</a>的一次应用：<strong>单向可视是属性，材料形态是变量。</strong></p>
+        </div>
+
+        <h2>一、一个被忽视了三十年的问题</h2>
+        <div class="section-card">
+            <p>皮套演员（スーツアクター）是一个真实存在的职业——从哥斯拉、奥特曼、假面骑士到战队，那些在银幕上打斗、摔倒、被炸翻的角色，里面都有人在演。</p>
+            <p>而他们面对的<strong>第一号困难不是累，是看不见</strong>：</p>
+            <ul style="margin-left: 1.5rem;">
+                <li><strong>视野极窄</strong>——为了不破坏造型，窥视孔只能做得很小，演员往往只能看到正前方一条缝；</li>
+                <li><strong>盲演</strong>——有的角色干脆完全看不见，靠排练记住走位，靠同伴喊节奏；</li>
+                <li><strong>看不见对手</strong>——更别说看清对手的表情了。所以打斗往往是"两套预演好的动作对撞"；</li>
+                <li><strong>表演受限</strong>——一个看不见周围的人在演一个能看见一切的角色，这本身就是矛盾。</li>
+            </ul>
+            <p><strong>三十多年过去，这个问题始终没有真正解决。</strong>因为在旧的做法里，它被当成一个"没办法的取舍"——要造型，就得牺牲视野。</p>
+        </div>
+
+        <h2>二、为什么"单向玻璃"不能直接搬过来</h2>
+        <div class="section-card">
+            <p>第一反应是：用单向玻璃啊！审讯室那种——外面看不到里面，里面看得到外面。</p>
+            <p><strong>方向对了，但不能直接用。</strong>先把原理说清：</p>
+            <ul style="margin-left: 1.5rem;">
+                <li><strong>半透半反镜</strong>——镀一层薄金属膜，一半光透过、一半光反射；</li>
+                <li><strong>关键在光强差</strong>：亮的一侧，反射光压过透射光，看到的是一面镜子；暗的一侧，透射进来的光压过自己的反射，看到的是透明。</li>
+            </ul>
+            <p><strong>那么皮套的情况恰好符合：</strong>外面是亮的（棚内打光、户外阳光），里面是暗的（封闭头盔）——所以外面看到镜面（看不见演员的脸），里面能看到外面。</p>
+            <p><strong>原理上成立，但用玻璃做就是不行：</strong></p>
+            <table class="compare-table">
+                <tr><th>问题</th><th>为什么</th></tr>
+                <tr><td><strong>不能贴合曲面</strong></td><td>玻璃是刚性的，而皮套头部都是弧面、异形、带造型</td></tr>
+                <tr><td><strong>会反光</strong></td><td>镀膜玻璃在打光环境下会反射出摄影棚的灯，把造型毁了</td></tr>
+                <tr><td><strong>透光率低</strong></td><td>半透半反意味着一半光被挡掉，演员看到的画面偏暗</td></tr>
+                <tr><td><strong>不安全</strong></td><td>玻璃装在头部，演员摔倒时是危险源；而且重量大</td></tr>
+            </table>
+            <div class="quote-box">
+                <strong>所以真正的问题不是"有没有这个原理"，<br>
+                而是"能不能把它做成能戴在脸上的东西"。</strong>
+            </div>
+        </div>
+
+        <h2>三、真正的难点：四个条件必须同时满足</h2>
+        <div class="section-card">
+            <p>把需求整理一下，就会发现难在"同时"：</p>
+            <table class="compare-table">
+                <tr><th>条件</th><th>要求</th></tr>
+                <tr><td><strong>① 单向可视</strong></td><td>里面看得见外面，外面看不见里面</td></tr>
+                <tr><td><strong>② 高清晰 + 大视野</strong></td><td>不是"能看到一条缝"，是能看清人、看清表情、看清周围环境</td></tr>
+                <tr><td><strong>③ 不破坏造型</strong></td><td>不能反光、不能露出材料痕迹、能从内部整形</td></tr>
+                <tr><td><strong>④ 可穿戴</strong></td><td>柔性、轻薄、安全、耐用</td></tr>
+            </table>
+            <p><strong>现有方案各自只能满足其中一部分：</strong></p>
+            <ul style="margin-left: 1.5rem;">
+                <li><strong>黑色纱网</strong>——①②④都还行，但清晰度差、视野窄（纱网的网眼就是视野）；</li>
+                <li><strong>微孔板</strong>——造型好，但视野更窄；</li>
+                <li><strong>半透镜（玻璃）</strong>——①好、②尚可，但③④不行；</li>
+                <li><strong>头盔内屏幕＋摄像头</strong>——②好，但那是影视拍摄方案，皮套演出用不起（成本、重量、功耗、可靠性全不成立）；</li>
+                <li><strong>盲演</strong>——放弃治疗。</li>
+            </ul>
+            <p><strong>结论：四个条件里，旧方案最多同时满足两个。</strong>这就是三十年没解决的原因——不是没人想过，是<strong>材料不行</strong>。</p>
+        </div>
+
+        <h2>四、公社的解法：把"玻璃"变成"膜"</h2>
+        <div class="section-card">
+            <p>解法方向只有一句话：</p>
+            <div class="quote-box">
+                <strong>原理不变，换掉材料形态。<br>
+                从"一块镀膜玻璃"，变成"一层定向透射膜"。</strong>
+            </div>
+            <p><strong>它的工作方式（设定内原理）：</strong></p>
+            <ul style="margin-left: 1.5rem;">
+                <li><strong>粒子级定向排列</strong>——膜内的微粒按特定方向排列，形成只允许某一方向光通行的通道；</li>
+                <li><strong>外侧反射、内侧透射</strong>——外侧的入射光被引导成漫反射（看起来是皮套本身的颜色和质感，不反光）；内侧的透射通道让演员的视线顺利穿出；</li>
+                <li><strong>视差筛选</strong>——通道本身带角度，远处、斜角的观察者视线穿不过去（看到的是表面），而演员的眼睛贴着膜时角度正好打通。</li>
+            </ul>
+            <p><strong>这样一来，四个条件可以同时满足：</strong></p>
+            <ul style="margin-left: 1.5rem;">
+                <li>① 内看外、外看不内；</li>
+                <li>② 通道密集且无网眼遮挡，视野接近裸眼；</li>
+                <li>③ 表面可按皮套材质处理（哑光、上色、随造型走）；</li>
+                <li>④ 薄膜柔性可贴合、轻薄安全。</li>
+            </ul>
+        </div>
+
+        <h2>五、而这又是一次形态与属性分离法</h2>
+        <div class="section-card">
+            <p>注意这件事的结构：</p>
+            <table class="compare-table">
+                <tr><th></th><th>内容</th></tr>
+                <tr><td><strong>属性（不变）</strong></td><td>单向可视——里面看得见，外面看不见</td></tr>
+                <tr><td><strong>形态（可变）</strong></td><td>承载它的材料：玻璃 → 膜、片、涂层、任意曲面</td></tr>
+            </table>
+            <div class="quote-box">
+                <strong>把"单向可视"从玻璃这种形态里解放出来，<br>
+                它就能长到任何需要它的地方。</strong>
+            </div>
+            <p>这和<a href="driver-vanguard-face.html">《论驱动先锋的面部设计》</a>里那条原则是同一回事：<strong>定属性，放开形态。</strong>——同一套方法，既用在了角色脸上，也用在了制造角色的材料上。</p>
+        </div>
+
+        <h2>六、对皮套演员意味着什么</h2>
+        <div class="section-card">
+            <p>如果这种材料做出来，变化是产业级的：</p>
+            <ul style="margin-left: 1.5rem;">
+                <li><strong>不用盲演了。</strong>演员能看见周围，能自己走位，不用把整场戏背成体操；</li>
+                <li><strong>能演对手戏了。</strong>看得见对手的动作和表情，反应就是真的——<strong>打斗从"两套预演对撞"变成"两个人在交手"</strong>；</li>
+                <li><strong>能即兴了。</strong>看得见观众、看得见环境，就有现场反应，这不是设计出来的；</li>
+                <li><strong>更安全了。</strong>摔倒、走位、避障都靠眼睛，不是靠记忆；</li>
+                <li><strong>表演上限提高了。</strong>一个看不见的人只能做动作，一个看得见的人才能"演"。</li>
+            </ul>
+            <p><strong>一句话：它把皮套演员从"操作员"变回了"演员"。</strong></p>
+        </div>
+
+        <h2>七、这不只是道具，是文化工业的基础设施</h2>
+        <div class="section-card">
+            <p>再往上看一层：<strong>这项技术如果真做出来，不属于某部作品，属于整个演出行业。</strong></p>
+            <ul style="margin-left: 1.5rem;">
+                <li>特摄、舞台剧、主题乐园的吉祥物、大型活动的扮演者——全部受益；</li>
+                <li>它解决的是"人如何进入非人形角色"这个根本问题；</li>
+                <li>而这恰恰是公社路线（<a href="literary-line.html">《论文艺路线》</a>）里说的那种东西：<strong>不是一部作品的优势，是一整条产业链的基础。</strong></li>
+            </ul>
+            <p>这也和公社在芜湖的产业设想接得上：<strong>若本地有材料与金属加工的基础（铁画那条线），这种膜的量产与定制就有了落点。</strong>参见<a href="offline-location.html">《论公社线下选址》</a>。</p>
+            <div class="quote-box">
+                <strong>别人做的是作品，我们要做的是让别人做作品的那个东西。</strong>
+            </div>
+        </div>
+
+        <h2>八、结论</h2>
+        <div class="section-card">
+            <p>五句话：</p>
+            <ul style="margin-left: 1.5rem;">
+                <li><strong>问题是真的</strong>——皮套演员几十年在"看不见"的状态下工作；</li>
+                <li><strong>原理早就有了</strong>——半透半反镜的"外看是镜、内看是窗"，皮套的光线条件正好符合；</li>
+                <li><strong>卡在材料上</strong>——玻璃不能贴曲面、会反光、太暗、太危险；</li>
+                <li><strong>解法是换形态</strong>——把镀膜玻璃换成定向透射膜，四个条件就能同时满足；</li>
+                <li><strong>意义超出道具</strong>——它把皮套演员从操作员变回演员，而且是整条演出产业的基础设施。</li>
+            </ul>
+            <p style="text-align: center; margin: 1rem 0;"><strong>外面是一片平静的脸，<br>
+                里面是一双终于能看清世界的眼睛。</strong></p>
+        </div>
+
+        <p><a href="driver-vanguard-face.html">← 论驱动先锋的面部设计</a> · <a href="../method/proletarian-narrative-technique-6.html">形态与属性分离法 →</a></p>
+
+        <p><a href="../worldview.html" class="back-link">← 返回世界观目录</a> · <a href="../index.html">返回首页</a></p>
+    </div>
+    <div class="footer">源力公社 · 集体版权 · 世界观设定</div>
+</div>
+</body>
+</html>
