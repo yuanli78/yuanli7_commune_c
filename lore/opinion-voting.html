@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>论意见投票制 · 源力公社</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif; background: #fef9f0; color: #2c2c2c; line-height: 1.9; padding: 2rem 1rem; }
+        .container { max-width: 900px; margin: 0 auto; background: white; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); overflow: hidden; border: 1px solid #ffe0b5; }
+        .header { background: #b91c1c; color: white; padding: 2rem 2rem 1.5rem; text-align: center; }
+        .header h1 { font-size: 1.9rem; letter-spacing: 1px; margin-bottom: 0.3rem; }
+        .header .subtitle { font-size: 0.95rem; opacity: 0.85; }
+        .content { padding: 2.5rem; }
+        h2 { color: #b91c1c; margin: 2.2rem 0 1rem; border-bottom: 2px solid #ffe0b5; padding-bottom: 0.3rem; }
+        .section-card { background: #faf6f0; padding: 1.5rem 2rem; border-radius: 16px; margin: 1.5rem 0; }
+        .highlight-box { background: #fff3e0; border-left: 5px solid #b91c1c; padding: 1rem 1.5rem; border-radius: 8px; margin: 1.5rem 0; }
+        .quote-box { background: #f5f0e8; border-left: 3px solid #b91c1c; padding: 1rem 1.5rem; border-radius: 8px; margin: 1.2rem 0; }
+        .warn { background: #fff8e1; border-left: 5px solid #d97706; padding: 1rem 1.5rem; border-radius: 8px; margin: 1.5rem 0; }
+        .compare-table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+        .compare-table th, .compare-table td { border: 1px solid #ffe0b5; padding: 0.6rem 0.9rem; text-align: left; vertical-align: top; }
+        .compare-table th { background: #fff3e0; color: #b91c1c; }
+        .comment { background: #f7f7f7; border-left: 3px solid #bbb; padding: 0.6rem 1rem; border-radius: 6px; margin: 0.6rem 0; font-size: 0.93rem; }
+        .comment b { color: #b91c1c; }
+        .back-link { display: inline-block; margin-top: 2rem; color: #b91c1c; text-decoration: none; font-weight: 500; }
+        .back-link:hover { text-decoration: underline; }
+        .footer { background: #f0ece4; text-align: center; padding: 1.5rem; font-size: 0.85rem; color: #5e5e5e; border-top: 1px solid #ffe0b5; }
+        a { color: #b91c1c; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        @media (max-width: 600px) { .header h1 { font-size: 1.4rem; } .content { padding: 1.5rem; } }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>🗳️ 论意见投票制</h1>
+        <div class="subtitle">从大意见到决议——喊一百遍不等于一百个人</div>
+    </div>
+    <div class="content">
+
+        <div class="highlight-box">
+            <p><strong>核心结论：</strong>"按闹分配"之所以有效，是因为<strong>声量可以伪造，人数不能伪造</strong>——少数人只要制造出"看起来很多"的声音，就能冒充多数。</p>
+            <p>所以对付它不需要比谁嗓门大，只需要三步：<strong>把小意见归并成大意见 → 公开走一轮正反同票 → 长期处于大多数才通过。</strong>归并把声量换算回人数，公开让人负责，长期把动员和认同分开。</p>
+        </div>
+
+        <h2>一、问题：少数人用大量的声音谋特权</h2>
+        <div class="section-card">
+            <p>公社面对过各种文化破坏分子（见<a href="enclosure.html">《论圈地》</a>、<a href="lips-and-teeth.html">《论唇亡齿寒》</a>）。他们有一个共同的战术：<strong>用很少的人数，发出很大的声音。</strong></p>
+            <p>而他们为什么次次有效？因为旧的文化组织<strong>装聋作哑</strong>——不是看不见，是<strong>它们的运转本来就靠声量</strong>：流量、热搜、粉丝数、评论区风向，全都是声量的计量器。谁声大，谁的账面上就好看。</p>
+            <p>公社不能装聋作哑。但也不能靠"我们也去喊"来解决——那只把问题变成比嗓门。</p>
+            <div class="quote-box" style="text-align:center;">
+                <strong>对付声量的办法，不是比谁声音大，<br>
+                是把声量换算回人数。</strong>
+            </div>
+            <p>这就是"意见投票制"要干的全部事情。它有三个步骤，每一步都对应上面一个漏洞。</p>
+        </div>
+
+        <h2>二、第一步：把小意见归并成大意见</h2>
+        <div class="section-card">
+            <p>收集意见的时候，不直接进入表决，而是先做一次<strong>归并</strong>：把分散的、重复的小意见合并成数量有限的<strong>大意见</strong>。</p>
+            <ul style="margin-left: 1.5rem;">
+                <li><strong>同一个诉求合并成一条</strong>——不管有多少人提，合并后只算一条；</li>
+                <li><strong>归并过程和结果公开可查</strong>——谁提的、被并到哪一条，都能查；</li>
+                <li><strong>任何个人不得频繁提交重复的意见</strong>——重复提交不产生额外分量；</li>
+                <li><strong>归并不删除任何诉求</strong>，只是取消它的重复计数。</li>
+            </ul>
+            <p>为什么这一步是决定性的？因为在集体之中，个人提出的意见<strong>必然大量重叠</strong>——一百个人提意见，可能只对应三五个真正的诉求。如果按条数算，那五条诉求就会因为"被提了一百次"而看起来像一百条。</p>
+            <div class="quote-box" style="text-align:center;">
+                <strong>喊一百遍，不等于一百个人。<br><br>
+                归并不减少意见，只减少重复。</strong>
+            </div>
+            <p>所以这一条就是整套制度的免疫系统：</p>
+            <div class="quote-box" style="text-align:center;">
+                <strong>归并，就是对声量的免疫。</strong>
+            </div>
+            <p>而且要注意：<strong>塞满意见箱比塞满评论区更容易</strong>——因为意见箱本该是"认真的地方"。所以归并这一步尤其不能省。</p>
+        </div>
+
+        <h2>三、绝不收集对个人的意见</h2>
+        <div class="section-card">
+            <p>归并之外，还有一条红线：<strong>意见收集绝不包含针对某个同志的个人意见或个人评价。</strong></p>
+            <p>因为收集意见的目的是<strong>集体的发展</strong>，不是<strong>给某个人戴帽子</strong>。涉及个人的问题，走的是另一套程序——<a href="gongyue.html">《源力公社公约》</a>第二十三条之十五的<strong>集体批评制</strong>（集体批评 → 限期整改 → 逾期不整改才适用封禁）。</p>
+            <div class="quote-box" style="text-align:center;">
+                <strong>意见箱不是帽子铺。</strong>
+            </div>
+            <p>这一条不只是体面问题，它是一道<strong>结构性的防火墙</strong>。想清楚：如果"意见投票制"可以被用来针对个人，会发生什么？</p>
+            <ul style="margin-left: 1.5rem;">
+                <li>只要组织足够多的人反复提同一条针对某人的意见，就能把这个人"投掉"；</li>
+                <li>而组织一批人去反复提同一条意见，<strong>正是圈地的标准动作</strong>。</li>
+            </ul>
+            <p>也就是说——<strong>允许用它对付个人，等于把一件反圈地的武器，反过来变成圈地的工具。</strong>而集体批评制之所以能接住个人问题，是因为它有明确的程序保障：必须指出具体的个人问题、必须给出具体可执行可验收的整改事项、"态度不好"不得作为整改事项。</p>
+            <div class="quote-box" style="text-align:center;">
+                <strong>能投票决定的事，只能是事；<br>
+                不能是人。</strong>
+            </div>
+        </div>
+
+        <h2>四、第二步：正反同票，而且公开</h2>
+        <div class="section-card">
+            <p>归并完成后，每一条大意见都要<strong>先公开走一轮"正反同票"</strong>——这是公社已有的机制（见第十三条：选举与罢免不是两个先后分开的程序，而是在同一次投票中动态统一）。</p>
+            <p>用在意见上，它的意思是：<strong>赞成与反对在同一次表决中同时表达、两个方向同时计</strong>，而不是"先问同不同意，再问要不要罢免"。</p>
+            <p><strong>而且意见投票必须公开——这一点和选举正好相反。</strong></p>
+            <table class="compare-table">
+                <tr><th></th><th>选举（选人）</th><th>意见投票（议事）</th></tr>
+                <tr><td><strong>是否公开</strong></td><td><strong>匿名</strong>（编码公投、当选匿名，防投票期炒作与人身绑架）</td><td><strong>公开</strong>（每一票的立场署名）</td></tr>
+                <tr><td><strong>为什么</strong></td><td>对象是<strong>人</strong>：匿名保护投票人，也保护候选人</td><td>对象是<strong>事</strong>：表态是社员的权利和义务，没有匿名保护的需要</td></tr>
+            </table>
+            <div class="quote-box" style="text-align:center;">
+                <strong>对人可以匿名，对事必须公开。</strong>
+            </div>
+            <p>公开还有一个作用，而且是很要紧的作用：<strong>署名的票，是要还的。</strong>投了赞成票的人，日后要为自己当时的判断负责；谁当初力推一条后来证明是坏的意见，记录就在那里。这本身就是一种筛选——<strong>它让"跟着喊"变成一件有成本的事。</strong></p>
+        </div>
+
+        <h2>五、第三步：长期处于大多数，才可通过</h2>
+        <div class="section-card">
+            <p>这是整套制度的刀锋，也是最关键的一条：<strong>某一边的意见长期处于大多数状态下，意见才可通过。</strong></p>
+            <p>一时的多数不算。为什么？只要想清一件事就够了——<strong>一时的多数可以动员，长期的多数只能靠认同。</strong></p>
+            <table class="compare-table">
+                <tr><th></th><th>一时的多数</th><th>长期的多数</th></tr>
+                <tr><td><strong>怎么来</strong></td><td>动员：一句话、一晚上、一个群，就能拉起来</td><td>认同：必须一个一个说服，而且不能断</td></tr>
+                <tr><td><strong>谁最擅长</strong></td><td><strong>有组织的少数</strong>——这恰恰是圈地者最强的地方</td><td><strong>真正有理的一方</strong>——因为道理经得起重复讲述</td></tr>
+                <tr><td><strong>能不能伪造</strong></td><td>能</td><td><strong>不能</strong>——伪装可以持续一阵，持续不了长期</td></tr>
+            </table>
+            <div class="quote-box" style="text-align:center;">
+                <strong>动员能赢一轮，认同才能赢一路。</strong>
+            </div>
+            <p>于是"按闹分配"就在这一步被掐住了根：</p>
+            <div class="quote-box" style="text-align:center;">
+                <strong>闹只能形成波峰，形不成趋势。<br><br>
+                赛博藤壶能制造一时的多数，<br>
+                制造不了长期的多数。</strong>
+            </div>
+            <div class="warn">
+                <p><strong>"长期"必须是一个期限，不能是一个借口。</strong>所以它需要可操作的定义：建议以<strong>连续两轮表决、且两轮之间相隔不少于十四天，均为多数</strong>，方可视为"长期处于大多数"。同时<strong>每轮表决都须有明确的起止时间，不得以"再观察一段"为由无限搁置</strong>——否则这套制度会反过来变成"少数人靠拖延否决多数人"的新武器。</p>
+            </div>
+        </div>
+
+        <h2>六、只看大意见的票，不看评论区的声</h2>
+        <div class="section-card">
+            <p>还有一条贯穿全程的纪律：<strong>不看任何评论区，也不看小意见的声量；只看归并后的大意见的投票结果。</strong></p>
+            <p>理由在公社的老账上：<strong>投票是沉默的大多数，评论区是喧哗的少数。</strong>评论区从来不是民意的计量器，它是<strong>扩音器</strong>——它把愿意喊的人放大，把不愿意喊的人抹掉。</p>
+            <div class="quote-box" style="text-align:center;">
+                <strong>评论区是扩音器，投票箱是计数器。<br>
+                我们只数人头，不量音量。</strong>
+            </div>
+            <p>所以公社在任何一次决策里，都不会把"评论区反应"当作依据——哪怕它看起来一边倒。<strong>一边倒的评论区，恰恰是需要投票的信号，而不是投票的替代品。</strong></p>
+        </div>
+
+        <h2>七、正史之争：分开投，不放在一起</h2>
+        <div class="section-card">
+            <p>同一套制度也用在正史之争上，但有一处关键设计：<strong>不是把两部或多部争夺正史的作品放在一块投票，而是每部作品单独放置、分别投票。</strong></p>
+            <p>为什么不放一起？因为<strong>放在一起投，就是逼人互相拉踩</strong>——位子只有那么一个，只有踩掉对方，自己才能上去。这正是圈地的动机所在。分开投，每部作品各自面对标准，就不存在"必须踩掉谁"的处境。</p>
+            <div class="quote-box" style="text-align:center;">
+                <strong>放在一起投，是逼人互相拉踩；<br>
+                分开投，是让作品各自面对标准。</strong>
+            </div>
+            <p>而且更要紧的是这一句：</p>
+            <div class="quote-box" style="text-align:center;">
+                <strong>圈地的动机是"位子只有一个"；<br>
+                分开投，就把位子变成了"够格就有"。</strong>
+            </div>
+            <p>选项设计如下：</p>
+            <table class="compare-table">
+                <tr><th>选项</th><th>含义</th><th>什么时候出现</th></tr>
+                <tr><td><strong>正史宇宙</strong></td><td>该作品进入正史主线</td><td>常规两项之一</td></tr>
+                <tr><td><strong>平行宇宙</strong></td><td>该作品独立存在，不进正史主线</td><td>常规两项之一——<strong>注意：平行不是惩罚</strong></td></tr>
+                <tr><td><strong>归入废案</strong></td><td>作品作废</td><td><strong>仅在一种情况下追加：该作品企图圈地、压迫其他人</strong></td></tr>
+            </table>
+            <div class="quote-box" style="text-align:center;">
+                <strong>平行不是流放，废案才是。</strong>
+            </div>
+            <p>把这三个选项看清楚，会发现它们其实做了一件很精确的事——<strong>把"艺术标准"和"政治标准"分到了两个出口</strong>：</p>
+            <ul style="margin-left: 1.5rem;">
+                <li><strong>写得不够好</strong>——去平行宇宙。它在，它活着，只是不进主线；</li>
+                <li><strong>企图圈地压迫别人</strong>——归入废案。这是行为问题，不是水平问题。</li>
+            </ul>
+            <div class="quote-box" style="text-align:center;">
+                <strong>写得不好去平行，企图圈地去废案——<br>
+                两个出口，是分开的。</strong>
+            </div>
+            <p>（这正是<a href="cultural-and-military-fronts.html">《论文武两个战线》</a>里"政治标准第一、艺术标准第二"的可操作化：政治标准管废案，艺术标准管平行与正史的分别，两者都不越界。）</p>
+        </div>
+
+        <h2>八、五条边界</h2>
+        <div class="section-card">
+            <p class="comment"><b>① 不得用于人事。</b>针对某个同志的问题，一律走集体批评制（第二十三条之十五）。<strong>能投票决定的事只能是事，不能是人</strong>——否则这件反圈地的武器会立刻变成圈地的工具。</p>
+            <p class="comment"><b>② 不得用于修正不可妥协条款。</b>第二十一条优先：任何试图修正核心原则（收入上限、版权归集体、一人一票、10%否决权、反对绩效管理、财务独立）的决议，<strong>无论表决比例多高，均属无效</strong>。意见投票制不能绕开这道锁。</p>
+            <p class="comment"><b>③ 不搞人气投票、不排名次。</b>投票用来定事，不用来排人（第二十三条之二十二）。大意见可以排序讨论，但<strong>不得把提意见的人排成名次</strong>。</p>
+            <p class="comment"><b>④ 制度不替代批评。</b>意见投票解决的是"这件事该不该这么做"，集体批评解决的是"某个人做得对不对"。<strong>两条线不能混</strong>：前者管方向，后者管行为。</p>
+            <p class="comment"><b>⑤ "长期"必须有期限。</b>两轮表决之间的间隔、每轮表决的起止，都要事先写明。<strong>"长期"是一个期限，不是一个借口。</strong>否则它会变成少数人靠拖延行使的否决权。</p>
+            <div class="warn">
+                <p><strong>一句话收住：</strong>这套制度的设计目标只有一个——<strong>让正确的意见不必靠喊，让错误的意见不能靠喊。</strong></p>
+            </div>
+        </div>
+
+        <h2>九、结论</h2>
+        <div class="section-card">
+            <p>一句话版本，七条：</p>
+            <ul style="margin-left: 1.5rem;">
+                <li><strong>按闹分配之所以有效，是因为声量可伪造、人数不可伪造</strong>——他们不是人多，是声音大；</li>
+                <li><strong>归并是对声量的免疫</strong>——喊一百遍不等于一百个人，归并不减少意见，只减少重复；</li>
+                <li><strong>绝不收集对个人的意见</strong>——那是集体批评制的范围；允许用它对付个人，就等于把反圈地的武器变成圈地的工具；</li>
+                <li><strong>正反同票，而且必须公开</strong>——对人可以匿名，对事必须公开；署名的票是要还的；</li>
+                <li><strong>长期处于大多数才可通过</strong>——动员能赢一轮，认同才能赢一路；闹只能形成波峰，形不成趋势；</li>
+                <li><strong>只数人头，不量音量</strong>——评论区是扩音器，投票箱是计数器；一边倒的评论区是需要投票的信号，不是投票的替代品；</li>
+                <li><strong>正史之争分开投</strong>——放在一起是逼人拉踩，分开投是各自面对标准；写得不好去平行，企图圈地去废案。</li>
+            </ul>
+            <div class="quote-box" style="text-align:center;">
+                <strong>他们靠声音大赢，我们靠人数清。<br><br>
+                喊得再响，也只有一票；<br>
+                说得再轻，也是一票。</strong>
+            </div>
+        </div>
+
+        <p><a href="collective-matching-system.html">← 论集体匹配制</a> · <a href="gongyue.html">源力公社公约 →</a></p>
+
+        <p><a href="../worldview.html" class="back-link">← 返回世界观目录</a> · <a href="../index.html">返回公社首页</a></p>
+    </div>
+    <div class="footer">源力公社 · 集体版权 · 组织与战略</div>
+</div>
+</body>
+</html>
