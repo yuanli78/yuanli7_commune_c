@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>世界模拟引擎构想——星球可以模拟，角色不能 · 源力公社</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif; background: #fef9f0; color: #2c2c2c; line-height: 1.9; padding: 2rem 1rem; }
+        .container { max-width: 900px; margin: 0 auto; background: white; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); overflow: hidden; border: 1px solid #ffe0b5; }
+        .header { background: #b91c1c; color: white; padding: 2rem 2rem 1.5rem; text-align: center; }
+        .header h1 { font-size: 1.9rem; letter-spacing: 1px; margin-bottom: 0.3rem; }
+        .header .subtitle { font-size: 0.95rem; opacity: 0.85; }
+        .content { padding: 2.5rem; }
+        h2 { color: #b91c1c; margin: 2.2rem 0 1rem; border-bottom: 2px solid #ffe0b5; padding-bottom: 0.3rem; }
+        h3 { color: #b91c1c; margin: 1.6rem 0 0.6rem; font-size: 1.05rem; }
+        .section-card { background: #faf6f0; padding: 1.5rem 2rem; border-radius: 16px; margin: 1.5rem 0; }
+        .highlight-box { background: #fff3e0; border-left: 5px solid #b91c1c; padding: 1rem 1.5rem; border-radius: 8px; margin: 1.5rem 0; }
+        .quote-box { background: #f5f0e8; border-left: 3px solid #b91c1c; padding: 1rem 1.5rem; border-radius: 8px; margin: 1.2rem 0; }
+        .warn { background: #fff8e1; border-left: 5px solid #d97706; padding: 1rem 1.5rem; border-radius: 8px; margin: 1.5rem 0; }
+        .danger { background: #fef2f2; border-left: 5px solid #b91c1c; padding: 1rem 1.5rem; border-radius: 8px; margin: 1.5rem 0; }
+        .compare-table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+        .compare-table th, .compare-table td { border: 1px solid #ffe0b5; padding: 0.6rem 0.9rem; text-align: left; vertical-align: top; }
+        .compare-table th { background: #fff3e0; color: #b91c1c; }
+        .back-link { display: inline-block; margin-top: 2rem; color: #b91c1c; text-decoration: none; font-weight: 500; }
+        .back-link:hover { text-decoration: underline; }
+        .footer { background: #f0ece4; text-align: center; padding: 1.5rem; font-size: 0.85rem; color: #5e5e5e; border-top: 1px solid #ffe0b5; }
+        a { color: #b91c1c; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        @media (max-width: 600px) { .header h1 { font-size: 1.4rem; } .content { padding: 1.5rem; } }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>🌍 世界模拟引擎构想</h1>
+        <div class="subtitle">星球可以模拟，角色不能</div>
+    </div>
+    <div class="content">
+
+        <div class="highlight-box">
+            <p><strong>核心构想：</strong>幻想世界的创作，现在只剩下最后一块拼图——<strong>如何造出一颗真正的星球</strong>。做法是放弃"先画地图、再摆国家"的旧办法，改从<strong>星球本身</strong>跑起：质量、卫星、自转公转、季风、洋流、板块，然后从海洋里长出生态圈，最后才轮到文明。</p>
+            <p><strong>而这条界线正好和公社已有的结论接上：</strong><strong>星球可以模拟，角色不能</strong>——因为前者没有社会关系，后者有。</p>
+        </div>
+
+        <h2>一、最后一块拼图</h2>
+        <div class="section-card">
+            <p>到今天，幻想世界里大部分东西都能做：人物、剧情、势力、战争、历史、文明的三千年——<strong>都能写</strong>。</p>
+            <p>但有一件事一直没人真的做出来：<strong>他们脚下那块地。</strong></p>
+            <div class="quote-box" style="text-align:center;">
+                <strong>我们能写一个文明的三千年，<br>
+                却造不出它脚下那块地的三百万年。</strong>
+            </div>
+            <p>所以这是幻想创作的最后一个难题：<strong>如何创造一个真正的星球与宇宙。</strong></p>
+        </div>
+
+        <h2>二、现在那些工具差在哪</h2>
+        <div class="section-card">
+            <p>这个需求不是没有人试过。世界盒子、架空地图模拟器、孢子——都是往这个方向走的，而且各自都有两把刷子。</p>
+            <p>但用来造"我们幻想中的大陆"，它们都到不了：</p>
+            <ul style="margin-left: 1.5rem;">
+                <li><strong>世界盒子</strong>给你一块地形和若干国家——<strong>但那些国家长在那块地上，和那块地没有关系；</strong></li>
+                <li><strong>孢子</strong>给你从细胞到太空的一条线——<strong>但它跳过了星球本身；</strong></li>
+                <li><strong>地图模拟器</strong>给你一张好看的图——<strong>而图是画出来的，不是长出来的。</strong></li>
+            </ul>
+            <div class="quote-box" style="text-align:center;">
+                <strong>它们给你看结果，不给你看因果。</strong>
+            </div>
+            <div class="quote-box" style="text-align:center;">
+                <strong>一张好看的地图，和一颗真的星球，<br>
+                中间隔着一整套物理。</strong>
+            </div>
+        </div>
+
+        <h2>三、旧办法：饼干大陆创作法</h2>
+        <div class="section-card">
+            <p>传统做法是：<strong>先画一张地图，再往上摆山、摆河、摆国家。</strong></p>
+            <p>这就是<strong>饼干大陆</strong>——平、薄、摆上去的。</p>
+            <div class="quote-box" style="text-align:center;">
+                <strong>旧办法做出来的不是大陆，<br>
+                是一张桌布。</strong>
+            </div>
+            <div class="quote-box" style="text-align:center;">
+                <strong>它没有过去——<br>
+                你看到的每一个地形，都没有原因。</strong>
+            </div>
+            <p>于是漏洞成串地来：河从山里流到海里却没有源头；沙漠紧挨着雨林；气候和纬度对不上；山脉的走向解释不了；同一块大陆上并存三套气候。</p>
+            <div class="quote-box" style="text-align:center;">
+                <strong>地图上每一条河都在流，<br>
+                可没有一条河知道它为什么在那里。</strong>
+            </div>
+            <p>而这是<strong>结构性</strong>的：你不是漏了细节，<strong>你是漏了原因。</strong></p>
+        </div>
+
+        <h2>四、新方案：从星球本身开始</h2>
+        <div class="section-card">
+            <p>新方案要做的事，是按<strong>因果顺序</strong>跑，而不是按<strong>美术顺序</strong>摆：</p>
+            <table class="compare-table">
+                <tr><th>阶段</th><th>跑什么</th></tr>
+                <tr><td><strong>第一段 · 星球本身</strong></td><td>质量、卫星、自转与公转周期、季风、洋流、板块……</td></tr>
+                <tr><td><strong>第二段 · 生命</strong></td><td>逐步从海洋模拟出生态圈</td></tr>
+                <tr><td><strong>第三段 · 文明</strong></td><td>到这里，才有文明诞生的时刻</td></tr>
+            </table>
+            <div class="quote-box" style="text-align:center;">
+                <strong>先有星球，才有生命；<br>
+                先有生命，才有文明。</strong>
+            </div>
+            <div class="quote-box" style="text-align:center;">
+                <strong>顺序错了，出来的就是布景。</strong>
+            </div>
+            <div class="quote-box" style="text-align:center;">
+                <strong>它们不是三个阶段，<br>
+                是一条因果链上的三个环节。</strong>
+            </div>
+            <h3>而这条路走到最后，就是宇宙</h3>
+            <p>把星球做真了，就一定想要星系；把星系做真了，就一定想要宇宙。</p>
+            <p>只是<strong>现阶段人类最多只能做到模拟整个星系</strong>。</p>
+            <div class="warn">
+                <p><strong>所以这一篇谈的是构想，不是承诺：目标到星系为止，宇宙那一段留给后面的人。</strong></p>
+            </div>
+        </div>
+
+        <h2>五、宇宙虚拟假设，和集体创作论那条算术</h2>
+        <div class="section-card">
+            <p>走到宇宙这一步，就绕不开那个老假设：<strong>我们是不是别人模拟出来的？</strong></p>
+            <p>而公社的集体创作论<strong>恰恰否决了它</strong>。理由是一条很硬的算术：</p>
+            <ul style="margin-left: 1.5rem;">
+                <li><strong>要模拟整片宇宙，就必须先把整片宇宙探索完；</strong></li>
+                <li><strong>而宇宙是探索不完的。</strong></li>
+            </ul>
+            <div class="quote-box" style="text-align:center;">
+                <strong>要模拟完，就得先探索完。</strong>
+            </div>
+            <div class="quote-box" style="text-align:center;">
+                <strong>宇宙是探索不完的——<br>
+                所以没有人能把它模拟完。</strong>
+            </div>
+            <div class="danger">
+                <p style="text-align:center;font-size:1.05rem;"><strong>做不完的东西，做不出来。</strong></p>
+            </div>
+        </div>
+
+        <h2>六、那就反过来设一次</h2>
+        <div class="section-card">
+            <p>但这条算术有一个更有意思的用法：<strong>假设我们真的就是被创造出来的幻想作品。</strong></p>
+            <p>那么问题来了——<strong>创造我们的那个宇宙，是什么样子的？</strong></p>
+            <p>答案被上面那条算术逼出来了：<strong>单个作者做不完一个宇宙。</strong>所以能完成这件事的，<strong>只能是一个集体</strong>；而能扛住那种体量的集体，<strong>只能是公社那样的集体。</strong></p>
+            <div class="quote-box" style="text-align:center;">
+                <strong>如果宇宙是被创造的，<br>
+                那创造它的只能是公社——<br>
+                因为没有别的组织形式扛得住那个体量。</strong>
+            </div>
+            <p>也就是说：<strong>另一个宇宙里的生命，必然遵守着和公社相同的集体创作论与公社公约。</strong></p>
+            <p>——这一步把"宇宙虚拟假设"从<strong>神创论</strong>扭成了<strong>集体创作论</strong>。</p>
+        </div>
+
+        <h2>七、互为论证</h2>
+        <div class="section-card">
+            <p>于是我们可以正当地把两句话都说出来：</p>
+            <ul style="margin-left: 1.5rem;">
+                <li><strong>源力公社宇宙的人们创造了我们</strong>——以此论证：<strong>在一个没有源力的世界里，共产主义也必然会成功；</strong></li>
+                <li><strong>而我们这个世界的人们又创造了源力公社宇宙</strong>——以此论证：<strong>在一个有源力的宇宙里，革命也必然会成功。</strong></li>
+            </ul>
+            <div class="quote-box" style="text-align:center;">
+                <strong>两边互为对方的存在证明。</strong>
+            </div>
+            <p>而最要紧的是它顺手做掉的一件事——这两句话合起来，<strong>等于把一个变量拿掉了</strong>：</p>
+            <table class="compare-table">
+                <tr><th></th><th>有没有源力</th><th>结论</th></tr>
+                <tr><td><strong>源力公社宇宙</strong></td><td>有</td><td>走向共产主义</td></tr>
+                <tr><td><strong>我们这个宇宙</strong></td><td><strong>没有</strong></td><td><strong>也走向共产主义</strong></td></tr>
+            </table>
+            <div class="quote-box" style="text-align:center;">
+                <strong>把一个变量拿掉，结论不变——<br>
+                那就说明它从来不是原因。</strong>
+            </div>
+            <div class="quote-box" style="text-align:center;">
+                <strong>源力是布景，关系才是历史。</strong>
+            </div>
+        </div>
+
+        <h2>八、一条界线：引擎管到生态圈为止</h2>
+        <div class="section-card">
+            <p>这里必须和公社已有的那条结论对上。<a href="worldview-engine-paradox.html">《论世界观引擎的悖论》</a>说过：<strong>"世界观引擎"永远造不出来，因为幻想角色从被创造出来那一刻就已经处在社会关系里了；能让角色活着的从来不是引擎，是同志。</strong></p>
+            <p><strong>两者不矛盾——而那条界线，正好落在这套系统的第二段和第三段之间：</strong></p>
+            <table class="compare-table">
+                <tr><th></th><th>能不能模拟</th><th>为什么</th></tr>
+                <tr><td><strong>星球、气候、洋流、板块、生态圈</strong></td><td><strong>能，而且应该</strong></td><td>这些东西<strong>没有社会关系</strong></td></tr>
+                <tr><td><strong>文明、角色</strong></td><td><strong>不能自动推演</strong></td><td>这些东西<strong>有社会关系</strong></td></tr>
+            </table>
+            <div class="quote-box" style="text-align:center;">
+                <strong>星球可以模拟，角色不能。</strong>
+            </div>
+            <div class="quote-box" style="text-align:center;">
+                <strong>区别只有一条：有没有社会关系。</strong>
+            </div>
+            <div class="quote-box" style="text-align:center;">
+                <strong>引擎管到生态圈为止；<br>
+                再往上，交给同志。</strong>
+            </div>
+            <p>顺便把悖论那一页的说法改精确一点：那句"<strong>我们不模拟生命</strong>"，说的其实是——<strong>不模拟有社会关系的生命</strong>。</p>
+            <div class="quote-box" style="text-align:center;">
+                <strong>一颗星球的板块和洋流，<br>
+                本来就不需要谁去爱它。</strong>
+            </div>
+            <p>而这个引擎不是孤例——公社的引擎家族里已经有它几个兄弟：<a href="history-network.html">历史引擎</a>、<a href="painting-mathematics.html">绘画引擎</a>、<a href="new-hanzi-engine.html">新汉字引擎</a>。</p>
+            <div class="quote-box" style="text-align:center;">
+                <strong>文字有引擎，绘画有引擎，历史有引擎——<br>
+                星球也该有。</strong>
+            </div>
+        </div>
+
+        <h2>九、结论</h2>
+        <div class="section-card">
+            <p>一句话版本，八条：</p>
+            <ul style="margin-left: 1.5rem;">
+                <li><strong>幻想创作的最后一块拼图，是造出一颗真正的星球</strong>——我们能写文明的三千年，却造不出它脚下那块地的三百万年；</li>
+                <li><strong>现有那些工具到不了，因为它们给的是结果不是因果</strong>——一张好看的地图，和一颗真的星球，中间隔着一整套物理；</li>
+                <li><strong>旧办法是饼干大陆创作法</strong>——平、薄、摆上去的，结构性的毛病不是漏了细节，是漏了原因；</li>
+                <li><strong>新方案按因果顺序跑：星球 → 生命 → 文明</strong>——顺序错了，出来的就是布景；</li>
+                <li><strong>这条路最后会走到宇宙，而现阶段只能到星系</strong>——所以这是构想，不是承诺；</li>
+                <li><strong>集体创作论否决宇宙虚拟假设，靠的是一条算术</strong>——要模拟完就得先探索完，而宇宙探索不完，做不完的东西做不出来；</li>
+                <li><strong>反过来设一次，创造者只能是公社</strong>——单个作者做不完一个宇宙，能扛住那种体量的组织形式只有一种；</li>
+                <li><strong>于是两边互为论证，而这一轮论证顺手拿掉了一个变量</strong>——有源力走向共产主义，没有源力也走向共产主义，那就说明源力从来不是原因。</li>
+            </ul>
+            <div class="quote-box" style="text-align:center;">
+                <strong>我们先把脚下的地做真。<br><br>
+                至于地上的人——<br>
+                那是同志的事。</strong>
+            </div>
+        </div>
+
+        <p><a href="worldview-engine-paradox.html">← 论世界观引擎的悖论</a> · <a href="history-network.html">论历史传播的网状化 →</a></p>
+
+        <p><a href="../worldview.html" class="back-link">← 返回世界观目录</a> · <a href="../index.html">返回公社首页</a></p>
+    </div>
+    <div class="footer">源力公社 · 集体版权 · 理论文献</div>
+</div>
+</body>
+</html>
